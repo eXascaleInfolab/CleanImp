@@ -56,7 +56,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - To produce the analysis of the experiments, run the following commands
   
 ```bash
-    $ dotnet dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
+    $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
     $ dotnet run ../configs/config_forecast_test.cfg analysis reference:smape12
 ```
 
