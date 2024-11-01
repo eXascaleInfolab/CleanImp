@@ -33,15 +33,15 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
   
 ```bash
     $ cd CleanImp/
-    $ dotnet run ../configs/config_uniclass_test.cfg
-    $ dotnet run ../configs/config_forecast_test.cfg
+    $ dotnet Dotnet run ../configs/config_uniclass_test.cfg
+    $ dotnet Dotnet run ../configs/config_forecast_test.cfg
 ```
 
 - To produce the analysis of the experiments, run the following commands
   
 ```bash
-    $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
-    $ dotnet run ../configs/config_forecast_test.cfg analysis reference:smape12
+    $ dotnet Dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
+    $ dotnet Dotnet run ../configs/config_forecast_test.cfg analysis reference:smape12
 ```
 
 
