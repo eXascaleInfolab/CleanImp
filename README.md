@@ -18,6 +18,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
  
 ```bash
     $ git clone https://github.com/eXascaleInfolab/CleanImp CleanImp
+    $ cd CleanImp/
 ```
 
 ---
