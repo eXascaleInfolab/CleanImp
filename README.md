@@ -29,18 +29,18 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 ## Execution
 
-- To execute all the experiments, run the following commands
+- To produce the classification results, run the following commands
   
 ```bash
     $ cd CleanIMP/
     $ dotnet run ../configs/config_uniclass_test.cfg
-    $ dotnet run ../configs/config_forecast_test.cfg
+    $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
 ```
 
-- To produce the analysis of the experiments, run the following commands
+- To produce the forecasting results, run the following commands
   
 ```bash
-    $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
+    $ dotnet run ../configs/config_forecast_test.cfg
     $ dotnet run ../configs/config_forecast_test.cfg analysis reference:smape12
 ```
 
