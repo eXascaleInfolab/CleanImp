@@ -28,10 +28,12 @@ export PATH="/home/ubuntu/.local/bin:$PATH"
 
 zenodo_get https://doi.org/10.5281/zenodo.14022916
 unzip UniClass.zip -d WorkDir/_RawDataStorage/
+echo "Downloading and unpacking 80 classification datasets (295.3 MB)"
 rm -rf UniClass.zip
 
-zenodo_get https://doi.org/10.5281/zenodo.14023107
+zenodo_get https://doi.org/10.5281/zenodo.14023106
 unzip Forecast.zip -d WorkDir/_RawDataStorage/
+echo "Downloading and unpacking 12 forecasting datasets (2.5 MB)"
 rm -rf Forecast.zip
 
 # targeted
