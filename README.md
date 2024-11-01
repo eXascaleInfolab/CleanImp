@@ -1,4 +1,4 @@
-# CleanIMP:  An Evaluation of the Impact of Imputation on Downstream Tasks
+# CleanIMP: A comprehensive Framework to Evaluate the Impact of Imputation on Downstream Tasks
 
 CleanIMP is a unified framework designed to extensively evaluate the downstream effects of 15 advanced and five
 basic imputation algorithms for time series data. It evaluates two downstream tasks: classification and forecasting
