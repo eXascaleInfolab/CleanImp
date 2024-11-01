@@ -27,11 +27,11 @@ python3.9 -m pip install zenodo_get
 export PATH="/home/ubuntu/.local/bin:$PATH"
 
 zenodo_get https://doi.org/10.5281/zenodo.14022916
-unzip UniClass.zip -d WorkDir/_RawDataStorage/UniClass/
+unzip UniClass.zip -d WorkDir/_RawDataStorage/
 rm -rf UniClass.zip
 
 zenodo_get https://doi.org/10.5281/zenodo.14023107
-unzip Forecast.zip -d WorkDir/_RawDataStorage/Forecast/
+unzip Forecast.zip -d WorkDir/_RawDataStorage/
 rm -rf Forecast.zip
 
 # targeted
