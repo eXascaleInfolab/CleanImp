@@ -26,14 +26,14 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - Download and unzip the classification datasets
 
 ```bash
-    $ zenodo_get https://doi.org/10.5281/zenodo.10890078
+    $ zenodo_get https://doi.org/10.5281/zenodo.14022916
     $ unzip UniClass.zip -d WorkDir/_RawDataStorage/UniClass/
 ```
 
 - Download and unzip the forecasting datasets
 
 ```bash
-    $ zenodo_get https://doi.org/10.5281/zenodo.10890078
+    $ zenodo_get https://doi.org/10.5281/zenodo.14023107
     $ unzip Forecast.zip -d WorkDir/_RawDataStorage/Forecast/
 ```
   
