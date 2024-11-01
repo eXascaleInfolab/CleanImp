@@ -16,10 +16,6 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - Ubuntu 22 or Ubuntu 24 (including Ubuntu derivatives, e.g., Xubuntu) or the same distribution under WSL.
 - Clone this repository
  
-```bash
-    $ git clone https://github.com/eXascaleInfolab/CleanImp CleanImp
-    $ cd CleanImp/
-```
 
 ---
 
@@ -36,6 +32,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - To execute all the experiments, run the following commands
   
 ```bash
+    $ cd CleanImp/
     $ dotnet run /configs/config_uniclass_test.cfg
     $ dotnet run /configs/config_forecast_test.cfg
 ```
