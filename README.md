@@ -32,7 +32,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - To execute all the experiments, run the following commands
   
 ```bash
-    $ cd CleanImp/
+    $ cd CleanIMP/
     $ dotnet run ../configs/config_uniclass_test.cfg
     $ dotnet run ../configs/config_forecast_test.cfg
 ```
