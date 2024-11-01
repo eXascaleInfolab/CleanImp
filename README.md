@@ -23,7 +23,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - Build the Testing Framework using the installation script located in the root folder 
 
 ```bash
-    $ sh setup_guide.sh
+    $ sh setup.sh
 ```
   
 
@@ -32,7 +32,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - To produce the classification results, run the following commands
   
 ```bash
-    $ cd CleanIMP/
+    $ cd TestFramework/
     $ dotnet run ../configs/config_uniclass_test.cfg
     $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
 ```
