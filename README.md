@@ -26,7 +26,6 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - Build the Testing Framework using the installation script located in the root folder 
 
 ```bash
-    $ cd CleanImp
     $ sh setup_guide.sh
 ```
   
