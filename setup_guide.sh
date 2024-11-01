@@ -21,6 +21,9 @@ python3.9 -m pip install numpy==1.23.5;
 python3.9 -m pip install sktime==0.24.1;
 python3.9 -m pip install darts==0.27.1;
 
+# datasets
+python3.9 -m pip install zenodo_get
+
 # targeted
 python3.9 -m pip install statsmodels==0.14.1;
 python3.9 -m pip install statsforecast==1.5.0;
