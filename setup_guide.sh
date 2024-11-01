@@ -21,21 +21,6 @@ python3.9 -m pip install numpy==1.23.5;
 python3.9 -m pip install sktime==0.24.1;
 python3.9 -m pip install darts==0.27.1;
 
-# datasets
-sudo apt install unzip
-python3.9 -m pip install zenodo_get
-export PATH="/home/ubuntu/.local/bin:$PATH"
-
-zenodo_get https://doi.org/10.5281/zenodo.14022916
-unzip UniClass.zip -d WorkDir/_RawDataStorage/
-echo "Downloading and unpacking 80 classification datasets (295.3 MB)"
-rm -rf UniClass.zip
-
-zenodo_get https://doi.org/10.5281/zenodo.14023106
-unzip Forecast.zip -d WorkDir/_RawDataStorage/
-echo "Downloading and unpacking 12 forecasting datasets (2.5 MB)"
-rm -rf Forecast.zip
-
 # targeted
 python3.9 -m pip install statsmodels==0.14.1;
 python3.9 -m pip install statsforecast==1.5.0;
