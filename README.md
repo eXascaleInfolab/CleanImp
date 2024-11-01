@@ -23,6 +23,12 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 ---
 
 ## Build
+- Build the Testing Framework using the installation script located in the root folder 
+
+```bash
+    $ sh setup_guide.sh
+```
+
 - Download and unzip the classification datasets
 
 ```bash
@@ -37,11 +43,6 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
     $ unzip Forecast.zip -d WorkDir/_RawDataStorage/Forecast/
 ```
   
-- Build the Testing Framework using the installation script located in the root folder 
-
-```bash
-    $ sh setup_guide.sh
-```
 
 ## Execution
 
