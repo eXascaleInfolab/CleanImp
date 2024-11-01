@@ -22,7 +22,17 @@ python3.9 -m pip install sktime==0.24.1;
 python3.9 -m pip install darts==0.27.1;
 
 # datasets
+sudo apt install unzip
 python3.9 -m pip install zenodo_get
+export PATH="/home/ubuntu/.local/bin:$PATH"
+
+zenodo_get https://doi.org/10.5281/zenodo.14022916
+unzip UniClass.zip -d WorkDir/_RawDataStorage/UniClass/
+rm -rf UniClass.zip
+
+zenodo_get https://doi.org/10.5281/zenodo.14023107
+unzip Forecast.zip -d WorkDir/_RawDataStorage/Forecast/
+rm -rf Forecast.zip
 
 # targeted
 python3.9 -m pip install statsmodels==0.14.1;
