@@ -8,6 +8,6 @@ dotnet run ../configs/config_uniclass_main.cfg analysis upstream:rmse:true > ../
 dotnet run ../configs/config_uniclass_main.cfg analysis downstream:f1:true > ../Results/classification_downstream_aggregated.txt
 dotnet run ../configs/config_uniclass_main.cfg analysis downstream:f1:false > ../Results/classification_downstream.txt
 
-dotnet run ../configs/config_forecast_main.cfg analysis upstream:smape12:true > ../Results/forecasting_upstream.txt
+dotnet run ../configs/config_forecast_main.cfg analysis upstream:rmse:true > ../Results/forecasting_upstream.txt
 dotnet run ../configs/config_forecast_main.cfg analysis bydata:smape12:true > ../Results/forecasting_downstream_aggregated.txt
 dotnet run ../configs/config_forecast_main.cfg analysis downstream:smape12:false > ../Results/forecasting_downstream.txt
