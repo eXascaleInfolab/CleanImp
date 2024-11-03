@@ -27,23 +27,34 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 ```
   
 
-## Execution
+## Execution (everything)
 
-- To produce the classification results, run the following commands
+- To produce a curated set of results, run the following command:
+  
+```bash
+    $ sh experiments.sh
+```
+
+Estimated running time for a full set of results is around 5 days on a server-grade CPU. The output will be stored to `Results/` folder that will be created in the root folder.
+
+## Execution (fine-grained)
+
+- To produce the classification and resp. forecasting experiment runs, run the following commands:
   
 ```bash
     $ cd TestFramework/
-    $ dotnet run ../configs/config_uniclass_test.cfg
-    $ dotnet run ../configs/config_uniclass_test.cfg analysis reference:f1
+    $ dotnet run ../configs/config_uniclass_main.cfg
+    $ dotnet run ../configs/config_forecast_main.cfg
 ```
 
-- To produce the forecasting results, run the following commands
-  
+- Running the configuration file is going to execute the experiment specified there and cache the upstream/downstream result data.
+- To produce the analysis of the runs, a parametrized `analysis` argument can be specified after the name of the config file. For example the following command produces the analysis for the classification run using rmse as an upstream metric:
+
 ```bash
-    $ dotnet run ../configs/config_forecast_test.cfg
-    $ dotnet run ../configs/config_forecast_test.cfg analysis reference:smape12
+    $ dotnet run ../configs/config_uniclass_main.cfg analysis upstream:rmse
 ```
 
+- TBC
 
 ---
 
