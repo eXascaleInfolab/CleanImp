@@ -27,15 +27,15 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 ```
   
 
-## Execution (everything)
+## Execution (Full)
 
-- To produce a curated set of results, run the following command:
+- To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
   
 ```bash
     $ sh experiments.sh
 ```
 
-Estimated running time for a full set of results is around 5 days on a server-grade CPU. The output will be stored to `Results/` folder that will be created in the root folder.
+The output will be stored in the `Results/` folder, which will be created in the root folder.
 
 ## Execution (fine-grained)
 
@@ -47,8 +47,9 @@ Estimated running time for a full set of results is around 5 days on a server-gr
     $ dotnet run ../configs/config_forecast_main.cfg
 ```
 
-- Running the configuration file is going to execute the experiment specified there and cache the upstream/downstream result data.
-- To produce the analysis of the runs, a parametrized `analysis` argument can be specified after the name of the config file. For example the following command produces the analysis for the classification run using rmse as an upstream metric:
+- Running the configuration file will execute the experiment specified there and cache the upstream/downstream result data.
+- To produce the analysis of the runs, a parametrized `analysis` argument needs to be specified after the name of the config file.
+  For example, the following command produces the analysis for the classification run using rmse as an upstream metric:
 
 ```bash
     $ dotnet run ../configs/config_uniclass_main.cfg analysis upstream:rmse
