@@ -37,6 +37,31 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 The output will be stored in the `Results/` folder, which will be created in the root folder.
 
+## Benchmark configuration
+
+- Any existing config file for classification or forecasting can be used as a basis to make new experiment runs. This section provides the list of parameters which are available in the benchmark.
+
+- Imputation algorithms are given in the table below. Configuration file field name is `Algorithms =`. Parameters can be overriden from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+
+| Algorithms | param      | default  | description |
+| --------   | --------   | -------- | --------    |
+| CDRec      | k          | 3        | truncation  |
+| SVDImp     | k          | 3        | truncation  |
+| SoftImp    | k          | 3        | truncation  |
+| STMVL      | n/a        |          |             |
+| DynaMMo    | k          | 3        | dimension   |
+| IIM        | n          | 3        | neighbors   |
+| GROUSE     | k          | 3        | truncation  |
+| SVT        | n/a        |          |             |
+| --------   | --------   | -------- | --------    |
+| MeanImp    | n/a        |          |             |
+| ZeroImp    | n/a        |          |             |
+| 1NNImp     | n/a        |          |             |
+| LinearImp  | n/a        |          |             |
+| knnimp     | n          | 3        | neighbors   |
+
+- TBC
+
 ## Execution (fine-grained)
 
 - To produce the classification and resp. forecasting experiment runs, run the following commands:
