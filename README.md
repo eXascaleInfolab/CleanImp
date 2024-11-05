@@ -31,9 +31,9 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 ### Benchmark configuration 
 
-- **Datasets**: Datasets are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. Each subfolder there represents a single dataset. Initial files are downloaded by the setup script.
+- **Datasets**: The datasets are downloaded by running the setup script. They are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. 
 
-- **Missing Patterns**: `Scenarios` control the patterns of contamination performed by the benchmark. Available options are listed in the table below. Different scenarios are applicable for different tasks.
+- **Missing Patterns**: `Scenarios` control the patterns of contamination performed by the benchmark. The available options are listed in the table below.
 
 | Scenario      | Task           | Description  |
 | --------      | --------       | --------     |
@@ -44,7 +44,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 
 
-- **Algorithms**: The list of Algorithms and their parameters are provided below. Parameters can be overriden from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+- **Algorithms**: The list of Algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
@@ -63,7 +63,9 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | LinearImp  | n/a        |          |               |          |
 | knnimp     | n          | 3        | neighbors     | [1, 100] |
 
-- **Config files**: The existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` can be used to create new customized experiment runs. Those files already contain some lists of available options, but this section provides descriptions of the most important parameters available in the benchmark.
+- **Config files**: The existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` create new customized experiment runs. Those files already contain lists of available options, but this section provides descriptions of the most important parameters available in the benchmark.
+
+
 
 ### Results
 - To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
