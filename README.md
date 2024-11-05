@@ -39,9 +39,9 @@ The output will be stored in the `Results/` folder, which will be created in the
 
 ## Benchmark configuration
 
-- Any existing config file for classification or forecasting can be used as a basis to make new experiment runs. This section provides the list of most important parameters which are available in the benchmark.
+- Existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` can be used as a basis to make new customized experiment runs. Those files already contain some lists of available options, but this section provides the descriptions of most important parameters which are available in the benchmark.
 
-- `Datasets` are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. Each subfolder there represents a single dataset. Files are downloaded by the setup script.
+- `Datasets` are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. Each subfolder there represents a single dataset. Initial files are downloaded by the setup script.
 
 - `Scenarios` control the patterns of contamination performed by the benchmark. Available options are listed in the table below. Different scenarios are applicable for different tasks.
 
@@ -75,12 +75,14 @@ The output will be stored in the `Results/` folder, which will be created in the
 
 ## Execution (fine-grained)
 
+- This section gives some examples on how to produce different analysis results on a customized config file. Their current configuration is geared towards a smaller experiment that can be completed in a reasonable timespan.
+
 - To produce the classification and resp. forecasting experiment runs, run the following commands:
 
 ```bash
     $ cd TestFramework/
-    $ dotnet run ../configs/config_uniclass_main.cfg
-    $ dotnet run ../configs/config_forecast_main.cfg
+    $ dotnet run ../configs/config_uniclass_custom.cfg
+    $ dotnet run ../configs/config_forecast_custom.cfg
 ```
 
 - Running the configuration file will execute the experiment specified there and cache the upstream/downstream result data.
@@ -88,7 +90,7 @@ The output will be stored in the `Results/` folder, which will be created in the
   For example, the following command produces the analysis for the classification run using rmse as an upstream metric:
 
 ```bash
-    $ dotnet run ../configs/config_uniclass_main.cfg analysis upstream:rmse
+    $ dotnet run ../configs/config_uniclass_custom.cfg analysis upstream:rmse
 ```
 
 - TBC
