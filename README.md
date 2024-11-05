@@ -29,21 +29,11 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 ## Execution (Full)
 
-- To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
-  
-```bash
-    $ sh experiments.sh
-```
+### Benchmark configuration 
 
-The output will be stored in the `Results/` folder, which will be created in the root folder.
+- **Datasets**: Datasets are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. Each subfolder there represents a single dataset. Initial files are downloaded by the setup script.
 
-## Benchmark configuration
-
-- Existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` can be used as a basis to make new customized experiment runs. Those files already contain some lists of available options, but this section provides the descriptions of most important parameters which are available in the benchmark.
-
-- `Datasets` are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. Each subfolder there represents a single dataset. Initial files are downloaded by the setup script.
-
-- `Scenarios` control the patterns of contamination performed by the benchmark. Available options are listed in the table below. Different scenarios are applicable for different tasks.
+- **Missing Patterns**: `Scenarios` control the patterns of contamination performed by the benchmark. Available options are listed in the table below. Different scenarios are applicable for different tasks.
 
 | Scenario      | Task           | Description  |
 | --------      | --------       | --------     |
@@ -52,7 +42,9 @@ The output will be stored in the `Results/` folder, which will be created in the
 | miss_perc_rev | Forecasting    | contaminate a single time series and vary the size of the missing block from 10% to 80% of the length of the series |
 | mc_rev        | Forecasting    | vary the number of contaminated series from 10% to 100%, each affected time series has a missing block of 10% of the length of the series |
 
-- `Algorithms` parameter is for imputation algorithms, the list of techniques as well as their available parameters is given in the table below. Parameters can be overriden from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+
+
+- **Algorithms**: The list of Algorithms and their parameters are provided below. Parameters can be overriden from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
@@ -70,6 +62,25 @@ The output will be stored in the `Results/` folder, which will be created in the
 | 1NNImp     | n/a        |          |               |          |
 | LinearImp  | n/a        |          |               |          |
 | knnimp     | n          | 3        | neighbors     | [1, 100] |
+
+- **Config files**: The existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` can be used to create new customized experiment runs. Those files already contain some lists of available options, but this section provides descriptions of the most important parameters available in the benchmark.
+
+### Results
+- To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
+  
+```bash
+    $ sh experiments.sh
+```
+
+The output will be stored in the `Results/` folder, which will be created in the root folder.
+
+## Benchmark configuration
+
+
+
+- 
+
+
 
 - TBC
 
