@@ -74,15 +74,6 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 The output will be stored in the `Results/` folder, which will be created in the root folder.
 
-## Benchmark configuration
-
-
-
-- 
-
-
-
-- TBC
 
 ## Execution (fine-grained)
 
