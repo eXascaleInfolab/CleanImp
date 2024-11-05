@@ -6,7 +6,7 @@ using 89 datasets, 27 downstream techniques, and various contamination scenarios
 paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of Imputation on Downstream Tasks (under review at PVLDB'25) </a>. 
 
 
- [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Execution**](#execution) | [**Extension**](#extension) | [**Contributors**](#contributors) |
+ [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Extension**](#extension) | [**Contributors**](#contributors) |
 
 
 ---
@@ -27,9 +27,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 ```
   
 
-## Execution (Full)
-
-### Benchmark configuration 
+## Benchmark Configuration 
 
 - **Datasets**: The datasets are downloaded by running the setup script. They are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. 
 
@@ -67,7 +65,8 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 
 
-### Results
+## Execution
+
 - To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
   
 ```bash
