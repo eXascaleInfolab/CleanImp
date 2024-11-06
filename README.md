@@ -42,7 +42,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 
 
-- **Algorithms**: The list of Algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+- **Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
@@ -62,16 +62,35 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | LinearImp  | n/a        |          |               |          |
 | knnimp     | n          | 3        | neighbors     | [1, 100] |
 
-- **Config files**: The existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` create new customized experiment runs. Those files already contain lists of available options, but this section provides descriptions of the most important parameters available in the benchmark.
+- **DownstreamAlgorithms**: The list of per-task downstream algorithms is provided below. For more information about the downstream algorithms cf. [sktime](https://www.sktime.net/) and [darts](https://unit8co.github.io/darts/) for documentation.
 
+| Classification | Forecasting        |
+| --------       | --------           |
+| arsenal        | sf-arima*          |
+| stc            | fbprophet          |
+| weasel         | hw-add             |
+| cboss          | hw-mul             |
+| tsf            | bats               |
+| catch22        | darts-nbeats       |
+| svc            | sf-ets             |
+| knn            | ltsf*              |
+| itde           | croston            |
+| shapedtw       | darts-lstm*        |
+| signature      | darts-deepar*      |
+| tsfresh        | darts-transformer* |
+| cif            |                    |
+| proxstump      |                    |
 
+NB: Algorithms marked with \* are already parallelized, so if they are included in the experiment - parallelization has to be disabled on the level on the benchmark by setting the parameter `ParallelizeDownstream` to `False`.
+
+- **Experiment setup**: Set the values in the config parameters `PerformContamination` and `PerformEvaluation` to `True` to enable a specific type of experiment. Note that the contamination results (upstream) are required to run evaluation experiments (downstream).
 
 ## Execution
 
 - To produce a curated set of results, run the following command (takes ~ 5 days on a server-grade CPU):
   
 ```bash
-    $ sh experiments.sh
+    $ sh full_results.sh
 ```
 
 The output will be stored in the `Results/` folder, which will be created in the root folder.
@@ -79,7 +98,9 @@ The output will be stored in the `Results/` folder, which will be created in the
 
 ## Execution (fine-grained)
 
-- This section gives some examples on how to produce different analysis results on a customized config file. Their current configuration is geared towards a smaller experiment that can be completed in a reasonable timespan.
+- This section gives some examples on how to produce different analysis results.
+
+- The existing config files for classification `config_uniclass_custom.cfg` and `config_forecast_custom.cfg` create new customized experiment runs. Those files contain lists of available options so they can be tweaked to produce a desired experiment. Their default configuration is geared towards a smaller experiment that can be completed in a reasonable timespan.
 
 - To produce the classification and resp. forecasting experiment runs, run the following commands:
 
