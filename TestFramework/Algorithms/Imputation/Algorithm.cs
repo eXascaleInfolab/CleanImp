@@ -25,7 +25,8 @@ public abstract class Algorithm
     {
         // Advanced algorithms
         new CentroidDecompositionAlgorithm(), new SvdImputeAlgorithm(), new SoftImputeAlgorithm(),
-        new StmvlAlgorithm(), new GrouseAlgorithm(), new SVTAlgorithm(), new DynaMMoAlgorithm(), new IIMAlgorithm(),
+        new StmvlAlgorithm(), new GrouseAlgorithm(), new SVTAlgorithm(), new DynaMMoAlgorithm(),
+        new IIMAlgorithm(), new ROSLAlgorithm(),
         
         // Simple algorithms
         new MeanImputeAlgorithm(), new HorizontalMeanImputeAlgorithm(), new ZeroImputeAlgorithm(), new Univariate1NNAlgorithm(),

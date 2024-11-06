@@ -54,6 +54,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | IIM        | n          | 3        | neighbors     | [1, 100] |
 | GROUSE     | k          | 3        | truncation    | [1, 10]  |
 | SVT        | n/a        |          |               |          |
+| ROSL       | k          |          | hidden var.   | [1, 10]  |
 | --------   | --------   | -------- | --------      | -------- |
 | MeanImp    | n/a        |          |               |          |
 | ZeroImp    | n/a        |          |               |          |
