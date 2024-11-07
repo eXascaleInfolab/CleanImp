@@ -42,7 +42,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 
 
-- **Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+- **Imputation Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
@@ -62,7 +62,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | LinearImp  | n/a        |          |               |          |
 | knnimp     | n          | 3        | neighbors     | [1, 100] |
 
-- **DownstreamAlgorithms**: The list of per-task downstream algorithms is provided below. For more information about the downstream algorithms cf. [sktime](https://www.sktime.net/) and [darts](https://unit8co.github.io/darts/) for documentation.
+- **Downstream Algorithms**: The list of per-task downstream algorithms is provided below (see [sktime](https://www.sktime.net/) and [darts](https://unit8co.github.io/darts/) for documentation).
 
 | Classification | Forecasting        |
 | --------       | --------           |
@@ -81,9 +81,10 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | cif            |                    |
 | proxstump      |                    |
 
-NB: Algorithms marked with \* are already parallelized, so if they are included in the experiment - parallelization has to be disabled on the level on the benchmark by setting the parameter `ParallelizeDownstream` to `False`.
 
-- **Experiment setup**: Set the values in the config parameters `PerformContamination` and `PerformEvaluation` to `True` to enable a specific type of experiment. Note that the contamination results (upstream) are required to run evaluation experiments (downstream).
+- **Notes**:
+  - Downstream algorithms marked with \* are already parallelized. If they are included in the experiment - parallelization has to be disabled on the level on the benchmark by setting the parameter `ParallelizeDownstream` to `False`.
+  - Set the values in the config parameters `PerformContamination` and `PerformEvaluation` to `True` to enable a specific type of experiment. The contamination results (upstream) are required to run evaluation experiments (downstream).
 
 ## Execution
 
