@@ -81,10 +81,71 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | cif            |                    |
 | proxstump      |                    |
 
+- **Reference**: The parameter controls whether during the evaluation (downstream) experiment the algorithms are ran on uncontaminated data. Available options are listed in the table below.
+
+| Reference        | Description |
+| --------         | --------    |
+| Both (default)   | Downstream algorithms are ran on contaminated and uncontaminated data |
+| NoReference      | Downstream algorithms are ran on contaminated data only |
+| ReferenceOnly    | Downstream algorithms are ran on uncontaminated data only |
+| ReferenceReplace | Downstream algorithms are ran on uncontaminated data only overwriting the existing results |
 
 - **Notes**:
   - Downstream algorithms marked with \* are already parallelized. If they are included in the experiment - parallelization has to be disabled on the level on the benchmark by setting the parameter `ParallelizeDownstream` to `False`.
   - Set the values in the config parameters `PerformContamination` and `PerformEvaluation` to `True` to enable a specific type of experiment. The contamination results (upstream) are required to run evaluation experiments (downstream).
+  - Standard benchmark behavior is to overwrite existing results in case of overlap with cached results for contaminated data and to not overwrite the results for uncontaminated data.
+
+## Analysis configuration
+
+- Once the experiment is executed, the analysis routines can be invoked. The general pattern for the command is
+```bash
+    $ dotnet run config_file.cfg analysis {job_type}:{metric1},{metric2},{metric3}[:aggregation_level]
+```
+
+- **Job type**: The table below gives the list of available options with the descriptions for job types and lists the prerequisites to run them (which experiments have to already been executed). Jobs are task-independent.
+
+| Job type      | Requirements  | Description |
+| --------      | --------      | --------    |
+| simpledump    | None          | Displays basic information about the dataset |
+| datachar      | None          | Displays advanced information (features) about the dataset |
+| upstream      | Contamination | Displays the upstream experiment results |
+| downstream    | Evaluation    | Displays the downstream experiment results |
+| bydata        | Evaluation    | Displays the downstream experiment results with a different aggregation mechanism |
+| reference     | Evaluation\*  | Displays the evaluation results of the downstream algorithms on uncontaminated data; \* - No experiments on contaminated data are required to run this job, see `Reference` parameter |
+
+- **Metrics**: A list of metrics to be used in the evaluation. Metrics are task-dependent. Note: forecasting metrics need to have forecasting horizon appended to them. Supported values are: (12, 24, 48, 60). E.g. for `smape` metric with the horizon of 24 - the argument is `smape24`.
+
+| Upstream | Description |
+| -------- | --------    |
+| rmse     | Root Mean Squared Error  |
+| mae      | Mean Absolute Error |
+| pearson  | Pearson Correlation Coefficient |
+| spearman | Spearman Correlation Coefficient |
+| MI-k{N}  | Kraskov Mutual Information. {N} - is the neighborhood size. Supported values are 3 and 5. |
+
+| Classification | Description |
+| --------       | --------    |
+| accuracy       | Accuracy |
+| precision      | Precision |
+| recall         | Recall |
+| f1             | F1-Measure (F-Score) |
+| mcc            | Matthew's Correlation Coefficient (also known as Phi coefficient) |
+
+| Forecasting | Description |
+| --------    | --------    |
+| smape       | Symmetric Mean Absolute Percentage Error |
+| rmse        | Root Mean Squared Error  |
+| pearson     | Pearson Correlation Coefficient |
+
+- **Aggregation level**: The parameter is optional and only applicable to jobs `upstream`, `downstream` and `bydata`. Aggregation levels are task-independent.
+
+| Level    | Description |
+| -------- | --------    |
+| all      | (default) Shows a single value per contamination pattern by averaging all contamination levels |
+| none     | Shows all levels of contamination as defined by a contamination pattern |
+| low      | Shows a single value per contamination pattern by averaging the lower half of contaminations levels |
+| high     | Shows a single value per contamination pattern by averaging the upper half of contaminations levels |
+| -        | Other more technical aggregations options are available too, refere to the source file `Testing/TestRoutinesAnalysis.cs` for more information |
 
 ## Execution
 

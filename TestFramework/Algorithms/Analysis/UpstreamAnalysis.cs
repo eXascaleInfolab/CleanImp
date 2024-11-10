@@ -95,7 +95,7 @@ public class MaeUpstream : UpstreamMetric
 public class PearsonUpstream : UpstreamMetric
 {
     // fields
-    public override string MeasureName => "CorrPearson";
+    public override string MeasureName => "Pearson";
     
     protected override double MeasureInternal(Vector<double> reference, Vector<double> upstream)
     {
@@ -109,7 +109,7 @@ public class PearsonUpstream : UpstreamMetric
 public class SpearmanUpstream : UpstreamMetric
 {
     // fields
-    public override string MeasureName => "CorrSpearman";
+    public override string MeasureName => "Spearman";
     
     protected override double MeasureInternal(Vector<double> reference, Vector<double> upstream)
     {
@@ -122,7 +122,7 @@ public class SpearmanUpstream : UpstreamMetric
 
 public class KraskovMutualInformationUpstream : UpstreamMetric
 {
-    public override string MeasureName => $"KraskovMI-k{_k}";
+    public override string MeasureName => $"MI-k{_k}";
 
     private readonly int _k;
 

@@ -45,7 +45,7 @@ public static partial class TestRoutines<TTask, TConfig, TScenario, TData, TDown
         string job = parameters[0].ToLower();
         string[] metrics = parameters[1].Split(',');
         // ReSharper disable once SimplifyConditionalTernaryExpression
-        AggregationType aggregate = GetAggregation(parameters.Length > 2 ? parameters[2] : "false");
+        AggregationType aggregate = GetAggregation(parameters.Length > 2 ? parameters[2] : "all");
 
         if (job == "upstream")
         {
