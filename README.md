@@ -180,7 +180,10 @@ The output will be stored in the `Results/` folder, which will be created in the
     $ dotnet run ../configs/config_uniclass_custom.cfg analysis upstream:rmse
 ```
 
-- TBC
+- To produce results for multiple metrics, or (in this example) for forecasting task the same metrics (smape) but different forecasting horizions (12-36), and aggregate them by dataset one can run the following command:
+ ```bash
+    $ dotnet run ../configs/config_forecast_custom.cfg analysis downstream:smape12,smape24,smape36:bydata
+```
 
 ---
 
