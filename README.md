@@ -6,7 +6,7 @@ using 89 datasets, 27 downstream techniques, and various contamination scenarios
 paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of Imputation on Downstream Tasks (under review at PVLDB'25) </a>. 
 
 
- [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Extension**](#extension) | [**Contributors**](#contributors) |
+ [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Analysis**](#analysis) | [**Contributors**](#contributors) |
 
 
 ---
@@ -29,20 +29,20 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 
 ## Benchmark Configuration 
 
-- **Datasets**: The datasets are downloaded by running the setup script. They are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. 
+- **Datasets**: The datasets will be downloaded by executing the setup script. They are task-dependent and can be found in `WorkDir/_RawDataStorage` in resp. folders `UniClass` or `Forecasting`. 
 
 - **Missing Patterns**: `Scenarios` control the patterns of contamination performed by the benchmark. The available options are listed in the table below.
 
 | Scenario      | Task           | Description  |
 | --------      | --------       | --------     |
-| miss_percNN   | Classification | contaminate NN% of all time series and vary the size of the missing block from 10% to 80% of the length of the series; NN can be [10, 20 ... 50] |
-| mc_NN         | Classification | vary the number of contaminated series from 10% to 100%, each affected time series has a missing block of NN% of the length of the series; NN can be [10, 20 ... 50] |
+| miss_percNN   | Classification | contaminate NN% of all time series and vary the size of the missing block from 10% to 80% of the length of the series; NN ∈ {10, 20, ... 50} |
+| mc_NN         | Classification | vary the number of contaminated series from 10% to 100%, each affected time series has a missing block of NN% of the length of the series; NN ∈ {10, 20, ... 50} |
 | miss_perc_rev | Forecasting    | contaminate a single time series and vary the size of the missing block from 10% to 80% of the length of the series |
 | mc_rev        | Forecasting    | vary the number of contaminated series from 10% to 100%, each affected time series has a missing block of 10% of the length of the series |
 
 
 
-- **Imputation Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be overritten from their defaults by specifying the algorithm in the config file as `algorithm:p00` where `p` is the name of the parameter and `00` is the value. For example IMM with the neighborhood size 5 is `IIM:n5`.
+- **Imputation Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be updated in the config file by modifying `algorithm:p00`  where `p` is the name of the parameter and `00` is the value. For example, IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
@@ -55,6 +55,7 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | GROUSE     | k          | 3        | truncation    | [1, 10]  |
 | SVT        | n/a        |          |               |          |
 | ROSL       | k          |          | hidden var.   | [1, 10]  |
+| TRMF       | k          | 3        | truncation    | [1, 10]  |
 | --------   | --------   | -------- | --------      | -------- |
 | MeanImp    | n/a        |          |               |          |
 | ZeroImp    | n/a        |          |               |          |
@@ -81,21 +82,21 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 | cif            |                    |
 | proxstump      |                    |
 
-- **Reference**: The parameter controls whether during the evaluation (downstream) experiment the algorithms are ran on uncontaminated data. Available options are listed in the table below.
+- **Reference**: This parameter controls whether the algorithms are ran on uncontaminated data during the evaluation (downstream) experiment. Available options are listed in the table below.
 
 | Reference        | Description |
 | --------         | --------    |
-| Both (default)   | Downstream algorithms are ran on contaminated and uncontaminated data |
-| NoReference      | Downstream algorithms are ran on contaminated data only |
-| ReferenceOnly    | Downstream algorithms are ran on uncontaminated data only |
-| ReferenceReplace | Downstream algorithms are ran on uncontaminated data only overwriting the existing results |
+| Both (default)   | Downstream algorithms are executed on contaminated and uncontaminated data |
+| NoReference      | Downstream algorithms are executed on contaminated data only |
+| ReferenceOnly    | Downstream algorithms are executed on uncontaminated data only |
+| ReferenceReplace | Downstream algorithms are executed on uncontaminated data, only overwriting the existing results |
 
 - **Notes**:
   - Downstream algorithms marked with \* are already parallelized. If they are included in the experiment - parallelization has to be disabled on the level on the benchmark by setting the parameter `ParallelizeDownstream` to `False`.
   - Set the values in the config parameters `PerformContamination` and `PerformEvaluation` to `True` to enable a specific type of experiment. The contamination results (upstream) are required to run evaluation experiments (downstream).
   - Standard benchmark behavior is to overwrite existing results in case of overlap with cached results for contaminated data and to not overwrite the results for uncontaminated data.
 
-## Analysis configuration
+## Analysis 
 
 - Once the experiment is executed, the analysis routines can be invoked. The general pattern for the command is
 ```bash
@@ -187,11 +188,6 @@ The output will be stored in the `Results/` folder, which will be created in the
 
 ---
 
-## Extension
-
-TBA
-
----
 
 ## Contributors
 
