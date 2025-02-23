@@ -6,6 +6,15 @@ using 89 datasets, 27 downstream techniques, and various contamination scenarios
 paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of Imputation on Downstream Tasks (under review at PVLDB'25) </a>. 
 
 
+CleanIMP processes a full time series dataset by introducing missing data points through a customizable contamination module. It then applies a range of imputation algorithms and evaluates the performance of the imputed time series on downstream tasks by feeding them into various models. Finally, it generates an analysis of the imputation's impact using multiple metrics.
+The architecture of our framework is organized into four main modules as follows (1) Data Contamination, (2) Imputation Evaluation,(3) Downstream Evaluation, and (4) Model Analysis.
+
+
+
+![CleanIMP](sys_overview.pdf)
+
+---
+
  [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Analysis**](#analysis) | [**Contributors**](#contributors) |
 
 
