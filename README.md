@@ -11,7 +11,7 @@ The architecture of our framework is organized into four main modules as follows
 
 
 
-![CleanIMP](sys_overview.pdf)
+![CleanIMP](sys_overview.png)
 
 ---
 
