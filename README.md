@@ -5,6 +5,10 @@ imputation algorithms for time series data. It evaluates two downstream tasks: c
 using 89 datasets, 26 downstream techniques, and various contamination scenarios. Technical details can be found in our
 paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of Imputation on Downstream Tasks (under review at KDD'25) </a>. 
 
+- **Advanced Imputation Algorithms**: The initial list of algorithms we considered is available through [ImputeBench](https://github.com/eXascaleInfolab/bench-vldb20).
+
+- **Datasets**: The classification datasets are accessible through this [link](https://doi.org/10.5281/zenodo.14022916), and the forecasting datasets are available through this [link](https://doi.org/10.5281/zenodo.14023106).
+
 
 CleanIMP processes a full dataset by introducing missing data points through a customizable contamination module. It then applies a range of imputation algorithms and evaluates the performance of the imputed time series on downstream tasks by feeding them into various models. Finally, it generates an analysis of the imputation's impact using multiple metrics.
 The architecture of our framework is organized into four main modules as follows: (1) Data Contamination, (2) Imputation Evaluation,(3) Downstream Evaluation, and (4) Model Analysis.
@@ -12,7 +16,6 @@ The architecture of our framework is organized into four main modules as follows
 <p align="center">
 <img src="sys_overview.png" alt="drawing" width="600"/>
 </p>
-
 
 
 ---
@@ -53,7 +56,7 @@ The architecture of our framework is organized into four main modules as follows
 
 
 
-- **Imputation Algorithms**: The list of imputation algorithms and their parameters is provided below. The parameters can be updated in the config file by modifying `algorithm:p00`  where `p` is the name of the parameter and `00` is the value. For example, IMM with the neighborhood size 5 is `IIM:n5`.
+- **Imputation Algorithms Parameterization**: The list of imputation algorithms and their parameters is provided below. The parameters can be updated in the config file by modifying `algorithm:p00`  where `p` is the name of the parameter and `00` is the value. For example, IMM with the neighborhood size 5 is `IIM:n5`.
 
 | Algorithms | param      | default  | param. descr. | range    |
 | --------   | --------   | -------- | --------      | -------- |
