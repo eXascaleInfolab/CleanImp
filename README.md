@@ -1,4 +1,4 @@
-# CleanIMP: A comprehensive Framework to Evaluate the Impact of Imputation on Downstream Tasks
+# CleanIMP: A Comprehensive Benchmark to Evaluate the Impact of Imputation on Downstream Tasks
 
 CleanIMP is a unified framework designed to extensively evaluate the downstream effects of a wide variety of
 imputation algorithms for time series data. It evaluates two downstream tasks: classification and forecasting
@@ -10,6 +10,11 @@ paper: Does Cleaning Time Series Really Matter? An Evaluation of the Impact of I
 - **Datasets**: The classification datasets are accessible through this [link](https://doi.org/10.5281/zenodo.14022916), and the forecasting datasets are available through this [link](https://doi.org/10.5281/zenodo.14023106).
 
 
+ [**Architecture**](#benchmark-architecture) | [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Analysis**](#analysis) | [**Contributors**](#contributors) |
+
+---
+## Benchmark Architecture
+
 CleanIMP processes a full dataset by introducing missing data points through a customizable contamination module. It then applies a range of imputation algorithms and evaluates the performance of the imputed time series on downstream tasks by feeding them into various models. Finally, it generates an analysis of the imputation's impact using multiple metrics.
 The architecture of our framework is organized into four main modules as follows: (1) Data Contamination, (2) Imputation Evaluation,(3) Downstream Evaluation, and (4) Model Analysis.
 
@@ -20,10 +25,9 @@ The architecture of our framework is organized into four main modules as follows
 
 ---
 
- [**Prerequisites**](#prerequisites) | [**Build**](#build) | [**Configuration**](#benchmark-configuration) | [**Execution**](#execution) | [**Analysis**](#analysis) | [**Contributors**](#contributors) |
 
 
----
+
 
 ## Prerequisites
 
