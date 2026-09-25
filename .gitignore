@@ -90,3 +90,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/DistalPhalanxOutlineAgeGroup/**
 !cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/
 !cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 3
+# ============================================================
+!cleanimp/datasets/classify/DistalPhalanxTW/
+!cleanimp/datasets/classify/DistalPhalanxTW/**
+!cleanimp/datasets/classify/Earthquakes/
+!cleanimp/datasets/classify/Earthquakes/**
+!cleanimp/datasets/classify/ECGFiveDays/
+!cleanimp/datasets/classify/ECGFiveDays/**
+!cleanimp/datasets/classify/EOGHorizontalSignal/
+!cleanimp/datasets/classify/EOGHorizontalSignal/**
+!cleanimp/datasets/classify/EOGVerticalSignal/
+!cleanimp/datasets/classify/EOGVerticalSignal/**
+!cleanimp/datasets/classify/EthanolLevel/
+!cleanimp/datasets/classify/EthanolLevel/**
+!cleanimp/datasets/classify/FaceAll/
+!cleanimp/datasets/classify/FaceAll/**
