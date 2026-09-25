@@ -198,3 +198,22 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/SemgHandSubjectCh2/**
 !cleanimp/datasets/classify/ShapeletSim/
 !cleanimp/datasets/classify/ShapeletSim/**
+
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 9
+# ============================================================
+!cleanimp/datasets/classify/SharePriceIncrease/
+!cleanimp/datasets/classify/SharePriceIncrease/**
+!cleanimp/datasets/classify/SmallKitchenAppliances/
+!cleanimp/datasets/classify/SmallKitchenAppliances/**
+!cleanimp/datasets/classify/SonyAIBORobotSurface1/
+!cleanimp/datasets/classify/SonyAIBORobotSurface1/**
+!cleanimp/datasets/classify/Strawberry/
+!cleanimp/datasets/classify/Strawberry/**
+!cleanimp/datasets/classify/SwedishLeaf/
+!cleanimp/datasets/classify/SwedishLeaf/**
+!cleanimp/datasets/classify/SyntheticControl/
+!cleanimp/datasets/classify/SyntheticControl/**
+!cleanimp/datasets/classify/ToeSegmentation1/
+!cleanimp/datasets/classify/ToeSegmentation1/**
