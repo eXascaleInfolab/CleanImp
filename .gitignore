@@ -162,3 +162,22 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/MedicalImages/**
 !cleanimp/datasets/classify/MoteStrain/
 !cleanimp/datasets/classify/MoteStrain/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 7
+# ============================================================
+!cleanimp/datasets/classify/OliveOil/
+!cleanimp/datasets/classify/OliveOil/**
+!cleanimp/datasets/classify/OSULeaf/
+!cleanimp/datasets/classify/OSULeaf/**
+!cleanimp/datasets/classify/PhalangesOutlinesCorrect/
+!cleanimp/datasets/classify/PhalangesOutlinesCorrect/**
+!cleanimp/datasets/classify/Plane/
+!cleanimp/datasets/classify/Plane/**
+!cleanimp/datasets/classify/PowerCons/
+!cleanimp/datasets/classify/PowerCons/**
+!cleanimp/datasets/classify/ProximalPhalanxOutlineAgeGroup/
+!cleanimp/datasets/classify/ProximalPhalanxOutlineAgeGroup/**
+!cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/
+!cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/**
+
