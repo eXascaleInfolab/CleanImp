@@ -235,3 +235,14 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/Wafer/**
 !cleanimp/datasets/classify/Wine/
 !cleanimp/datasets/classify/Wine/**
+
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 11
+# ============================================================
+!cleanimp/datasets/classify/Worms/
+!cleanimp/datasets/classify/Worms/**
+!cleanimp/datasets/classify/WormsTwoClass/
+!cleanimp/datasets/classify/WormsTwoClass/**
+!cleanimp/datasets/classify/Yoga/
+!cleanimp/datasets/classify/Yoga/**
