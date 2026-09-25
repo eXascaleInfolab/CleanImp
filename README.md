@@ -257,18 +257,10 @@ detailed results to be traced back to the corresponding **dataset**,
 ------------------------------------------------------------------------
 
 
-## 4. Demo - Forecasting
+## 4. Demo
 
-The forecasting benchmark evaluates how different imputation strategies
-affect time series forecasting performance.
+We will review the different scenarios together, but here are the runner’s parameters:
 
-CleanImp supports **17 forecasting models** spanning Statistical,
-Machine Learning, Deep Learning, and LLM-based approaches.
-
-We recommend starting with a small experiment to verify the installation
-and become familiar with the benchmark workflow.
-
-We will look together the different scenarios, but here's the parameters of the runner:
 ``` text
 =upstream==============================================================================
 datasets                    paris   # list of datasets
@@ -290,10 +282,21 @@ verbose                     False   # display the detail of execution
 ```
 
 
+## Forecasting
+
+The forecasting benchmark evaluates how different imputation strategies
+affect time series forecasting performance.
+
+CleanImp supports **17 forecasting models** spanning Statistical,
+Machine Learning, Deep Learning, and LLM-based approaches.
+
+We recommend starting with a small experiment to verify the installation
+and become familiar with the benchmark workflow.
+
+
 ## Upstream evaluation (f)
 
-A simple upstream experiment can use the following configuration:
-
+A simple upstream experiment can use the following configuration: an upstream experimentation setup with the dataset named **“Paris”**, the imputation algorithm **“SAITS”**, the missingness pattern **“MCAR”**, a missing rate of **20%**, and a future prediction horizon of **12 timestamps**.
 
 Run it with:
 
@@ -310,6 +313,8 @@ python cleanimp_f_benchmark.py \
 In upstream mode, CleanImp contaminates the input time series, applies
 the selected imputation algorithm, and evaluates the **imputation
 quality**.
+
+<i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
 ### Running multiple configurations (f)
 
@@ -395,7 +400,7 @@ python cleanimp_f_benchmark.py \
 
 ---
 
-## 5. Demo - Classification
+## Classification
 
 The classification benchmark evaluates how different imputation strategies
 affect time series classification performance.
@@ -408,8 +413,7 @@ and become familiar with the benchmark workflow.
 
 ## Upstream evaluation (c)
 
-A simple upstream experiment can use the following configuration:
-
+A simple upstream experiment can use the following configuration: an upstream experimentation setup with the dataset named **“Computers”**, the imputation algorithm **“GRIN”**, the missingness pattern **“MCAR”**, and a missing rate of **20%**.
 
 Run it with:
 
