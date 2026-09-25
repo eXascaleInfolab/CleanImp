@@ -126,3 +126,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/GunPoint/**
 !cleanimp/datasets/classify/GunPointAgeSpan/
 !cleanimp/datasets/classify/GunPointAgeSpan/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 5
+# ============================================================
+!cleanimp/datasets/classify/GunPointMaleVersusFemale/
+!cleanimp/datasets/classify/GunPointMaleVersusFemale/**
+!cleanimp/datasets/classify/GunPointOldVersusYoung/
+!cleanimp/datasets/classify/GunPointOldVersusYoung/**
+!cleanimp/datasets/classify/Ham/
+!cleanimp/datasets/classify/Ham/**
+!cleanimp/datasets/classify/Haptics/
+!cleanimp/datasets/classify/Haptics/**
+!cleanimp/datasets/classify/Herring/
+!cleanimp/datasets/classify/Herring/**
+!cleanimp/datasets/classify/InlineSkate/
+!cleanimp/datasets/classify/InlineSkate/**
+!cleanimp/datasets/classify/InsectEPGRegularTrain/
+!cleanimp/datasets/classify/InsectEPGRegularTrain/**
