@@ -181,3 +181,20 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/
 !cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/**
 
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 8
+# ============================================================
+!cleanimp/datasets/classify/RefrigerationDevices/
+!cleanimp/datasets/classify/RefrigerationDevices/**
+!cleanimp/datasets/classify/Rock/
+!cleanimp/datasets/classify/Rock/**
+!cleanimp/datasets/classify/ScreenType/
+!cleanimp/datasets/classify/ScreenType/**
+!cleanimp/datasets/classify/SemgHandGenderCh2/
+!cleanimp/datasets/classify/SemgHandGenderCh2/**
+!cleanimp/datasets/classify/SemgHandMovementCh2/
+!cleanimp/datasets/classify/SemgHandMovementCh2/**
+!cleanimp/datasets/classify/SemgHandSubjectCh2/
+!cleanimp/datasets/classify/SemgHandSubjectCh2/**
+!cleanimp/datasets/classify/ShapeletSim/
+!cleanimp/datasets/classify/ShapeletSim/**
