@@ -217,3 +217,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/SyntheticControl/**
 !cleanimp/datasets/classify/ToeSegmentation1/
 !cleanimp/datasets/classify/ToeSegmentation1/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 10
+# ============================================================
+!cleanimp/datasets/classify/ToeSegmentation2/
+!cleanimp/datasets/classify/ToeSegmentation2/**
+!cleanimp/datasets/classify/Trace/
+!cleanimp/datasets/classify/Trace/**
+!cleanimp/datasets/classify/TwoLeadECG/
+!cleanimp/datasets/classify/TwoLeadECG/**
+!cleanimp/datasets/classify/TwoPatterns/
+!cleanimp/datasets/classify/TwoPatterns/**
+!cleanimp/datasets/classify/UMD/
+!cleanimp/datasets/classify/UMD/**
+!cleanimp/datasets/classify/Wafer/
+!cleanimp/datasets/classify/Wafer/**
+!cleanimp/datasets/classify/Wine/
+!cleanimp/datasets/classify/Wine/**
