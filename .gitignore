@@ -46,9 +46,6 @@ cleanimp/imputegap_assets/*
 
 # Except forecasting datasets
 !cleanimp/datasets/forecast/
-<<<<<<< HEAD
-!cleanimp/datasets/forecast/**
-=======
 !cleanimp/datasets/forecast/**
 
 # ============================================================
@@ -75,4 +72,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/Car/**
 !cleanimp/datasets/classify/CBF/
 !cleanimp/datasets/classify/CBF/**
->>>>>>> 589771b (class_1)
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 2
+# ============================================================
+!cleanimp/datasets/classify/ChlorineConcentration/
+!cleanimp/datasets/classify/ChlorineConcentration/**
+!cleanimp/datasets/classify/CinCECGTorso/
+!cleanimp/datasets/classify/CinCECGTorso/**
+!cleanimp/datasets/classify/Colposcopy/
+!cleanimp/datasets/classify/Colposcopy/**
+!cleanimp/datasets/classify/Computers/
+!cleanimp/datasets/classify/Computers/**
+!cleanimp/datasets/classify/CricketX/
+!cleanimp/datasets/classify/CricketX/**
+!cleanimp/datasets/classify/DistalPhalanxOutlineAgeGroup/
+!cleanimp/datasets/classify/DistalPhalanxOutlineAgeGroup/**
+!cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/
+!cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/**
