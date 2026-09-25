@@ -1,2 +1,7 @@
 NATE's LOG::::: cardinality_imputation=29.366493225097656 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MeanImpute
 NATE's LOG::::: cardinality_imputation=341.72868728637695 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Computers) for MeanImpute
+<<<<<<< HEAD
+=======
+NATE's LOG::::: cardinality_imputation=265232.19084739685 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MICE
+>>>>>>> 589771b (class_1)
+NATE's LOG::::: cardinality_imputation=225251.44124031067 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Computers) for MICE

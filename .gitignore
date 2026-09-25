@@ -46,4 +46,33 @@ cleanimp/imputegap_assets/*
 
 # Except forecasting datasets
 !cleanimp/datasets/forecast/
+<<<<<<< HEAD
 !cleanimp/datasets/forecast/**
+=======
+!cleanimp/datasets/forecast/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 1
+# ============================================================
+# Ignore classification datasets
+cleanimp/datasets/classify/*
+
+# Allow directory traversal
+!cleanimp/datasets/classify/
+
+# Batch 1
+!cleanimp/datasets/classify/ACSF1/
+!cleanimp/datasets/classify/ACSF1/**
+!cleanimp/datasets/classify/Adiac/
+!cleanimp/datasets/classify/Adiac/**
+!cleanimp/datasets/classify/ArrowHead/
+!cleanimp/datasets/classify/ArrowHead/**
+!cleanimp/datasets/classify/Beef/
+!cleanimp/datasets/classify/Beef/**
+!cleanimp/datasets/classify/BirdChicken/
+!cleanimp/datasets/classify/BirdChicken/**
+!cleanimp/datasets/classify/Car/
+!cleanimp/datasets/classify/Car/**
+!cleanimp/datasets/classify/CBF/
+!cleanimp/datasets/classify/CBF/**
+>>>>>>> 589771b (class_1)
