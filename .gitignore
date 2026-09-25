@@ -43,3 +43,7 @@ cleanimp.egg-info
 cleanimp.egg-info/*
 cleanimp/imputegap_assets
 cleanimp/imputegap_assets/*
+
+# Except forecasting datasets
+!cleanimp/datasets/forecast/
+!cleanimp/datasets/forecast/**
