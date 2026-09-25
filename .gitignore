@@ -35,8 +35,8 @@ cleanimp/datasets/_old/*
 cleanimp/_optimization/*
 cleanimp/_caching/*
 cleanimp/datasets/_old/*
+# Ignore all datasets
 cleanimp/datasets/*
-cleanimp/datasets/
 .idea
 .idea/*
 cleanimp.egg-info

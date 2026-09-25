@@ -1,2 +1,3 @@
 NATE's LOG::::: time_downstream=281775.0856876373 / [imputation_by_class=True - contamination_by_class=True] - [x=0.2 - (Computers) for GRIN inside arsenal
 NATE's LOG::::: time_downstream=263137.84313201904 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1 - (Computers) for MeanImpute inside arsenal
+NATE's LOG::::: time_downstream=256881.94680213928 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8 - (Computers) for MeanImpute inside arsenal
