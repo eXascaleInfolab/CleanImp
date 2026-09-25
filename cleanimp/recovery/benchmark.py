@@ -1973,6 +1973,12 @@ class Benchmark:
             algorithms = utils.list_of_algorithms()
         if "*" in classifiers or "all" in classifiers:
             classifiers = utils.list_of_classifiers()
+        if "*" in datasets or "all" in datasets:
+            datasets = utils.get_datasets_classifiers()
+        if "*" in patterns or "all" in patterns:
+            patterns = ["mcar", "aligned_series", "aligned_timestamps"]
+        if "*" in x_axis or "all" in x_axis:
+            x_axis = [0.1, 0.2, 0.4, 0.6, 0.8]
 
         if not evaluate_upstream:
             metrics = ["accuracy_groundtruth", "accuracy_imputer", "accuracy_meanimpute", "recall_groundtruth", "recall_imputer", "recall_meanimpute", "f1_groundtruth", "f1_imputer", "f1_meanimpute"]
@@ -2566,6 +2572,10 @@ class Benchmark:
             forecasters = utils.list_of_forecasters()
         if "*" in datasets or "all" in datasets:
             datasets = utils.get_dataset_forecasters(directory='datasets/forecast/')
+        if "*" in patterns or "all" in patterns:
+            patterns = ["mcar", "aligned_series", "aligned_timestamps"]
+        if "*" in x_axis or "all" in x_axis:
+            x_axis = [0.1, 0.2, 0.4, 0.6, 0.8]
 
         if not evaluate_upstream:
             metrics = ["mse_groundtruth", "mse_imputer", "mse_baseline",

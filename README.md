@@ -58,7 +58,7 @@ Install the required dependencies with:
 ``` bash
 git init
 git clone https://github.com/eXascaleInfolab/CleanImp
-cd ./CleanImp
+cd ./CleanImp/cleanimp/
 ```
 
 ``` bash
@@ -207,7 +207,7 @@ directory tree below directly describes the purpose of each generated
 folder and file:
 
 ``` text
-CleanImp/
+cleanimp/
 │
 ├── _caching/                                  # Cache used to avoid recomputing expensive pipelines
 │   └── ...                                    # Imputed matrices and downstream predictions
@@ -264,25 +264,32 @@ Machine Learning, Deep Learning, and LLM-based approaches.
 We recommend starting with a small experiment to verify the installation
 and become familiar with the benchmark workflow.
 
+We will look together the different scenarios, but here's the parameters of the runner:
+``` text
+=upstream==============================================================================
+datasets                    paris   # list of datasets
+imp_algs:                   SAITS   # list of imputation algorithms
+patterns:                   mcar    # list of patterns
+miss_rate:                  20%     # contamination rate
 
-## Upstream evaluation
+=downstream=============================================================================
+downstream_mod: (f)         chronos # forecasting model
+downstream_mod: (c)         arsenal # classifiction model
+horizon: (f)                12      # horizon value for forecasting
+
+=optional================================================================================
+upstream:                   True    # upstream experiment
+caching:                    False   # caching the imputed matrix and downstream results
+metrics:                    RMSE    # list of metrics - * for all
+plots:                      True    # generate plots
+verbose                     False   # display the detail of execution
+```
+
+
+## Upstream evaluation (f)
 
 A simple upstream experiment can use the following configuration:
 
-``` text
-Dataset:                    paris
-Imputation:                 SAITS 
-Pattern:                    mcar
-Missingness rate:           20%
-Horizon:                    12
-
-#optional #########################
-Upstream experiment:        True
-Caching Matrix/Downstream:  False
-Metrics:                    RMSE
-Generate plots:             True
-Verbose                     False
-```
 
 Run it with:
 
@@ -300,11 +307,9 @@ In upstream mode, CleanImp contaminates the input time series, applies
 the selected imputation algorithm, and evaluates the **imputation
 quality**.
 
-### Running multiple configurations
+### Running multiple configurations (f)
 
-Our benchmark arguments accept multiple values. For example, several
-datasets, missingness patterns, and imputation algorithms can be
-evaluated in a single run:
+Our benchmark arguments accept multiple values, allowing you to evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
 
 ``` bash
 python cleanimp_f_benchmark.py \
@@ -319,22 +324,23 @@ python cleanimp_f_benchmark.py \
 CleanImp automatically evaluates the requested combinations and stores
 their results in the experiment directory.
 
-### Running the full configurations
+### Running the full configurations (f)
 
-To launch the totality of the benchmark possibilities, you can replace the names with a start *:
+To run all possible benchmark configurations, replace the parameter values with `all`: <br></br><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+
 
 ``` bash
 python cleanimp_f_benchmark.py \
     --upstream \
-    --datasets * \
-    --patterns * \
-    --imp_algs * \
-    --miss_rate * \
+    --datasets all \
+    --patterns all \
+    --imp_algs all \
+    --miss_rate all \
     --horizon 12
 ```
 
 
-## Downstream evaluation
+## Downstream evaluation (f)
 
 To evaluate the impact of imputation on a forecasting model, disable
 upstream-only evaluation and specify a downstream model:
@@ -353,11 +359,9 @@ python cleanimp_f_benchmark.py \
 This makes it possible to compare the reconstruction quality of an
 imputation algorithm with its actual impact on forecasting performance.
 
-### Running multiple configurations
+### Running multiple configurations (f)
 
-Most benchmark arguments accept multiple values. For example, several
-datasets, missingness patterns, and imputation algorithms can be
-evaluated in a single run:
+Our benchmark arguments accept multiple values, allowing you to evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
 
 ``` bash
 python cleanimp_f_benchmark.py \
@@ -370,19 +374,18 @@ python cleanimp_f_benchmark.py \
     --horizon 24
 ```
 
-### Running the full configurations
+### Running the full configurations (f)
 
-To launch the totality of the benchmark possibilities, you can replace the names with a start *.
-<br></br><i>Careful, the run might take weeks to run</i>
+To run all possible benchmark configurations, replace the parameter values with `all`: <br></br><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_f_benchmark.py \
     --no-upstream \
     --downstream_mod chronos \
-    --imp_algs * \
-    --datasets * \
-    --patterns * \
-    --miss_rate * \
+    --imp_algs all \
+    --datasets all \
+    --patterns all \
+    --miss_rate all \
     --horizon 12
 ```
 
@@ -403,12 +406,6 @@ and become familiar with the benchmark workflow.
 
 A simple upstream experiment can use the following configuration:
 
-``` text
-Dataset:       Computers
-Imputation:    GRIN
-Pattern:       mcar
-Missing rate:  20%
-```
 
 Run it with:
 
@@ -427,9 +424,8 @@ quality**.
 
 ### Running multiple configurations (c)
 
-Our benchmark arguments accept multiple values. For example, several
-datasets, missingness patterns, and imputation algorithms can be
-evaluated in a single run:
+Our benchmark arguments accept multiple values, allowing you to evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
+
 
 ``` bash
 python cleanimp_c_benchmark.py \
@@ -445,15 +441,15 @@ their results in the experiment directory.
 
 ### Running the full configurations (c)
 
-To launch the totality of the benchmark possibilities, you can replace the names with a start *:
+To run all possible benchmark configurations, replace the parameter values with `all`: <br></br><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_c_benchmark.py \
     --upstream \
-    --datasets * \
-    --imp_algs * \
-    --patterns * \
-    --miss_rate *
+    --datasets all \
+    --imp_algs all \
+    --patterns all \
+    --miss_rate all
 ```
 
 
@@ -493,17 +489,16 @@ python cleanimp_c_benchmark.py \
 
 ### Running the full configurations (c)
 
-To launch the totality of the benchmark possibilities, you can replace the names with a start *.
-<br></br><i>Careful, the run might take weeks to run</i>
+To run all possible benchmark configurations, replace the parameter values with `all`: <br></br><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_c_benchmark.py \
     --no-upstream \
     --downstream_mod arsenal \
-    --datasets * \
-    --imp_algs * \
-    --patterns * \
-    --miss_rate *
+    --datasets all  \
+    --imp_algs all \
+    --patterns all \
+    --miss_rate all
 ```
 
 ---

@@ -1627,8 +1627,6 @@ def config_contamination(ts, pattern, dataset_rate=0.4, series_rate=0.4, block_s
     else:
         matrix = ts
 
-    print(f"{ptn=}")
-
     if ptn == "mcar" or ptn == "missing_completely_at_random":
         incomp_data = GenGap.mcar(input_data=matrix, rate_dataset=dataset_rate, rate_series=series_rate, block_size=block_size, offset=offset, seed=seed, explainer=explainer, logic_by_series=logic_by_series, verbose=verbose)
     elif ptn == "mp" or ptn == "missingpercentage" or ptn == "aligned":

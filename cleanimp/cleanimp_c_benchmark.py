@@ -52,7 +52,6 @@ def parse_args():
     parser.add_argument(
         "--miss_rate",
         nargs="+",
-        type=float,
         default=[0.2],
         help="Contamination rates"
     )
