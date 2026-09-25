@@ -144,3 +144,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/InlineSkate/**
 !cleanimp/datasets/classify/InsectEPGRegularTrain/
 !cleanimp/datasets/classify/InsectEPGRegularTrain/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 6
+# ============================================================
+!cleanimp/datasets/classify/InsectWingbeatSound/
+!cleanimp/datasets/classify/InsectWingbeatSound/**
+!cleanimp/datasets/classify/LargeKitchenAppliances/
+!cleanimp/datasets/classify/LargeKitchenAppliances/**
+!cleanimp/datasets/classify/Lightning2/
+!cleanimp/datasets/classify/Lightning2/**
+!cleanimp/datasets/classify/Lightning7/
+!cleanimp/datasets/classify/Lightning7/**
+!cleanimp/datasets/classify/Meat/
+!cleanimp/datasets/classify/Meat/**
+!cleanimp/datasets/classify/MedicalImages/
+!cleanimp/datasets/classify/MedicalImages/**
+!cleanimp/datasets/classify/MoteStrain/
+!cleanimp/datasets/classify/MoteStrain/**

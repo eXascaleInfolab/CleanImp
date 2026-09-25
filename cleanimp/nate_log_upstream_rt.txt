@@ -5,3 +5,4 @@ NATE's LOG::::: cardinality_imputation=341.72868728637695 / [imputation_by_class
 NATE's LOG::::: cardinality_imputation=265232.19084739685 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MICE
 >>>>>>> 589771b (class_1)
 NATE's LOG::::: cardinality_imputation=225251.44124031067 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Computers) for MICE
+NATE's LOG::::: cardinality_imputation=4.262685775756836 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MeanImpute

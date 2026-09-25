@@ -5,3 +5,4 @@ NATE's LOG::::: time_downstream=256881.94680213928 / [imputation_by_class=True -
 =======
 NATE's LOG::::: time_downstream=244510.1556777954 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1 - (Computers) for MICE inside arsenal
 >>>>>>> 589771b (class_1)
+NATE's LOG::::: time_downstream=270802.7594089508 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8 - (Computers) for MICE inside arsenal
