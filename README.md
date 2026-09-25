@@ -53,7 +53,9 @@ missingness, and task configurations**.
 CleanImp is implemented in **Python** and relies on **ImputeGAP** for
 time series contamination and imputation.
 
-Install the required dependencies with:
+To set up your environment and prepare the development installation for C++, please follow this tutorial: <a href="https://imputegap.readthedocs.io/en/latest/getting_started.html#venv">https://imputegap.readthedocs.io/en/latest/getting_started.html#venv</a> 
+
+Then, install the required dependencies with:
 
 ``` bash
 git init
@@ -120,6 +122,7 @@ Here is the list of configurations for the benchmarks:
 | Block size | Sequence Number  | Missing Completely at Random |
 
 
+<br></br>
 ## Forecasting
 ### Forecasting Models
 
@@ -154,6 +157,7 @@ Here is the list of configurations for the benchmarks:
 | `climate` | `economics` | `human_access` | `paris` |
 
 
+<br></br>
 ## Classification
 
 ### Classification Models
