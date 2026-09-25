@@ -108,3 +108,21 @@ cleanimp/datasets/classify/*
 !cleanimp/datasets/classify/EthanolLevel/**
 !cleanimp/datasets/classify/FaceAll/
 !cleanimp/datasets/classify/FaceAll/**
+
+# ============================================================
+# CLASSIFICATION DATASETS - BATCH 4
+# ============================================================
+!cleanimp/datasets/classify/FaceFour/
+!cleanimp/datasets/classify/FaceFour/**
+!cleanimp/datasets/classify/FacesUCR/
+!cleanimp/datasets/classify/FacesUCR/**
+!cleanimp/datasets/classify/Fish/
+!cleanimp/datasets/classify/Fish/**
+!cleanimp/datasets/classify/FreezerRegularTrain/
+!cleanimp/datasets/classify/FreezerRegularTrain/**
+!cleanimp/datasets/classify/FreezerSmallTrain/
+!cleanimp/datasets/classify/FreezerSmallTrain/**
+!cleanimp/datasets/classify/GunPoint/
+!cleanimp/datasets/classify/GunPoint/**
+!cleanimp/datasets/classify/GunPointAgeSpan/
+!cleanimp/datasets/classify/GunPointAgeSpan/**
