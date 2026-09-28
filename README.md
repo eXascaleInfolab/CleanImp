@@ -27,6 +27,8 @@ To set up your environment and prepare the development installation for C++, ple
 
 ``` bash
 source cleanimp_install.sh
+
+cd cleanimp/
 ```
 
 

@@ -84,6 +84,8 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
+    if args.miss_rate != ["all"]:
+        args.miss_rate = [float(x) for x in args.miss_rate]
 
     if args.upstream:
         # launch the evaluation
