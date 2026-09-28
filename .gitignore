@@ -47,6 +47,10 @@ cleanimp/imputegap_assets/*
 cleanimp/cleanimp_env/
 cleanimp/cleanimp_env
 cleanimp/cleanimp_env/*
+cleanimp_env/
+cleanimp_env/*
+cleanimp_env
+
 
 # Except forecasting datasets
 !cleanimp/datasets/forecast/

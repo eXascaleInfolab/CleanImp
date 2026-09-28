@@ -26,7 +26,7 @@ cd ./CleanImp/
 To set up your environment and prepare the development installation for C++, please run this script of installation:
 
 ``` bash
-bash cleanimp_install.sh
+source cleanimp_install.sh
 ```
 
 
@@ -34,7 +34,7 @@ bash cleanimp_install.sh
 
 ## 3. Configurations
 
-Here is the list of configurations for the benchmarks: you can find the list of all models and configurations on this page: https://github.com/eXascaleInfolab/CleanImp/tree/tmp_upload/configrations/
+Here is the list of configurations for the benchmarks: you can find the list of all models and configurations on this page: https://github.com/eXascaleInfolab/CleanImp/tree/main/configurations
 
 ## Output directory
 

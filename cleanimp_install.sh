@@ -182,7 +182,21 @@ echo "======================================"
 echo " CleanImp installation completed!"
 echo "======================================"
 echo ""
-echo "To activate the environment later:"
+echo "Starting CleanImp environment..."
 echo ""
-echo "    source cleanimp_env/bin/activate"
+
+exec bash --rcfile <(echo "
+    source ~/.bashrc 2>/dev/null || true
+    source cleanimp_env/bin/activate
+")
+
+cd cleanimp/
+
+echo ""
+echo "======================================"
+echo " CleanImp installation completed!"
+echo "======================================"
+echo ""
+echo "Environment activated."
+echo "Current directory: $(pwd)"
 echo ""
