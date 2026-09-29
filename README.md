@@ -21,6 +21,8 @@ CleanImp is implemented in **Python** and relies on **ImputeGAP** for time serie
 
 ``` bash
 git clone https://github.com/eXascaleInfolab/CleanImp
+```
+``` bash
 cd ./CleanImp/
 ```
 
@@ -28,7 +30,8 @@ To set up your environment and prepare the development installation for C++, ple
 
 ``` bash
 source cleanimp_install.sh
-
+```
+``` bash
 cd cleanimp/
 ```
 
