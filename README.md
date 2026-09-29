@@ -11,7 +11,7 @@ The benchmark follows the complete experimental pipeline introduced in the Clean
 Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
-All results from the paper can be found at this link: 
+All results from the paper can be found at this link: https://github.com/eXascaleInfolab/CleanImp/tree/main/additional_material
 
 ------------------------------------------------------------------------
 
