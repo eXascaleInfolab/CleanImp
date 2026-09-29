@@ -417,12 +417,12 @@ class Benchmark:
         # what to print to console
         if "RMSE" not in metrics:
             to_call = [metrics[0], "RUNTIME"]
-            if "accuracy_groundtruth" in metrics:
-                to_call = ["accuracy_imputer", "RUNTIME"]
+            if "f1_imputer" in metrics:
+                to_call = ["f1_imputer", "RUNTIME"]
             elif "smape_groundtruth" in metrics:
                 to_call = ["smape_imputer", "RUNTIME"]
         else:
-            if "accuracy_groundtruth" in metrics:
+            if "f1_imputer" in metrics:
                 to_call = [
                     "accuracy_groundtruth", "accuracy_imputer", "accuracy_meanimpute",
                     "recall_groundtruth", "recall_imputer", "recall_meanimpute",
@@ -646,6 +646,7 @@ class Benchmark:
             file.write("Dictionary of Results:\n")
             file.write(str(run_of_values) + "\n")
 
+
     def save_into_excel(self, run_of_values, xlsx_path, engine="openpyxl", upstream=True, verbose=True, sep="|"):
 
         dicts = [run_of_values] if isinstance(run_of_values, dict) else list(run_of_values)
@@ -681,7 +682,9 @@ class Benchmark:
         # If nothing, still create a visible sheet
         if df.empty:
             with pd.ExcelWriter(xlsx_path, engine=engine) as writer:
-                pd.DataFrame({"info": ["No results found"]}).to_excel(writer, sheet_name="INFO", index=False)
+                pd.DataFrame({"info": ["No results found"]}).to_excel(
+                    writer, sheet_name="INFO", index=False
+                )
             return xlsx_path
 
         if upstream:
@@ -696,15 +699,28 @@ class Benchmark:
                     metrics.append(m)
 
         # Metric ordering and filtering
-        if "RMSE" in metrics:
-            metrics = ["RMSE"] + [
-                m for m in metrics
-                if m not in ["RMSE", "DOWNSTREAM_SMAPE"]
-            ]
-        elif "SMAPE" in metrics:
-            metrics = ["SMAPE"] + [m for m in metrics if m != "SMAPE"]
-        elif "F1" in metrics:
-            metrics = ["F1"] + [m for m in metrics if m != "F1"]
+        if upstream:
+            if "RMSE" in metrics:
+                metrics = ["RMSE"] + [
+                    m for m in metrics
+                    if m not in ["RMSE", "DOWNSTREAM_SMAPE"]
+                ]
+            elif "SMAPE" in metrics:
+                metrics = ["SMAPE"] + [m for m in metrics if m != "SMAPE"]
+            elif "F1" in metrics:
+                metrics = ["F1"] + [m for m in metrics if m != "F1"]
+
+        else:
+            # Downstream forecasting -> smape_imputer first
+            # Downstream classification -> f1_imputer first
+            if "smape_imputer" in metrics:
+                metrics = ["smape_imputer"] + [
+                    m for m in metrics if m != "smape_imputer"
+                ]
+            elif "f1_imputer" in metrics:
+                metrics = ["f1_imputer"] + [
+                    m for m in metrics if m != "f1_imputer"
+                ]
 
         df["value"] = df["value"].astype(str)
         wrote_any_sheet = False
@@ -724,7 +740,9 @@ class Benchmark:
                         dropna=False,
                     )
 
-                    pivot.columns = [str(goal) for goal in pivot.columns.to_list()]
+                    pivot.columns = [
+                        str(goal) for goal in pivot.columns.to_list()
+                    ]
 
                     out = pivot.reset_index()
                     sheet = str(metric)[:31]
@@ -743,7 +761,9 @@ class Benchmark:
                         dropna=False,
                     )
 
-                    pivot.columns = [str(goal) for goal in pivot.columns.to_list()]
+                    pivot.columns = [
+                        str(goal) for goal in pivot.columns.to_list()
+                    ]
 
                     out = pivot.reset_index()
                     sheet = str(metric)[:31]
@@ -762,7 +782,9 @@ class Benchmark:
                     )
 
                     # new: flatten columns after pivot
-                    pivot_algorithms.columns = [str(goal) for goal in pivot_algorithms.columns.to_list()]
+                    pivot_algorithms.columns = [
+                        str(goal) for goal in pivot_algorithms.columns.to_list()
+                    ]
 
                     # new: create output dataframe for the extra sheet
                     out_algorithms = pivot_algorithms.reset_index()
@@ -771,21 +793,35 @@ class Benchmark:
                     sheet_algorithms = (str(metric)[:24] + "_algos")[:31]
 
                     # new: write the extra sheet
-                    out_algorithms.to_excel(writer, sheet_name=sheet_algorithms, index=False)
+                    out_algorithms.to_excel(
+                        writer,
+                        sheet_name=sheet_algorithms,
+                        index=False
+                    )
                     wrote_any_sheet = True
 
             # Safety: ensure at least one visible sheet
             if not wrote_any_sheet:
-                pd.DataFrame({"info": ["No metric sheets were written (all empty)."]}).to_excel(
-                    writer, sheet_name="INFO", index=False
+                pd.DataFrame({
+                    "info": ["No metric sheets were written (all empty)."]
+                }).to_excel(
+                    writer,
+                    sheet_name="INFO",
+                    index=False
                 )
 
         if verbose:
             if upstream:
-                print(f"Saved: {xlsx_path} (sheets={len(metrics) if wrote_any_sheet else 1})")
+                print(
+                    f"Saved: {xlsx_path} "
+                    f"(sheets={len(metrics) if wrote_any_sheet else 1})"
+                )
             else:
                 # new: downstream now writes two sheets per metric
-                print(f"Saved: {xlsx_path} (sheets={2 * len(metrics) if wrote_any_sheet else 1})")
+                print(
+                    f"Saved: {xlsx_path} "
+                    f"(sheets={2 * len(metrics) if wrote_any_sheet else 1})"
+                )
 
         return xlsx_path
 
@@ -1464,7 +1500,7 @@ class Benchmark:
             plt.savefig(filepath)
 
             if plots:
-                if (metric == "RMSE" and upstream) or (metric == "accuracy_imputer" and not upstream) or (metric == "smape_imputer" and not upstream):
+                if (metric == "RMSE" and upstream) or (metric == "f1_imputer" and not upstream) or (metric == "smape_imputer" and not upstream):
                     plt.show()
                 else:
                     plt.close('all')
