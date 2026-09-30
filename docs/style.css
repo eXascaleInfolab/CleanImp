@@ -16,3 +16,6 @@ tbody tr:hover{background:#f8fafc}.missing{color:#94a3b8}
 @media(max-width:420px){.filters{grid-template-columns:1fr}}
 .status strong{font-size:18px}
 .status span{font-size:15px;font-weight:600}
+
+.hidden{display:none!important}
+.filters{grid-template-columns:repeat(7,minmax(110px,1fr))}
