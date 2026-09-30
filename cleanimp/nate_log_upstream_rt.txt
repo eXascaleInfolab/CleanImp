@@ -1,2 +1,3 @@
 NATE's LOG::::: cardinality_imputation=4442.934274673462 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Computers) for SoftImpute
 NATE's LOG::::: cardinality_imputation=4337.525367736816 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=6985.371351242065 / [imputation_by_class=True - contamination_by_class=True] - [x=0.2] - (Computers) for SoftImpute
