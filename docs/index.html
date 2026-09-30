@@ -10,6 +10,7 @@
 <section class="filters">
 <label>Experiment<select id="experiment"></select></label>
 <label>Task<select id="task"></select></label>
+<label>Metric<select id="metric"></select></label>
 <label>Pattern<select id="pattern"></select></label>
 <label>Dataset<select id="dataset"></select></label>
 <label>Family<select id="family"></select></label>
@@ -17,4 +18,8 @@
 </section>
 <div class="status"><strong id="title"></strong><span id="meta"></span></div>
 <section class="plotcard"><div id="plot"></div></section>
+<section class="tablecard">
+  <div class="tabletitle"><h2>Actual values</h2><span id="tablemeta"></span></div>
+  <div class="tablewrap"><table id="values-table"></table></div>
+</section>
 </main><script src="app.js"></script></body></html>

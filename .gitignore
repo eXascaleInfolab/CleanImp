@@ -52,9 +52,10 @@ cleanimp_env/*
 cleanimp_env
 
 
-additional_material/to_run.txt
-additional_material/up_cl.xlsx
-additional_material/verify_data.py
+docs/to_run.txt
+docs/up_cl.xlsx
+docs/verify_data.py
+docs/cla_down.xlsx
 
 
 # Except forecasting datasets
