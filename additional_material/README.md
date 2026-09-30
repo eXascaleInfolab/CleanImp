@@ -1,13 +1,21 @@
-# CleanImp Additional Material
+# CleanImp interactive benchmark
 
-## Upstream Imputation for Forecasting
-working_progress
+Static Plotly.js dashboard for GitHub Pages.
 
-## Upstream Imputation for Classification
-working_progress
+Current dataset: **Upstream / Classification** from `imputers3(2).xlsx`.
 
-## Downstream Experiment for Classification
-working_progress
+- 68 datasets
+- 3 missingness patterns
+- 31 algorithms (SPIRIT excluded)
+- 6324 dataset/pattern/algorithm series
+- rates: [0.1, 0.2, 0.4, 0.6, 0.8]
 
-## Downstream Experiment for Forecasting
-working_progress
+Filters: Experiment, Task, Pattern, Dataset, Family, Algorithms.
+
+Preview locally:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `/additional_material/benchmark_dashboard/`.

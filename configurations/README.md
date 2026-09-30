@@ -6,40 +6,40 @@ Here is the list of configurations for the benchmarks:
 
 ### Imputation algorithms
 
-| **Algorithm** | **Family** | **Venue -- Year** |
-|---|---|---|
-| NuwaTS [[13]](#ref13) | LLMs | Arxiv -- 2024 |
-| GPT4TS [[99]](#ref99) | LLMs | NeurIPS -- 2023 |
-| MOMENT [[26]](#ref26) | LLMs | ICML -- 2024 |
-| MissNet [[63]](#ref63) | Deep Learning | KDD -- 2024 |
-| MPIN [[40]](#ref40) | Deep Learning | PVLDB -- 2024 |
-| BayOTIDE [[20]](#ref20) | Deep Learning | ICML -- 2024 |
-| BitGraph [[12]](#ref12) | Deep Learning | ICLR -- 2024 |
-| TimesNet [[86]](#ref86) | Deep Learning | ICLR -- 2023 |
-| SAITS [[18]](#ref18) | Deep Learning | ESWA -- 2023 |
-| PriSTI [[44]](#ref44) | Deep Learning | ICDE -- 2023 |
-| GRIN [[15]](#ref15) | Deep Learning | ICLR -- 2022 |
-| CSDI [[80]](#ref80) | Deep Learning | NeurIPS -- 2021 |
-| HKMFT [[84]](#ref84) | Deep Learning | TKDE -- 2021 |
-| DeepMVI [[5]](#ref5) | Deep Learning | PVLDB -- 2021 |
-| MRNN [[93]](#ref93) | Deep Learning | IEEE TBME -- 2019 |
-| BRITS [[10]](#ref10) | Deep Learning | NeurIPS -- 2018 |
-| GAIN [[92]](#ref92) | Deep Learning | ICML -- 2018 |
-| CDRec [[35]](#ref35) | Matrix Completion | KAIS -- 2020 |
-| TRMF [[94]](#ref94) | Matrix Completion | NeurIPS -- 2016 |
-| GROUSE [[4]](#ref4) | Matrix Completion | Arxiv -- 2010 |
-| ROSL [[76]](#ref76) | Matrix Completion | CVPR -- 2014 |
-| SoftImpute [[50]](#ref50) | Matrix Completion | JMLR -- 2010 |
-| SVT [[8]](#ref8) | Matrix Completion | SIAM J. Optim. -- 2010 |
-| SPIRIT [[65]](#ref65) | Matrix Completion | VLDB -- 2005 |
+| **Algorithm**               | **Family**        | **Venue -- Year** |
+|-----------------------------|-------------------|---|
+| MOMENT [[26]](#ref26)       | LLMs              | ICML -- 2024 |
+| NuwaTS* [[13]](#ref13)      | LLMs              | Arxiv -- 2024 |
+| GPT4TS [[99]](#ref99)       | LLMs              | NeurIPS -- 2023 |
+| MissNet [[63]](#ref63)      | Deep Learning     | KDD -- 2024 |
+| MPIN [[40]](#ref40)         | Deep Learning     | PVLDB -- 2024 |
+| BayOTIDE [[20]](#ref20)     | Deep Learning     | ICML -- 2024 |
+| BitGraph [[12]](#ref12)     | Deep Learning     | ICLR -- 2024 |
+| TimesNet [[86]](#ref86)     | Deep Learning     | ICLR -- 2023 |
+| SAITS [[18]](#ref18)        | Deep Learning     | ESWA -- 2023 |
+| PriSTI [[44]](#ref44)       | Deep Learning     | ICDE -- 2023 |
+| GRIN [[15]](#ref15)         | Deep Learning     | ICLR -- 2022 |
+| CSDI [[80]](#ref80)         | Deep Learning     | NeurIPS -- 2021 |
+| HKMFT* [[84]](#ref84)       | Deep Learning     | TKDE -- 2021 |
+| DeepMVI [[5]](#ref5)        | Deep Learning     | PVLDB -- 2021 |
+| MRNN [[93]](#ref93)         | Deep Learning     | IEEE TBME -- 2019 |
+| BRITS [[10]](#ref10)        | Deep Learning     | NeurIPS -- 2018 |
+| GAIN* [[92]](#ref92)        | Deep Learning     | ICML -- 2018 |
+| CDRec [[35]](#ref35)        | Matrix Completion | KAIS -- 2020 |
+| TRMF [[94]](#ref94)         | Matrix Completion | NeurIPS -- 2016 |
+| GROUSE [[4]](#ref4)         | Matrix Completion | Arxiv -- 2010 |
+| ROSL [[76]](#ref76)         | Matrix Completion | CVPR -- 2014 |
+| SoftImpute [[50]](#ref50)   | Matrix Completion | JMLR -- 2010 |
+| SVT [[8]](#ref8)            | Matrix Completion | SIAM J. Optim. -- 2010 |
+| SPIRIT* [[65]](#ref65)      | Matrix Completion | VLDB -- 2005 |
 | IterativeSVD [[82]](#ref82) | Matrix Completion | Bioinformatics -- 2001 |
-| TKCM [[85]](#ref85) | Pattern Search | EDBT -- 2017 |
-| STMVL [[91]](#ref91) | Pattern Search | IJCAI -- 2016 |
-| DynaMMo [[38]](#ref38) | Pattern Search | KDD -- 2009 |
-| IIM [[96]](#ref96) | Machine Learning | ICDE -- 2019 |
-| XGBoost [[11]](#ref11) | Machine Learning | KDD -- 2016 |
-| MICE [[69]](#ref69) | Machine Learning | JSS -- 2011 |
-| MissForest [[77]](#ref77) | Machine Learning | Bioinformatics -- 2012 |
+| TKCM* [[85]](#ref85)        | Pattern Search    | EDBT -- 2017 |
+| STMVL [[91]](#ref91)        | Pattern Search    | IJCAI -- 2016 |
+| DynaMMo [[38]](#ref38)      | Pattern Search    | KDD -- 2009 |
+| IIM [[96]](#ref96)          | Machine Learning  | ICDE -- 2019 |
+| XGBoost [[11]](#ref11)      | Machine Learning  | KDD -- 2016 |
+| MICE [[69]](#ref69)         | Machine Learning  | JSS -- 2011 |
+| MissForest [[77]](#ref77)   | Machine Learning  | Bioinformatics -- 2012 |
 
 
 ### Missingness patterns
@@ -53,35 +53,35 @@ Here is the list of configurations for the benchmarks:
 ## Forecasting
 ### Forecasting Models
 
-| **Algorithm** | **Family** | **Venue -- Year** |
-|---|---|---|
-| Chronos [[3]](#ref3) | LLMs | TMLR -- 2024 |
-| MOMENT [[26]](#ref26) | LLMs | ICML -- 2024 |
-| PatchTST [[62]](#ref62) | Deep Learning | ICLR -- 2023 |
-| Transformer [[83]](#ref83) | Deep Learning | NeurIPS -- 2017 |
-| LTSF [[95]](#ref95) | Deep Learning | AAAI -- 2023 |
-| LSTM [[9]](#ref9) | Deep Learning | Physica A -- 2019 |
-| DeepAR [[72]](#ref72) | Deep Learning | IJF -- 2020 |
-| DLinear [[95]](#ref95) | Deep Learning | AAAI -- 2023 |
-| N-BEATS [[64]](#ref64) | Deep Learning | ICLR -- 2020 |
-| NLinear [[95]](#ref95) | Deep Learning | AAAI -- 2023 |
-| Holt-Winters [[24]](#ref24) | Statistics | Journal of Forecasting -- 2010 |
-| Exp. Smoothing [[24]](#ref24) | Statistics | Journal of Forecasting -- 2010 |
-| AutoARIMA [[33]](#ref33) | Statistics | IJACSA -- 2020 |
-| Croston [[66]](#ref66) | Statistics | IJF -- 2014 |
-| XGBoost [[11]](#ref11) | Machine Learning | KDD -- 2016 |
-| LightGBM [[31]](#ref31) | Machine Learning | NeurIPS -- 2017 |
-| Prophet [[81]](#ref81) | Machine Learning | PeerJ Preprints -- 2017 |
+| **Algorithm**                 | **Family**       | **Venue -- Year** |
+|-------------------------------|------------------|---|
+| Chronos [[3]](#ref3)          | LLMs             | TMLR -- 2024 |
+| MOMENT [[26]](#ref26)         | LLMs             | ICML -- 2024 |
+| PatchTST [[62]](#ref62)       | Deep Learning    | ICLR -- 2023 |
+| Transformer [[83]](#ref83)    | Deep Learning    | NeurIPS -- 2017 |
+| LTSF [[95]](#ref95)           | Deep Learning    | AAAI -- 2023 |
+| LSTM [[9]](#ref9)             | Deep Learning    | Physica A -- 2019 |
+| DeepAR [[72]](#ref72)         | Deep Learning    | IJF -- 2020 |
+| DLinear [[95]](#ref95)        | Deep Learning    | AAAI -- 2023 |
+| N-BEATS [[64]](#ref64)        | Deep Learning    | ICLR -- 2020 |
+| NLinear [[95]](#ref95)        | Deep Learning    | AAAI -- 2023 |
+| Holt-Winters [[24]](#ref24)   | Statistics       | Journal of Forecasting -- 2010 |
+| Exp. Smoothing [[24]](#ref24) | Statistics       | Journal of Forecasting -- 2010 |
+| AutoARIMA [[33]](#ref33)      | Statistics       | IJACSA -- 2020 |
+| Croston [[66]](#ref66)        | Statistics       | IJF -- 2014 |
+| XGBoost [[11]](#ref11)        | Machine Learning | KDD -- 2016 |
+| LightGBM [[31]](#ref31)       | Machine Learning | NeurIPS -- 2017 |
+| Prophet [[81]](#ref81)        | Machine Learning | PeerJ Preprints -- 2017 |
 
 
 ### Forecasting datasets
 
-| | | | |
-|---|---|---|---|
-| `czelan` | `electricity` | `etth1` | `etth2` |
-| `ili` | `nn5` | `nyse` | `wike2000` |
-| `wind_speed` | `airq` | `atm` | `beijing_traffic` |
-| `climate` | `economics` | `human_access` | `paris` |
+|              |               |                |                   |
+|--------------|---------------|----------------|-------------------|
+| `czelan`     | `electricity` | `etth1`        | `etth2`           |
+| `ili`        | `nn5`         | `nyse`         | `wike2000`        |
+| `wind_speed` | `airq`        | `atm`          | `beijing_traffic` |
+| `climate`    | `economics`   | `human_access` | `paris`           |
 
 
 <br></br>
@@ -89,48 +89,56 @@ Here is the list of configurations for the benchmarks:
 
 ### Classification Models
 
-| **Algorithm** | **Family** | **Venue -- Year** |
-|---|---|---|
-| KNN [[23]](#ref23) | Statistics | KAIS -- 2016 |
-| Catch22 [[47]](#ref47) | Statistics | DMKD -- 2019 |
-| CNN [[97]](#ref97) | Deep Learning | JSEE -- 2017 |
-| LSTM [[30]](#ref30) | Deep Learning | Neural Networks -- 2019 |
-| TSF [[16]](#ref16) | Machine Learning | Information Sciences -- 2013 |
-| CBOSS [[73]](#ref73) | Machine Learning | DMKD -- 2015 |
-| STC [[7]](#ref7) | Machine Learning | TLDKS -- 2017 |
-| WEASEL [[74]](#ref74) | Machine Learning | CIKM -- 2017 |
-| ShapeDTW [[98]](#ref98) | Machine Learning | Pattern Recognition -- 2018 |
-| TSFresh [[14]](#ref14) | Machine Learning | Neurocomputing -- 2018 |
-| ProxStump [[48]](#ref48) | Machine Learning | DMKD -- 2019 |
-| CIF [[54]](#ref54) | Machine Learning | IEEE BigData -- 2020 |
-| ITDE [[55]](#ref55) | Machine Learning | ECML PKDD -- 2020 |
-| Arsenal [[56]](#ref56) | Machine Learning | Machine Learning -- 2021 |
-| Signature [[58]](#ref58) | Machine Learning | -- -- 2021 |
-| SVC [[71]](#ref71) | Machine Learning | DMKD -- 2021 |
+| **Algorithm**            | **Family**        | **Venue -- Year**            |
+|--------------------------|-------------------|------------------------------|
+| KNN [[23]](#ref23)       | Statistics        | KAIS -- 2016                 |
+| Catch22 [[47]](#ref47)   | Statistics        | DMKD -- 2019                 |
+| CNN [[97]](#ref97)       | Deep Learning     | JSEE -- 2017                 |
+| LSTM [[30]](#ref30)      | Deep Learning     | Neural Networks -- 2019      |
+| TSF [[16]](#ref16)       | Machine Learning  | Information Sciences -- 2013 |
+| CBOSS [[73]](#ref73)     | Machine Learning  | DMKD -- 2015                 |
+| STC [[7]](#ref7)         | Machine Learning  | TLDKS -- 2017                |
+| WEASEL [[74]](#ref74)    | Machine Learning  | CIKM -- 2017                 |
+| ShapeDTW [[98]](#ref98)  | Machine Learning  | Pattern Recognition -- 2018  |
+| TSFresh [[14]](#ref14)   | Machine Learning  | Neurocomputing -- 2018       |
+| ProxStump [[48]](#ref48) | Machine Learning  | DMKD -- 2019                 |
+| CIF* [[54]](#ref54)      | Machine Learning  | IEEE BigData -- 2020         |
+| ITDE [[55]](#ref55)      | Machine Learning  | ECML PKDD -- 2020            |
+| Arsenal [[56]](#ref56)   | Machine Learning  | Machine Learning -- 2021     |
+| Signature [[58]](#ref58) | Machine Learning  | -- -- 2021                   |
+| SVC [[71]](#ref71)       | Machine Learning  | DMKD -- 2021                 |
 
 ### Classification Datasets
 
-| | | | |
-|---|---|---|---|
-| `Adiac` | `BirdChicken` | `Fish` | `InsectEPGRegularTrain` |
-| `Rock` | `OSULeaf` | `SwedishLeaf` | `Worms` |
-| `WormsTwoClass` | `Herring` | `Ham` | `EthanolLevel` |
-| `Beef` | `Meat` | `OliveOil` | `Strawberry` |
-| `Wine` | `Car` | `FaceFour` | `FacesUCR` |
-| `ArrowHead` | `CinCECGTorso` | `Colposcopy` | `DistalPhalanxOutlineAgeGroup` |
-| `DistalPhalanxOutlineCorrect` | `DistalPhalanxTW` | `ECGFiveDays` | `EOGHorizontalSignal` |
-| `EOGVerticalSignal` | `MedicalImages` | `PhalangesOutlinesCorrect` | `ProximalPhalanxOutlineAgeGroup` |
-| `ProximalPhalanxOutlineCorrect` | `SemgHandGenderCh2` | `SemgHandMovementCh2` | `SemgHandSubjectCh2` |
-| `TwoLeadECG` | `MoteStrain` | `Lightning2` | `Lightning7` |
-| `Earthquakes` | `Computers` | `LargeKitchenAppliances` | `FreezerRegularTrain` |
-| `FreezerSmallTrain` | `PowerCons` | `RefrigerationDevices` | `ScreenType` |
-| `SmallKitchenAppliances` | `SonyAIBORobotSurface1` | `GunPoint` | `GunPointAgeSpan` |
-| `GunPointMaleVersusFemale` | `GunPointOldVersusYoung` | `CricketX` | `Haptics` |
-| `InlineSkate` | `ToeSegmentation1` | `ToeSegmentation2` | `Yoga` |
-| `SharePriceIncrease` | `CBF` | `SyntheticControl` | `Trace` |
-| `ShapeletSim` | `TwoPatterns` | `UMD` | `Wafer` |
+|                                 |                          |                            |                                  |
+|---------------------------------|--------------------------|----------------------------|----------------------------------|
+| `Adiac`                         | `BirdChicken`            | `Fish`                     | `InsectEPGRegularTrain`          |
+| `Rock`                          | `OSULeaf`                | `SwedishLeaf`              | `Worms`                          |
+| `WormsTwoClass`                 | `Herring`                | `Ham`                      | `EthanolLevel`                   |
+| `Beef`                          | `Meat`                   | `OliveOil`                 | `Strawberry`                     |
+| `Wine`                          | `Car`                    | `FaceFour`                 | `FacesUCR`                       |
+| `ArrowHead`                     | `CinCECGTorso`           | `Colposcopy`               | `DistalPhalanxOutlineAgeGroup`   |
+| `DistalPhalanxOutlineCorrect`   | `DistalPhalanxTW`        | `ECGFiveDays`              | `EOGHorizontalSignal`            |
+| `EOGVerticalSignal`             | `MedicalImages`          | `PhalangesOutlinesCorrect` | `ProximalPhalanxOutlineAgeGroup` |
+| `ProximalPhalanxOutlineCorrect` | `SemgHandGenderCh2`      | `SemgHandMovementCh2`      | `SemgHandSubjectCh2`             |
+| `TwoLeadECG`                    | `MoteStrain`             | `Lightning2`               | `Lightning7`                     |
+| `Earthquakes`                   | `Computers`              | `LargeKitchenAppliances`   | `FreezerRegularTrain`            |
+| `FreezerSmallTrain`             | `PowerCons`              | `RefrigerationDevices`     | `ScreenType`                     |
+| `SmallKitchenAppliances`        | `SonyAIBORobotSurface1`  | `GunPoint`                 | `GunPointAgeSpan`                |
+| `GunPointMaleVersusFemale`      | `GunPointOldVersusYoung` | `CricketX`                 | `Haptics`                        |
+| `InlineSkate`                   | `ToeSegmentation1`       | `ToeSegmentation2`         | `Yoga`                           |
+| `SharePriceIncrease`            | `CBF`                    | `SyntheticControl`         | `Trace`                          |
+| `ShapeletSim`                   | `TwoPatterns`            | `UMD`                      | `Wafer`                          |
 
+## Exceptions*
 
+1. **NuwaTS:** NuwaTS is computationally demanding and may not run reliably on machines with limited computational resources, such as standard laptops. In addition, due to its data-splitting strategy, high missingness rates may result in residual NaN values in the imputed output.
+
+2. **SPIRIT and TKCM:** SPIRIT and TKCM support only mono-series imputation. Consequently, when more than one series is contaminated, these methods may produce NaN values in the imputed output.
+
+3. **HKMFT:** HKMFT is designed for blackout missingness patterns. At high missingness rates, insufficient observed information may remain for reconstruction, potentially resulting in NaN values in the imputed output.
+
+4. **GAIN:** The configuration provided by the original GAIN authors is incompatible with certain macOS environments, which may prevent the algorithm from running successfully.
 
 ## References
 

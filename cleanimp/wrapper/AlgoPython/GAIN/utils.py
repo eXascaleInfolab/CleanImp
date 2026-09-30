@@ -34,13 +34,19 @@
 (7) uniform_sampler: sample uniform random variables
 (8) sample_batch_index: sample random batch index
 '''
- 
+
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+
+import tensorflow.compat.v1 as tf
+
+tf.get_logger().setLevel("ERROR")
+tf.disable_v2_behavior()
+
 # Necessary packages
 import numpy as np
-#import tensorflow as tf
-##IF USING TF 2 use following import to still use TF < 2.0 Functionalities
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+
 
 
 def normalization (data, parameters=None):

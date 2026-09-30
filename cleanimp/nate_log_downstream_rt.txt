@@ -1,0 +1,6 @@
+NATE's LOG::::: time_downstream=264326.65491104126 / [imputation_by_class=True - contamination_by_class=True] - [x=0.4 - (Computers) for SoftImpute inside arsenal
+NATE's LOG::::: time_downstream=247956.57467842102 / [imputation_by_class=True - contamination_by_class=True] - [x=0.6 - (Computers) for SoftImpute inside arsenal
+NATE's LOG::::: time_downstream=261693.21179389954 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8 - (Computers) for SoftImpute inside arsenal
+NATE's LOG::::: time_downstream=349268.6331272125 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1 - (Computers) for SoftImpute inside arsenal
+NATE's LOG::::: time_downstream=314407.41634368896 / [imputation_by_class=True - contamination_by_class=True] - [x=0.2 - (Computers) for SoftImpute inside arsenal
+NATE's LOG::::: time_downstream=249166.16296768188 / [imputation_by_class=True - contamination_by_class=True] - [x=0.4 - (Computers) for SoftImpute inside arsenal

@@ -59,10 +59,11 @@ cleanimp/
 │           ├── <dataset>/                     # Results grouped by evaluated dataset
 │           │   └── <pattern>/                 # Results grouped by missingness pattern
 │           │       └── error/                 # Upstream/downstream metric results
-│           │           ├── _metrics_subplot.jpg
-│           │           │                      # Metric evolution across missingness rates
-│           │           └── report_<pattern>_<dataset>.txt
-│           │                                  # Detailed results for this dataset/pattern
+│           │       │   ├── _metrics_subplot.jpg
+│           │       │   │                      # Metric evolution across missingness rates
+│           │       │   └── report_<pattern>_<dataset>.txt
+│           │       │                           # Detailed results for this dataset/
+│           │       └── recovery/               # Individal imputation plot for each rate
 │           │
 │           ├── _heatmaps/                     # Aggregated results used for heatmap analyses
 │           │   └── _benchmarking_*.txt        # Benchmark results represented as heatmaps
@@ -124,7 +125,9 @@ python cleanimp_imputation_benchmark.py \
     --imp_algs SAITS \
     --patterns mcar \
     --miss_rate 0.2 \
+    --metrics all \
     --horizon 12
+    
 ```
 
 Our benchmark arguments accept multiple values, allowing you to evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
@@ -136,6 +139,7 @@ python cleanimp_imputation_benchmark.py \
     --datasets paris ili \
     --patterns mcar seqn \
     --miss_rate 0.1 0.8 \
+    --metrics all \
     --horizon 24
 ```
 
@@ -149,6 +153,7 @@ python cleanimp_imputation_benchmark.py \
     --patterns all \
     --imp_algs all \
     --miss_rate all \
+    --metrics all \
     --horizon 12
 ```
 
@@ -160,7 +165,8 @@ python cleanimp_imputation_benchmark.py \
     --datasets Computers \
     --imp_algs GRIN \
     --patterns mcar \
-    --miss_rate 0.2
+    --miss_rate 0.2 \
+    --metrics all
 ```
 
 
@@ -187,6 +193,7 @@ python cleanimp_downstream_benchmark.py \
     --datasets paris \
     --patterns mcar \
     --miss_rate 0.2 \
+    --metrics all \
     --horizon 12
 ```
 
@@ -200,6 +207,7 @@ python cleanimp_downstream_benchmark.py \
     --datasets paris ili \
     --patterns mcar seqn \
     --miss_rate 0.1 0.8 \
+    --metrics all \
     --horizon 24
 ```
 
@@ -213,6 +221,7 @@ python cleanimp_downstream_benchmark.py \
     --datasets all \
     --patterns all \
     --miss_rate all \
+    --metrics all \
     --horizon 12
 ```
 
@@ -240,7 +249,8 @@ python cleanimp_downstream_benchmark.py \
     --datasets Computers \
     --imp_algs GRIN \
     --patterns mcar \
-    --miss_rate 0.2
+    --miss_rate 0.2 \
+    --metrics all
 ```
 
 Our benchmark arguments accept multiple values. For example, several datasets, missingness patterns, and imputation algorithms can be evaluated in a single run:
@@ -252,7 +262,8 @@ python cleanimp_downstream_benchmark.py \
     --datasets Computers Car \
     --imp_algs MeanImpute MICE \
     --patterns mcar seqn \
-    --miss_rate 0.1 0.8
+    --miss_rate 0.1 0.8 \
+    --metrics all
 ```
 
 For reproducing the Figure 11 of the paper (Average F1) and run all possible benchmark configurations, replace the parameter values with `all`: <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
@@ -264,7 +275,8 @@ python cleanimp_downstream_benchmark.py \
     --datasets all  \
     --imp_algs all \
     --patterns all \
-    --miss_rate all
+    --miss_rate all \
+    --metrics all
 ```
 
 

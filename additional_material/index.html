@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CleanImp Benchmark</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
+</head><body>
+<header><div><h1>CleanImp Benchmark</h1><p>Interactive benchmark explorer</p></div></header>
+<main>
+<section class="filters">
+<label>Experiment<select id="experiment"></select></label>
+<label>Task<select id="task"></select></label>
+<label>Pattern<select id="pattern"></select></label>
+<label>Dataset<select id="dataset"></select></label>
+<label>Family<select id="family"></select></label>
+<div class="algobox"><div class="algoh"><b>Algorithms</b><span><button id="all">Select all</button><button id="none">Clear</button></span></div><div id="algos"></div></div>
+</section>
+<div class="status"><strong id="title"></strong><span id="meta"></span></div>
+<section class="plotcard"><div id="plot"></div></section>
+</main><script src="app.js"></script></body></html>

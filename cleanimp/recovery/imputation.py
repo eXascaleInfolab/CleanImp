@@ -583,12 +583,9 @@ class Imputation:
                 """
                 from algorithms.interpolation import interpolation
 
-                if params is not None:
-                    method, poly_order = self._check_params(user_def, params)
-                else:
-                    method, poly_order = utils.load_parameters(query="default", algorithm=self.algorithm, verbose=self.verbose)
+                params = self._define_parameters_imputers(params=params, user_def=user_def, task=self.task)
 
-                self.recov_data = interpolation(incomp_data=self.incomp_data, method=method, poly_order=poly_order, logs=self.logs, verbose=self.verbose)
+                self.recov_data = interpolation(incomp_data=self.incomp_data, logs=self.logs, verbose=self.verbose, **params)
 
                 return self
 
@@ -641,14 +638,11 @@ class Imputation:
                 """
                 from algorithms.knn import knn
 
-                if params is not None:
-                    k, weights = self._check_params(user_def, params)
-                else:
-                    k, weights = utils.load_parameters(query="default", algorithm=self.algorithm, verbose=self.verbose)
+                params = self._define_parameters_imputers(params=params, user_def=user_def, task=self.task)
 
-                k = utils.control_boundaries(rank=k, boundary=self.incomp_data.shape[1], algorithm=self.algorithm)
+                params["k"] = utils.control_boundaries(rank=params["k"], boundary=self.incomp_data.shape[1], algorithm=self.algorithm)
 
-                self.recov_data = knn(incomp_data=self.incomp_data, k=k, weights=weights, logs=self.logs, verbose=self.verbose)
+                self.recov_data = knn(incomp_data=self.incomp_data, logs=self.logs, verbose=self.verbose, **params)
 
                 return self
 

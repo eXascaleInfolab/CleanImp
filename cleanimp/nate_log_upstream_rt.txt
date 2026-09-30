@@ -1,0 +1,6 @@
+NATE's LOG::::: cardinality_imputation=14804.816484451294 / [imputation_by_class=True - contamination_by_class=True] - [x=0.6] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=13450.39963722229 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=2433.466911315918 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=5088.991641998291 / [imputation_by_class=True - contamination_by_class=True] - [x=0.2] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=5628.326416015625 / [imputation_by_class=True - contamination_by_class=True] - [x=0.4] - (Computers) for SoftImpute
+NATE's LOG::::: cardinality_imputation=6229.969263076782 / [imputation_by_class=True - contamination_by_class=True] - [x=0.6] - (Computers) for SoftImpute

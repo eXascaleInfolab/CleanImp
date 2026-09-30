@@ -424,16 +424,16 @@ class Benchmark:
         else:
             if "f1_imputer" in metrics:
                 to_call = [
+                    "f1_imputer", "f1_groundtruth", "f1_meanimpute",
                     "accuracy_groundtruth", "accuracy_imputer", "accuracy_meanimpute",
                     "recall_groundtruth", "recall_imputer", "recall_meanimpute",
-                    "f1_groundtruth", "f1_imputer", "f1_meanimpute",
                     "RMSE", "RUNTIME",
                 ]
             elif "smape_groundtruth" in metrics:
                 to_call = [
+                    "smape_imputer", "smape_groundtruth", "smape_baseline",
                     "mse_groundtruth", "mse_imputer", "mse_baseline",
                     "mae_groundtruth", "mae_imputer", "mae_baseline",
-                    "smape_groundtruth", "smape_imputer", "smape_baseline",
                     "RMSE", "RUNTIME",
                 ]
             else:
@@ -860,7 +860,12 @@ class Benchmark:
         metric_unit = "ms"
 
         if "RMSE" not in metrics:
-            to_call = [metrics[0], "RUNTIME"]
+            if "smape_imputer" in metrics:
+                to_call = ["smape_imputer", "RUNTIME"]
+            elif "f1_imputer" in metrics:
+                to_call = ["f1_imputer", "RUNTIME"]
+            else:
+                to_call = [metrics[0], "RUNTIME"]
         else:
             to_call = ["RMSE", "RUNTIME"]
 

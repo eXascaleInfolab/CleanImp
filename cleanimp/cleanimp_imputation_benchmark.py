@@ -85,6 +85,8 @@ if __name__ == "__main__":
     args = parse_args()
     if args.miss_rate != ["all"]:
         args.miss_rate = [float(x) for x in args.miss_rate]
+    if args.metrics == ["all"]:
+        default = ["RMSE", "MAE", "MI", "CORRELATION", "RUNTIME"]
 
     if args.task == "forecasting":
         # launch the evaluation
