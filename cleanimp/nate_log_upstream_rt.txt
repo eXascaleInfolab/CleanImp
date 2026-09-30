@@ -19,3 +19,5 @@ NATE's LOG::::: cardinality_imputation=88.05966377258301 / [imputation_by_class=
 NATE's LOG::::: cardinality_imputation=132.46655464172363 / [imputation_by_class=True - contamination_by_class=True] - [x=0.4] - (Car) for SoftImpute
 NATE's LOG::::: cardinality_imputation=108.31499099731445 / [imputation_by_class=True - contamination_by_class=True] - [x=0.6] - (Car) for SoftImpute
 NATE's LOG::::: cardinality_imputation=130.4309368133545 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Car) for SoftImpute
+NATE's LOG::::: cardinality_imputation=65.27090072631836 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MeanImpute
+NATE's LOG::::: cardinality_imputation=38.930416107177734 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Computers) for MeanImpute

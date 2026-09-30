@@ -11,8 +11,6 @@ The benchmark follows the complete experimental pipeline introduced in the Clean
 Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
-All results from the paper can be found at this link: https://github.com/eXascaleInfolab/CleanImp/tree/main/additional_material
-
 ------------------------------------------------------------------------
 
 ## Additional Material
@@ -121,9 +119,16 @@ The list of the runner’s parameters is the following:
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
-### Tutorial
+### Experiments Examples
 
-A simple upstream experiment can use the following configuration: one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), and a future prediction horizon (12 timestamps).
+To produce the imputation results with 
+one forecasting dataset (Paris),
+one imputation algorithm (SAITS),
+one missingness pattern (MCAR),
+a missing rate (20%),
+all upstream metrics,
+and a future prediction horizon (12 timestamps),
+run the following command:
 
 ``` bash
 python cleanimp_imputation_benchmark.py \
@@ -136,8 +141,15 @@ python cleanimp_imputation_benchmark.py \
     --horizon 12
     
 ```
+<br />
 
-Our benchmark arguments accept multiple values, allowing you to evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
+To produce the imputation results with
+two imputation algorithms (MICE and MeanImpute),
+two datasets (Paris and ILI),
+two missingness patterns (MCAR and SeqN),
+two missingness rates (0.1 and 0.8),
+and a future prediction horizon (24 timestamps),
+run the following command:
 
 ``` bash
 python cleanimp_imputation_benchmark.py \
@@ -149,8 +161,11 @@ python cleanimp_imputation_benchmark.py \
     --metrics all \
     --horizon 24
 ```
+<br />
 
-For reproducing the Figure 6 of the paper (Average imputation RMSE) and run all possible benchmark configurations, replace the parameter values with `all`:<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+To produce the imputation results with all possible configurations,
+replace the parameter values with `all`:
+<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 
 ``` bash
@@ -163,8 +178,9 @@ python cleanimp_imputation_benchmark.py \
     --metrics all \
     --horizon 12
 ```
+<br />
 
-All upstream evaluation can be made from forecasting or classification datasets. To adapt, just change the task tag.
+To adapt the experiment for classification, change the task tag and replace the dataset list with classification datasets:
 
 ``` bash
 python cleanimp_imputation_benchmark.py \
@@ -175,6 +191,7 @@ python cleanimp_imputation_benchmark.py \
     --miss_rate 0.2 \
     --metrics all
 ```
+<br />
 
 
 
@@ -184,13 +201,20 @@ CleanImp supports **17 forecasting models** spanning Statistical, Machine Learni
 
 The list of the runner’s parameters is the following:
 
-| Parameter          | Task | Default | Description |
-|:-------------------| :--- | :--- | :--- |
-| `--downstream_mod` | Forecasting | `chronos` | forecasting model |
-| `--horizon`        | Forecasting | `12` | horizon value for forecasting |
+| Parameter          | Task        | Default   | Description                   |
+|:-------------------|:------------|:----------|:------------------------------|
+| `--downstream_mod` | Forecasting | `chronos` | forecasting model             |
+| `--horizon`        | Forecasting | `12`      | horizon value for forecasting |
 
 
-To evaluate the impact of imputation on a forecasting model, disable upstream-only evaluation and specify a downstream model:
+To produce the impact of imputation on a forecasting model (chronos) with
+one forecasting dataset (Paris),
+one imputation algorithm (SAITS),
+one missingness pattern (MCAR),
+one missing rate (20%),
+all downstream metrics,
+and a future prediction horizon (12 timestamps),
+use the downstream script and run the following command:
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -203,8 +227,16 @@ python cleanimp_downstream_benchmark.py \
     --metrics all \
     --horizon 12
 ```
+<br />
 
-You can evaluate several datasets, missingness patterns, and imputation algorithms within a single run. You can customize the command to suit your needs by adding, removing, or modifying the different parameters.
+To produce the impact of imputation on a forecasting model (chronos) with
+two imputation algorithms (MICE and MeanImpute),
+two datasets (Paris and ILI),
+two missingness patterns (MCAR and SeqN),
+two missingness rates (0.1 and 0.8),
+all downstream metrics,
+and a future prediction horizon (24 timestamps),
+run the following command:
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -217,8 +249,11 @@ python cleanimp_downstream_benchmark.py \
     --metrics all \
     --horizon 24
 ```
+<br />
 
-For reproducing the Figure 7 of the paper (Comparison of forecasters’ SMAPE) and run all possible benchmark configurations, replace the parameter values with `all`: <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+To produce the impact of imputation on a forecasting model with all possible configurations,
+replace the parameter values with `all`:
+<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -231,6 +266,7 @@ python cleanimp_downstream_benchmark.py \
     --metrics all \
     --horizon 12
 ```
+<br />
 
 
 ------------------------------------------------------------------------
@@ -246,8 +282,13 @@ The list of the runner’s parameters is the following:
 | `--downstream_mod` | Classification | `arsenal` | classification model |
 
 
-
-To evaluate the impact of imputation on a classification model, disable upstream-only evaluation and specify a downstream model:
+To produce the impact of imputation on a classification model (arsenal) with
+one classification dataset (Computers),
+one imputation algorithm (GRIN),
+one missingness pattern (MCAR),
+one missing rate (20%),
+all downstream metrics,
+use the downstream script and run the following command:
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -259,8 +300,15 @@ python cleanimp_downstream_benchmark.py \
     --miss_rate 0.2 \
     --metrics all
 ```
+<br />
 
-Our benchmark arguments accept multiple values. For example, several datasets, missingness patterns, and imputation algorithms can be evaluated in a single run:
+To produce the impact of imputation on a classification model (arsenal) with
+two classification dataset (Computers and Car),
+two imputation algorithm (MeanImpute and MICE),
+two missingness pattern (MCAR and SeqN),
+two missing rate (20% and 80%),
+all downstream metrics,
+use the downstream script and run the following command:
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -272,8 +320,11 @@ python cleanimp_downstream_benchmark.py \
     --miss_rate 0.1 0.8 \
     --metrics all
 ```
+<br />
 
-For reproducing the Figure 11 of the paper (Average F1) and run all possible benchmark configurations, replace the parameter values with `all`: <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+To produce the impact of imputation on a classification model with all possible configurations,
+replace the parameter values with `all`:
+<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_downstream_benchmark.py \
@@ -285,6 +336,7 @@ python cleanimp_downstream_benchmark.py \
     --miss_rate all \
     --metrics all
 ```
+<br />
 
 ------------------------------------------------------------------------
 
