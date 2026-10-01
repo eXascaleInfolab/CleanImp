@@ -77,7 +77,6 @@ The tables below provide a compact overview of the options available when config
 
 ## List of Datasets
 
-The datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/
 
 | Forecasting Datasets |               |                     |            |                |
 |----------------------|---------------|---------------------|------------|----------------|
@@ -104,6 +103,8 @@ The datasets can be found in the following directory: https://github.com/eXascal
 | `TwoLeadECG`                   | `TwoPatterns`                 | `UMD`                            | `Wafer`                         | `Wine`                 |
 | `Worms`                        | `WormsTwoClass`               | `Yoga`                           |                                 |                        |
 
+
+The datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/
 
 
 ## Output directory
@@ -149,20 +150,20 @@ cleanimp/
 ### Parameters
 The list of the runner’s parameters is the following:
 
-| Arguments          | Values                                                                                                                     | Description                                                                                      |
-|:-------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
-| `--task`           | imputation, forecasting, classification                                                                                    | Selects the benchmark task to execute.                                                           |
-| `--imp_algs`       | [Imputation Algorithms](#imputation-options)                                                                               | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
-| `--datasets_type`  | forecasting, classification                                                                                                | Selects the dataset category used for the benchmark.                                             |
-| `--datasets_list`  | [Forecasting Datasets](#forecasting-options)<br>[Classification Datasets](#classification-options)                         | Selects one or more datasets. Use `all` to include every available dataset.                      |
-| `--patterns`       | mcar, seqn, blks                                                                                                           | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
-| `--miss_rate`      | 0.1 to 0.8                                                                                                                 | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
-| `--metrics`        | **Imputation:** RMSE, MAE, MI, CORRELATION<br>**Forecasting:** SMAPE, MSE, MAE<br>**Classification:** F1, ACCURACY, RECALL | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
-| `--downstream_mod` | [Forecasting Models](#forecasting-options)<br>[Classification Models](#classification-options)                             | Selects the downstream model used to measure the impact of imputation.                           |
-| `--horizon`        | 12                                                                                                                         | Sets the forecasting horizon as the number of future timestamps.                                 |
-| `--caching`        | True, False                                                                                                                | Enables or disables caching of intermediate results to avoid repeated computations.              |
-| `--plots`          | True, False                                                                                                                | Enables or disables benchmark plot generation.                                                   |
-| `--verbose`        | True, False                                                                                                                | Enables or disables detailed execution output.                                                   |
+| Possible Arguments | Values                                                                                                                        | Description                                                                                |
+|:--------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
+| `--task`            | `imputation`, `forecasting`, `classification`                                                                                     | Selects the benchmark task to execute.                                                     |
+| `--imp_algs`        | [Imputation Algorithms](#imputation-options)                                                                                  | Selects one or more imputation algorithms. Use `all` to include every available algorithm. |
+| `--datasets_type`   | `forecasting`, `classification`                                                                                               | Selects the dataset category used for the benchmark.                                       |
+| `--datasets_list`   | [Forecasting Datasets](#forecasting-options)<br>[Classification Datasets](#classification-options)                            | Selects one or more datasets. Use `all` to include every available dataset.                |
+| `--patterns`        | `mcar`, `seqn`, `blks`                                                                                                        | Selects one or more missingness patterns. Use `all` to include every available pattern.    |
+| `--miss_rate`       | `[0.1, 0.2, 0.4, 0.6, 0.8]`                                                                                                   | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.          |
+| `--metrics`         | `RMSE`, `MAE`, `MI`, `CORRELATION` / `SMAPE`, `MSE`, `MAE` / `F1`, `ACCURACY`, `RECALL`                                       | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
+| `--downstream_mod`  | [Forecasting Models](#forecasting-options)<br>[Classification Models](#classification-options)                                | Selects the downstream model used to measure the impact of imputation.                     |
+| `--horizon`         | `[12, 24, 48]`                                                                                                                | Sets the forecasting horizon as the number of future timestamps.                           |
+| `--caching`         | `True`, `False`                                                                                                               | Enables or disables caching of intermediate results to avoid repeated computations.        |
+| `--plots`           | `True`, `False`                                                                                                               | Enables or disables benchmark plot generation.                                             |
+| `--verbose`         | `True`, `False`                                                                                                               | Enables or disables detailed execution output.                                             |
 
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
