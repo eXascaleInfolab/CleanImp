@@ -14,7 +14,6 @@ Time Series → Contamination → Imputation → Downstream Model → Evaluation
 
 All experimental results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
-<br>
 
 ------------------------------------------------------------------------
 
@@ -172,7 +171,7 @@ The list of the runner’s parameters is the following:
 
 ## 5. Benchmark Execution 
 
-## 5.1 Imputation Experiments
+### 5.1 Imputation Experiments
 
 - To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
 
@@ -239,7 +238,7 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-## 5.2 Forecasting Experiments
+### 5.2 Forecasting Experiments
 
 
 - To produce the impact of imputation on a forecasting model (chronos) with
@@ -306,7 +305,7 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-## 5.3 Classification Experiments
+### 5.3 Classification Experiments
 
 
 - To produce the impact of imputation on a classification model (arsenal) with
