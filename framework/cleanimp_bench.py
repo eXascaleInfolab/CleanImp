@@ -42,7 +42,14 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--datasets",
+        "--datasets_type",
+        type=str,
+        default="forecasting",
+        help="Call forecasting or classification"
+    )
+
+    parser.add_argument(
+        "--datasets_list",
         nargs="+",
         default=["paris"],
         help="Datasets to evaluate"
@@ -89,34 +96,37 @@ def parse_args():
 
 
 if __name__ == "__main__":
+
+    print(f"\n> CleanImp Benchmark: Loading benchmark configuration and requirements...\n")
+
     args = parse_args()
     if args.miss_rate != ["all"]:
         args.miss_rate = [float(x) for x in args.miss_rate]
 
     d_cl = utils.get_datasets_classifiers(verbose=False)
     d_fo = utils.get_dataset_forecasters(directory='datasets/forecast/', verbose=False)
-    valid_datasets = set(d_cl) | set(d_fo)
-    invalid = [dataset for dataset in args.datasets if dataset not in valid_datasets]
+    valid_datasets = set(d_cl) | set(d_fo)| {"all"}
+    invalid = [dataset for dataset in args.datasets_list if dataset not in valid_datasets]
     if invalid:
         raise ValueError(f"Unknown dataset(s): {invalid}")
 
     if args.task == "imputation": #=UPSTREAM============================================================================
 
         # Check if all args.datasets belong to classification or forecasting datasets
-        if all(dataset in d_cl for dataset in args.datasets):
-            final_task = "classification"
-        elif all(dataset in d_fo for dataset in args.datasets):
-            final_task = "forecasting"
-        else:
-            raise ValueError("Datasets cannot mix classification and forecasting datasets.")
+        #if all(dataset in d_cl for dataset in args.datasets):
+        #    final_task = "classification"
+        #elif all(dataset in d_fo for dataset in args.datasets_list):
+        #    final_task = "forecasting"
+        #else:
+        #    raise ValueError("Datasets cannot mix classification and forecasting datasets.")
 
-        if final_task == "forecasting":  #=UPSTREAM-FORECATING==========================================================
+        if args.datasets_type == "forecasting":  #=UPSTREAM-FORECATING==========================================================
             # launch the evaluation
             bench = Benchmark()
             bench.eval_downstream_forecasting(forecasters=[],
                                               horizon=args.horizon,
                                               algorithms=args.imp_algs,  # utils.list_of_top_cleanimp_for_algorithms(),
-                                              datasets=args.datasets,
+                                              datasets=args.datasets_list,
                                               # "utils.get_dataset_forecasters(directory='datasets/forecast/'),
                                               patterns=args.patterns,
                                               x_axis=args.miss_rate,
@@ -142,7 +152,7 @@ if __name__ == "__main__":
             bench = Benchmark()
             bench.eval_downstream_classification(classifiers=[],  # for all: utils.list_of_classifiers(),
                                                  algorithms=args.imp_algs,  # for all: utils.list_of_algorithms()
-                                                 datasets=args.datasets,  # for all: utils.get_datasets_classifiers(),
+                                                 datasets=args.datasets_list,  # for all: utils.get_datasets_classifiers(),
                                                  patterns=args.patterns,
                                                  x_axis=args.miss_rate,
                                                  metrics=args.metrics,
@@ -169,7 +179,7 @@ if __name__ == "__main__":
         bench.eval_downstream_forecasting(forecasters=args.downstream_mod,
                                           horizon=args.horizon,
                                           algorithms=args.imp_algs,  # utils.list_of_top_cleanimp_for_algorithms(),
-                                          datasets=args.datasets,
+                                          datasets=args.datasets_list,
                                           # "utils.get_dataset_forecasters(directory='datasets/forecast/'),
                                           patterns=args.patterns,
                                           x_axis=args.miss_rate,
@@ -194,7 +204,7 @@ if __name__ == "__main__":
         bench = Benchmark()
         bench.eval_downstream_classification(classifiers=args.downstream_mod,  # for all: utils.list_of_classifiers(),
                                              algorithms=args.imp_algs,  # for all: utils.list_of_algorithms()
-                                             datasets=args.datasets,  # for all: utils.get_datasets_classifiers(),
+                                             datasets=args.datasets_list,  # for all: utils.get_datasets_classifiers(),
                                              patterns=args.patterns,
                                              x_axis=args.miss_rate,
                                              metrics=args.metrics,

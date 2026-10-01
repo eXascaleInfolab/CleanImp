@@ -2592,7 +2592,6 @@ class Benchmark:
             import torch
         except ImportError:
             torch = None
-        print("suki >1")
         run_storage = []
         if not isinstance(algorithms, list):
             raise TypeError(f"'algorithms' must be a list, but got {type(algorithms).__name__}")

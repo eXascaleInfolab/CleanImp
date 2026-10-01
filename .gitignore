@@ -56,9 +56,11 @@ docs/to_run.txt
 docs/cla_up.xlsx
 docs/verify_data.py
 docs/cla_down.xlsx
+docs/for_down.xlsx
 docs/for_up.xlsx
 docs/verification_downstream.csv
 docs/verification_forecasting_upstream.csv
+docs/verification_forecasting_downstream.csv
 
 
 # Except forecasting datasets
