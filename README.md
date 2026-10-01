@@ -18,7 +18,7 @@ All experimental results are available through this interactive benchmark explor
 
 ------------------------------------------------------------------------
 
-[Configurations](#3-list-of-techniques-and-datasets) | [Parameters](#4-parameters-and-options) | [Imputation Experiments](#5-imputation-experiments) | [Forecasting Experiments](#6-forecasting-experiments) | [Classification Experiments](#7-classification-experiments)
+[Techniques and Datasets](#3-list-of-techniques-and-datasets) | [Benchmark Parameterization](#4-benchmark-parameterization) | [Benchmark Execution](#5-benchmark-execution)
 
 ------------------------------------------------------------------------
 
@@ -144,10 +144,8 @@ cleanimp/
 ------------------------------------------------------------------------
 
 
-## 4. Parameters and Options
+## 4. Benchmark Parameterization
 
-
-### Parameters
 The list of the runner’s parameters is the following:
 
 | Possible Arguments | Values                                                                          | Description                                                                                      |
@@ -170,12 +168,11 @@ The list of the runner’s parameters is the following:
 
 - **NOTE**: The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
 
+<br>
 
-## 5. Imputation Experiments
+## 5. Benchmark Execution 
 
-CleanImp supports **32 imputation models** spanning Matrix Completion, Pattern Search, Machine Learning, Deep Learning, and LLM-based approaches.
-
-### Experiments Examples
+## 5.1 Imputation Experiments
 
 - To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
 
@@ -240,12 +237,10 @@ python cleanimp_bench.py \
 <br />
 
 
+------------------------------------------------------------------------
 
-## 6. Forecasting Experiments
+## 5.2 Forecasting Experiments
 
-CleanImp supports **17 forecasting models** spanning Statistical, Machine Learning, Deep Learning, and LLM-based approaches.
-
-### Experiments Examples
 
 - To produce the impact of imputation on a forecasting model (chronos) with
 one forecasting dataset (Paris),
@@ -311,12 +306,8 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-## 7. Classification Experiments
+## 5.3 Classification Experiments
 
-CleanImp supports **16 classification models** spanning Statistical, Machine Learning, and Deep Learning-based approaches.
-
-
-### Experiments Examples
 
 - To produce the impact of imputation on a classification model (arsenal) with
 one classification dataset (Computers),
