@@ -1,1 +1,2 @@
-NATE's LOG::::: time_downstream=235876.81531906128 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8 - (Computers) for MICE inside arsenal
+NATE's LOG::::: time_downstream=41771.66223526001 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1 - (Car) for MeanImpute inside arsenal
+NATE's LOG::::: time_downstream=43295.66955566406 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8 - (Car) for MeanImpute inside arsenal

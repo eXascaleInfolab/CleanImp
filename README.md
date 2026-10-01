@@ -250,7 +250,7 @@ python cleanimp_bench.py \
 ### 5.2 Forecasting Experiments
 
 
-- To produce the impact of imputation on a forecasting model (chronos) with
+- To produce the impact of imputation with a forecasting model (chronos) with
 one forecasting dataset (Paris),
 one imputation algorithm (SAITS),
 one missingness pattern (MCAR),
@@ -272,7 +272,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation on a forecasting model (chronos) with
+- To produce the impact of imputation with a forecasting model (chronos) with
 two imputation algorithms (MICE and MeanImpute),
 two datasets (Paris and ILI),
 two missingness patterns (MCAR and SeqN),
@@ -294,7 +294,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation on a forecasting model with all possible configurations,
+- To produce the impact of imputation with a forecasting model with all possible configurations,
 replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
@@ -317,7 +317,7 @@ python cleanimp_bench.py \
 ### 5.3 Classification Experiments
 
 
-- To produce the impact of imputation on a classification model (arsenal) with
+- To produce the impact of imputation with a classification model (arsenal) with
 one classification dataset (Computers),
 one imputation algorithm (GRIN),
 one missingness pattern (MCAR),
@@ -337,7 +337,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation on a classification model (arsenal) with
+- To produce the impact of imputation with a classification model (arsenal) with
 two classification datasets (Computers and Car),
 two imputation algorithms (MeanImpute and MICE),
 two missingness patterns (MCAR and SeqN),
@@ -357,7 +357,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation on a classification model with all possible configurations,
+- To produce the impact of imputation with a classification model with all possible configurations,
 replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 

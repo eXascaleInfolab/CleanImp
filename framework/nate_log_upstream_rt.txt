@@ -1,1 +1,2 @@
-NATE's LOG::::: cardinality_imputation=3.1630992889404297 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Car) for MeanImpute
+NATE's LOG::::: cardinality_imputation=54.76856231689453 / [imputation_by_class=True - contamination_by_class=True] - [x=0.8] - (Car) for MeanImpute
+NATE's LOG::::: cardinality_imputation=118.11280250549316 / [imputation_by_class=True - contamination_by_class=True] - [x=0.1] - (Car) for MICE
