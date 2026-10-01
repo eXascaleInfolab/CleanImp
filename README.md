@@ -50,13 +50,14 @@ framework/
 
 ------------------------------------------------------------------------
 
-[Techniques and Datasets](#2-list-of-techniques-and-datasets) | [Benchmark Parameterization](#3-benchmark-parameterization) | [Prerequisites](#4-prerequisites) | [Benchmark Execution](#5-benchmark-execution)
+[Techniques and Datasets](#2-techniques-and-datasets) | [Benchmark Parameterization](#3-benchmark-parameterization) | [Prerequisites](#4-prerequisites) | [Benchmark Execution](#5-benchmark-execution)
 
 ------------------------------------------------------------------------
 
+<br>
 
 
-## 2. List of Techniques and Datasets
+## 2. Techniques and Datasets
 
 The tables below provide a compact overview of the options available when configuring the benchmark.
 
@@ -126,6 +127,7 @@ The datasets can be found in the following directory: https://github.com/eXascal
 
 ------------------------------------------------------------------------
 
+<br>
 
 ## 3. Benchmark Parameterization
 
@@ -151,6 +153,7 @@ The list of the runner’s parameters is the following:
 
 ------------------------------------------------------------------------
 
+<br>
 
 ## 4. Prerequisites
 
