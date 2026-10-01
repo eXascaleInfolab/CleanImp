@@ -1,97 +1,11 @@
-const $=id=>document.getElementById(id);
-let DB;
+const $=id=>document.getElementById(id); let DB;
 const uniq=a=>[...new Set(a.filter(v=>v!==null&&v!==undefined&&v!==""))].sort((a,b)=>String(a).localeCompare(String(b)));
-
-function classifierActive(){
-  return $("experiment").value==="Downstream" && $("task").value==="Classification";
-}
-function setOptions(id,vals,preserve=true){
-  const e=$(id),old=e.value;
-  e.innerHTML=vals.map(v=>`<option value="${v}">${v}</option>`).join("");
-  e.value=(preserve&&vals.includes(old))?old:(vals[0]||"");
-}
-function rebuild(){
-  setOptions("experiment",uniq(DB.results.map(r=>r.experiment)),true);
-
-  let rows=DB.results.filter(r=>r.experiment===$("experiment").value);
-  setOptions("task",uniq(rows.map(r=>r.task)),true);
-
-  rows=rows.filter(r=>r.task===$("task").value);
-  setOptions("metric",uniq(rows.map(r=>r.metric)),true);
-
-  $("classifier-wrap").classList.toggle("hidden",!classifierActive());
-  if(classifierActive()){
-    setOptions("classifier",uniq(rows.map(r=>r.classifier)),true);
-    rows=rows.filter(r=>r.classifier===$("classifier").value);
-  } else {
-    $("classifier").innerHTML="";
-  }
-
-  rows=rows.filter(r=>r.metric===$("metric").value);
-  setOptions("pattern",uniq(rows.map(r=>r.pattern)),true);
-  rows=rows.filter(r=>r.pattern===$("pattern").value);
-
-  setOptions("dataset",uniq(rows.map(r=>r.dataset)),true);
-  rows=rows.filter(r=>r.dataset===$("dataset").value);
-
-  buildAlgos(rows);
-  render();
-}
-function buildAlgos(rows){
-  const old=new Set([...$("algos").querySelectorAll("input:checked")].map(x=>x.value));
-  const vals=uniq(rows.map(r=>r.algo));
-  $("algos").innerHTML=vals.map(v=>`<label><input type="checkbox" value="${v}" ${!old.size||old.has(v)?"checked":""}> ${v}</label>`).join("");
-  $("algos").querySelectorAll("input").forEach(x=>x.onchange=render);
-}
-function rowsForView(){
-  let rows=DB.results.filter(r=>
-    r.experiment===$("experiment").value &&
-    r.task===$("task").value &&
-    r.metric===$("metric").value &&
-    r.pattern===$("pattern").value &&
-    r.dataset===$("dataset").value
-  );
-  if(classifierActive()) rows=rows.filter(r=>r.classifier===$("classifier").value);
-  return rows;
-}
-function grouped(rows){
-  const chosen=new Set([...$("algos").querySelectorAll("input:checked")].map(x=>x.value));
-  const map=new Map();
-  rows.filter(r=>chosen.has(r.algo)).forEach(r=>{
-    if(!map.has(r.algo)) map.set(r.algo,[]);
-    map.get(r.algo).push(r);
-  });
-  return [...map.entries()].map(([algo,rs])=>({algo,rs:rs.sort((a,b)=>a.rate-b.rate)}));
-}
-function fmt(v){return v===null||v===undefined?"—":Number(v).toFixed(4)}
-function renderTable(series){
-  const rates=uniq(series.flatMap(s=>s.rs.map(r=>r.rate))).map(Number).sort((a,b)=>a-b);
-  const value=(s,rate)=>s.rs.find(r=>r.rate===rate)?.value;
-  $("values-table").innerHTML=`<thead><tr><th>Algorithm</th>${rates.map(r=>`<th>${r}</th>`).join("")}</tr></thead>`+
-    `<tbody>${series.map(s=>`<tr><td>${s.algo}</td>${rates.map(rate=>{const v=value(s,rate);return `<td class="${v==null?"missing":""}">${fmt(v)}</td>`}).join("")}</tr>`).join("")}</tbody>`;
-  $("tablemeta").textContent=`${series.length} selected algorithm${series.length===1?"":"s"} · ${$("metric").value}`;
-}
-function render(){
-  const series=grouped(rowsForView()),metric=$("metric").value;
-  const traces=series.map(s=>({x:s.rs.map(r=>r.rate),y:s.rs.map(r=>r.value),name:s.algo,type:"scatter",mode:"lines+markers",connectgaps:false,
-    hovertemplate:`${s.algo}<br>Rate: %{x}<br>${metric}: %{y:.4f}<extra></extra>`}));
-  Plotly.react("plot",traces,{margin:{l:72,r:28,t:30,b:78},
-    xaxis:{title:{text:"Missing rate",font:{size:16}},tickfont:{size:13}},
-    yaxis:{title:{text:metric,font:{size:16}},tickfont:{size:13}},
-    legend:{orientation:"h",y:-.20,font:{size:14},itemsizing:"constant"},
-    hovermode:"closest",paper_bgcolor:"#fff",plot_bgcolor:"#fff"},
-    {responsive:true,displaylogo:false});
-  $("title").textContent=`${$("dataset").value} · ${$("pattern").value}`;
-  const clf=classifierActive()?` · ${$("classifier").value}`:"";
-  $("meta").textContent=`${series.length} selected algorithm${series.length===1?"":"s"} · ${$("experiment").value} / ${$("task").value}${clf} · ${metric}`;
-  renderTable(series);
-}
-async function start(){
-  DB=await fetch("data.json").then(r=>r.json());
-  ["experiment","task","metric","classifier","pattern","dataset"].forEach(id=>$(id).onchange=rebuild);
-  setOptions("experiment",uniq(DB.results.map(r=>r.experiment)),false);
-  rebuild();
-  $("all").onclick=()=>{$("algos").querySelectorAll("input").forEach(x=>x.checked=true);render()};
-  $("none").onclick=()=>{$("algos").querySelectorAll("input").forEach(x=>x.checked=false);render()};
-}
-start();
+function isUpstream(){return $("experiment").value==="Upstream"} function classifierActive(){return $("experiment").value==="Downstream"&&$("task").value==="Classification"}
+function setOptions(id,vals,preserve=true){const e=$(id),old=e.value;e.innerHTML=vals.map(v=>`<option value="${v}">${v}</option>`).join("");e.value=(preserve&&vals.includes(old))?old:(vals[0]||"")}
+function rebuild(){setOptions("experiment",uniq(DB.results.map(r=>r.experiment)),true);let rows=DB.results.filter(r=>r.experiment===$("experiment").value);setOptions("task",uniq(rows.map(r=>r.task)),true);rows=rows.filter(r=>r.task===$("task").value);setOptions("metric",uniq(rows.map(r=>r.metric)),true);rows=rows.filter(r=>r.metric===$("metric").value);$("classifier-wrap").classList.toggle("hidden",!classifierActive());if(classifierActive()){setOptions("classifier",uniq(rows.map(r=>r.classifier)),true);rows=rows.filter(r=>r.classifier===$("classifier").value)}else $("classifier").innerHTML="";setOptions("pattern",uniq(rows.map(r=>r.pattern)),true);rows=rows.filter(r=>r.pattern===$("pattern").value);setOptions("dataset",uniq(rows.map(r=>r.dataset)),true);rows=rows.filter(r=>r.dataset===$("dataset").value);$("family-wrap").classList.toggle("hidden",!isUpstream());if(isUpstream()){const fams=uniq(rows.map(r=>r.family).filter(f=>f!=="Baseline"));setOptions("family",fams,true);buildAlgos(rows.filter(r=>r.family===$("family").value||r.algo==="MeanImpute"))}else{$("family").innerHTML="";buildAlgos(rows)}render()}
+function buildAlgos(rows){const old=new Set([...$("algos").querySelectorAll("input:checked")].map(x=>x.value));const vals=uniq(rows.map(r=>r.algo));vals.sort((a,b)=>a==="MeanImpute"?-1:b==="MeanImpute"?1:String(a).localeCompare(String(b)));$("algos").innerHTML=vals.map(v=>`<label><input type="checkbox" value="${v}" ${!old.size||old.has(v)?"checked":""}> ${v}</label>`).join("");$("algos").querySelectorAll("input").forEach(x=>x.onchange=render)}
+function rowsForView(){let rows=DB.results.filter(r=>r.experiment===$("experiment").value&&r.task===$("task").value&&r.metric===$("metric").value&&r.pattern===$("pattern").value&&r.dataset===$("dataset").value);if(classifierActive())rows=rows.filter(r=>r.classifier===$("classifier").value);if(isUpstream())rows=rows.filter(r=>r.family===$("family").value||r.algo==="MeanImpute");return rows}
+function grouped(rows){const chosen=new Set([...$("algos").querySelectorAll("input:checked")].map(x=>x.value)),map=new Map();rows.filter(r=>chosen.has(r.algo)).forEach(r=>{if(!map.has(r.algo))map.set(r.algo,[]);map.get(r.algo).push(r)});return [...map.entries()].map(([algo,rs])=>({algo,rs:rs.sort((a,b)=>a.rate-b.rate)}))} function fmt(v){return v==null?"—":Number(v).toFixed(4)}
+function renderTable(series){const rates=uniq(series.flatMap(s=>s.rs.map(r=>r.rate))).map(Number).sort((a,b)=>a-b),value=(s,rate)=>s.rs.find(r=>r.rate===rate)?.value;$("values-table").innerHTML=`<thead><tr><th>Algorithm</th>${rates.map(r=>`<th>${r}</th>`).join("")}</tr></thead><tbody>${series.map(s=>`<tr><td>${s.algo}</td>${rates.map(rate=>{const v=value(s,rate);return `<td class="${v==null?"missing":""}">${fmt(v)}</td>`}).join("")}</tr>`).join("")}</tbody>`;$("tablemeta").textContent=`${series.length} selected algorithm${series.length===1?"":"s"} · ${$("metric").value}`}
+function render(){const series=grouped(rowsForView()),metric=$("metric").value,traces=series.map(s=>({x:s.rs.map(r=>r.rate),y:s.rs.map(r=>r.value),name:s.algo,type:"scatter",mode:"lines+markers",connectgaps:false,hovertemplate:`${s.algo}<br>Rate: %{x}<br>${metric}: %{y:.4f}<extra></extra>`}));Plotly.react("plot",traces,{margin:{l:72,r:28,t:30,b:78},xaxis:{title:{text:"Missing rate",font:{size:16}},tickfont:{size:13}},yaxis:{title:{text:metric,font:{size:16}},tickfont:{size:13}},legend:{orientation:"h",y:-.20,font:{size:14},itemsizing:"constant"},hovermode:"closest",paper_bgcolor:"#fff",plot_bgcolor:"#fff"},{responsive:true,displaylogo:false});$("title").textContent=`${$("dataset").value} · ${$("pattern").value}`;const clf=classifierActive()?` · ${$("classifier").value}`:"",fam=isUpstream()?` · ${$("family").value}`:"";$("meta").textContent=`${series.length} selected algorithm${series.length===1?"":"s"} · ${$("experiment").value} / ${$("task").value}${clf}${fam} · ${metric}`;renderTable(series)}
+async function start(){DB=await fetch("data.json").then(r=>r.json());["experiment","task","metric","classifier","pattern","dataset","family"].forEach(id=>$(id).onchange=rebuild);setOptions("experiment",uniq(DB.results.map(r=>r.experiment)),false);rebuild();$("all").onclick=()=>{$("algos").querySelectorAll("input").forEach(x=>x.checked=true);render()};$("none").onclick=()=>{$("algos").querySelectorAll("input").forEach(x=>x.checked=false);render()}} start();
