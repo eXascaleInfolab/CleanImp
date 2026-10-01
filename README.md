@@ -14,14 +14,16 @@ Time Series → Contamination → Imputation → Downstream Model → Evaluation
 
 All experimental results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
+<br>
 
 ------------------------------------------------------------------------
 
-## 2. Datasets
-The complete list of available forecasting and classification datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets
+[Introduction](#1-introduction) · [Prerequisites](#2-prerequisites) · [Configurations](#3-configurations) · [Parameters and Options](#4-parameters-and-options) · [Imputation Experiments](#5-imputation-experiments) · [Forecasting Experiments](#6-forecasting-experiments) · [Classification Experiments](#7-classification-experiments)
+
+------------------------------------------------------------------------
 
 
-## 3. Prerequisites
+## 2. Prerequisites
 
 CleanImp is implemented in **Python** and relies on **ImputeGAP** for time series contamination and imputation. Please start by cloning the GitHub repository:
 
@@ -37,12 +39,69 @@ source cleanimp_install.sh
 cd framework/
 ```
 
-
 ------------------------------------------------------------------------
 
-## 4. Configurations
+## 3. Configurations
 
-Here is the list of configurations for the benchmarks: you can find the list of all models and configurations on this page: https://github.com/eXascaleInfolab/CleanImp/tree/main/configurations
+This file provides a compact overview of the options available when configuring a CleanImp benchmark.
+
+## Imputation Options
+
+| Imputation Algorithms |               |            |            |                |
+|-----------------------|---------------|------------|------------|----------------|
+| `MOMENT`              | `NuwaTS`      | `GPT4TS`   | `MissNet`  | `MPIN`         |
+| `BayOTIDE`            | `BitGraph`    | `TimesNet` | `SAITS`    | `PriSTI`       |
+| `GRIN`                | `CSDI`        | `HKMFT`    | `DeepMVI`  | `MRNN`         |
+| `BRITS`               | `GAIN`        | `CDRec`    | `TRMF`     | `GROUSE`       |
+| `ROSL`                | `SoftImpute`  | `SVT`      | `SPIRIT`   | `IterativeSVD` |
+| `TKCM`                | `STMVL`       | `DynaMMo`  | `IIM`      | `XGBoost`      |
+| `MICE`                | `MissForest`  |            |            |                |
+
+## Forecasting Options
+
+| Forecasting Models |                  |              |                |           |
+|--------------------|------------------|--------------|----------------|-----------|
+| `Chronos`          | `MOMENT`         | `PatchTST`   | `Transformer`  | `LTSF`    |
+| `LSTM`             | `DeepAR`         | `DLinear`    | `N-BEATS`      | `NLinear` |
+| `Holt-Winters`     | `Exp. Smoothing` | `AutoARIMA`  | `Croston`      | `XGBoost` |
+| `LightGBM`         | `Prophet`        |              |                |           |
+
+
+| Forecasting Datasets |                   |            |              |                |
+|----------------------|-------------------|------------|--------------|----------------|
+| `czelan`             | `electricity`     | `etth1`    |  `etth2`     | `ili`          |
+| `nn5`                | `nyse`            | `wike2000` | `wind_speed` | `airq`         |
+| `atm`                | `beijing_traffic` | `climate`  | `economics`  | `human_access` |
+| `paris`              |                   |            |              |                |
+The complete list of available forecasting datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/forecast
+
+## Classification Options
+
+| Classification Models |             |          |            |             |
+|-----------------------|-------------|----------|------------|-------------|
+| `KNN`                 | `Catch22`   | `CNN`    | `LSTM`     | `TSF`       |
+| `CBOSS`               | `STC`       | `WEASEL` | `ShapeDTW` | `TSFresh`   |
+| `ProxStump`           | `CIF`       | `ITDE`   | `Arsenal`  | `Signature` |
+| `SVC`                 |             |          |            |             |
+
+| Classification Datasets    |                                  |                                 |                                |                               |
+|----------------------------|----------------------------------|---------------------------------|--------------------------------|-------------------------------|
+| `Adiac`                    | `BirdChicken`                    | `Fish`                          | `InsectEPGRegularTrain`        | `Rock`                        |
+| `OSULeaf`                  | `SwedishLeaf`                    | `Worms`                         | `WormsTwoClass`                | `Herring`                     |
+| `Ham`                      | `EthanolLevel`                   | `Beef`                          | `Meat`                         | `OliveOil`                    |
+| `Strawberry`               | `Wine`                           | `Car`                           | `FaceFour`                     | `FacesUCR`                    |
+| `ArrowHead`                | `CinCECGTorso`                   | `Colposcopy`                    | `DistalPhalanxOutlineAgeGroup` | `DistalPhalanxOutlineCorrect` |
+| `DistalPhalanxTW`          | `ECGFiveDays`                    | `EOGHorizontalSignal`           | `EOGVerticalSignal`            | `MedicalImages`               |
+| `PhalangesOutlinesCorrect` | `ProximalPhalanxOutlineAgeGroup` | `ProximalPhalanxOutlineCorrect` | `SemgHandGenderCh2`            | `SemgHandMovementCh2`         |
+| `SemgHandSubjectCh2`       | `TwoLeadECG`                     | `MoteStrain`                    | `Lightning2`                   | `Lightning7`                  |
+| `Earthquakes`              | `Computers`                      | `LargeKitchenAppliances`        | `FreezerRegularTrain`          | `FreezerSmallTrain`           |
+| `PowerCons`                | `RefrigerationDevices`           | `ScreenType`                    | `SmallKitchenAppliances`       | `SonyAIBORobotSurface1`       |
+| `GunPoint`                 | `GunPointAgeSpan`                | `GunPointMaleVersusFemale`      | `GunPointOldVersusYoung`       | `CricketX`                    |
+| `Haptics`                  | `InlineSkate`                    | `ToeSegmentation1`              | `ToeSegmentation2`             | `Yoga`                        |
+| `SharePriceIncrease`       | `CBF`                            | `SyntheticControl`              | `Trace`                        | `ShapeletSim`                 |
+| `TwoPatterns`              | `UMD`                            | `Wafer`                         |                                |                               |
+The complete list of available classification datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/classify
+
 
 ## Output directory
 
@@ -87,46 +146,36 @@ cleanimp/
 
 ------------------------------------------------------------------------
 
-## 5. Imputation Experiments
+## 4. Parameters and Options
 
-CleanImp supports **32 imputation models** spanning Matrix Completion, Pattern Search, Machine Learning, Deep Learning, and LLM-based approaches.
 
 ### Parameters
 The list of the runner’s parameters is the following:
 
-### 🩹 Imputation
-
-| Parameter         | Task      | Default       | Description                                   |
-|:------------------|:----------|:--------------|:----------------------------------------------|
-| `--task`          | Upstream  | `imputation`  | load the correct setup for the task           |
-| `--imp_algs`      | Upstream  | `SAITS`       | list of imputation algorithms - `all` for all |
-| `--datasets_type` | Upstream  | `forecasting` | load the speciality of the task datasets      |
-| `--datasets_list` | Upstream  | `paris`       | list of datasets - `all` for all              |
-| `--patterns`      | Upstream  | `mcar`        | list of patterns - `all` for all              |
-| `--miss_rate`     | Upstream  | `20%`         | contamination rate - `all` for all            |
-
-
-### ⚙️ Optional
-
-| Parameter     | Task     | Default | Description                                       |
-|:--------------|:---------| :--- |:--------------------------------------------------|
-| `--caching`   | Optional | `False` | caching the imputed matrix and downstream results |
-| `--metrics`   | Optional | `RMSE` | list of metrics - `all` for all                   |
-| `--plots`     | Optional | `True` | generate plots                                    |
-| `--verbose`   | Optional | `False` | display the detail of execution                   |
+| Parameters/Arguments | Imputation                                                                                      | Forecasting                                  | Classification                                     | Description                                                                                       |
+|:---------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------|:---------------------------------------------------|:--------------------------------------------------------------------------------------------------|
+| `--task`             | `imputation`                                                                                    | `forecasting`                                | `classification`                                   | Selects the benchmark task to execute.                                                            |
+| `--imp_algs`         | [Imputation Algorithms](#imputation-options)                                                    | [Imputation Algorithms](#imputation-options) | [Imputation Algorithms](#imputation-options)       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.        |
+| `--datasets_type`    | `forecasting`, `classification`                                                                 | `forecasting`                                | `classification`                                   | Selects the dataset category used for the benchmark.                                              |
+| `--datasets_list`    | [Forecasting Datasets](#forecasting-options) [Classification Datasets](#classification-options) | [Forecasting Datasets](#forecasting-options) | [Classification Datasets](#classification-options) | Selects one or more datasets for the selected task. Use `all` to include every available dataset. |
+| `--patterns`         | `mcar`, `seqn`, `blks`                                                                          | `mcar`, `seqn`, `blks`                       | `mcar`, `seqn`, `blks`                             | Selects one or more missingness patterns. Use `all` to include every available pattern.           |
+| `--miss_rate`        | `0.1` -> `0.8`                                                                                  | `0.1` -> `0.8`                               | `0.1` -> `0.8`                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                 |
+| `--metrics`          | `RMSE`, `MAE`, `MI`, `CORRELATION`                                                              | `SMAPE`, `MSE`, `MAE`                        | `F1`, `ACCURACY`, `RECALL`                         | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric.  |
+| `--downstream_mod`   | —                                                                                               | [Forecasting Models](#forecasting-options)   | [Classification Models](#classification-options)   | Selects the downstream model used to measure the impact of imputation.                            |
+| `--horizon`          | `12`                                                                                            | `12`                                         | —                                                  | Sets the forecasting horizon as the number of future timestamps.                                  |
+| `--caching`          | `True`, `False`                                                                                 | `True`, `False`                              | `True`, `False`                                    | Enables or disables caching of intermediate results to avoid repeated computations.               |
+| `--plots`            | `True`, `False`                                                                                 | `True`, `False`                              | `True`, `False`                                    | Enables or disables benchmark plot generation.                                                    |
+| `--verbose`          | `True`, `False`                                                                                 | `True`, `False`                              | `True`, `False`                                    | Enables or disables detailed execution output.                                                    |
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
+## 5. Imputation Experiments
+
+CleanImp supports **32 imputation models** spanning Matrix Completion, Pattern Search, Machine Learning, Deep Learning, and LLM-based approaches.
+
 ### Experiments Examples
 
-- To produce the imputation results with 
-one forecasting dataset (Paris),
-one imputation algorithm (SAITS),
-one missingness pattern (MCAR),
-a missing rate (20%),
-all upstream metrics,
-and a future prediction horizon (12 timestamps),
-run the following command:
+- To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -136,20 +185,14 @@ python cleanimp_bench.py \
     --datasets_list paris \
     --patterns mcar \
     --miss_rate 0.2 \
-    --metrics all \
+    --metrics RMSE \
     --horizon 12
 ```
 After running the benchmark, the generated results can be found in: `./imputegap_assets/benchmark/[unique_bench_name]/`
 
 <br />
 
-- To produce the imputation results with
-two imputation algorithms (MICE and MeanImpute),
-two datasets (Paris and ILI),
-two missingness patterns (MCAR and SeqN),
-two missingness rates (0.1 and 0.8),
-and a future prediction horizon (24 timestamps),
-run the following command:
+-To produce the imputation results with two imputation algorithms (MICE and MeanImpute), two datasets (Paris and ILI), two missingness patterns (MCAR and SeqN), two missingness rates (0.1 and 0.8), and a forecasting horizon (24 timestamps), run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -164,8 +207,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the imputation results with all possible configurations,
-replace the parameter values with `all`:
+- To produce the imputation results with all possible configurations, replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 
@@ -201,16 +243,6 @@ python cleanimp_bench.py \
 ## 6. Forecasting Experiments
 
 CleanImp supports **17 forecasting models** spanning Statistical, Machine Learning, Deep Learning, and LLM-based approaches.
-
-### Parameters
-The list of the runner’s parameters is the following:
-
-| Parameter          | Task          | Default        | Description                   |
-|:-------------------|:--------------|:---------------|:------------------------------|
-| `--task`           | Forecasting   | `forecasting`  | load the correct setup for the task  |
-| `--downstream_mod` | Forecasting   | `chronos`      | forecasting model             |
-| `--horizon`        | Forecasting   | `12`           | horizon value for forecasting |
-
 
 ### Experiments Examples
 
@@ -281,14 +313,6 @@ python cleanimp_bench.py \
 ## 7. Classification Experiments
 
 CleanImp supports **16 classification models** spanning Statistical, Machine Learning, and Deep Learning-based approaches.
-
-### Parameters
-The list of the runner’s parameters is the following:
-
-| Parameter          | Task             | Default            | Description          |
-|:-------------------|:-----------------|:-------------------|:---------------------|
-| `--task`           | Classification   | `classification`   | load the correct setup for the task  |
-| `--downstream_mod` | Classification   | `arsenal`          | classification model |
 
 
 ### Experiments Examples
