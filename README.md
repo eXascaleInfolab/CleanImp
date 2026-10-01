@@ -230,7 +230,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To adapt the experiment for classification, change the task tag and replace the dataset list with classification datasets:
+- To adapt the experiment to classification datasets, change the task tag and replace the dataset list with classification datasets:
 
 ``` bash
 python cleanimp_bench.py \
