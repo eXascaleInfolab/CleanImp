@@ -256,7 +256,7 @@ one imputation algorithm (SAITS),
 one missingness pattern (MCAR),
 one missing rate (20%),
 all downstream metrics,
-and a future prediction horizon (12 timestamps),
+and a forecasting horizon (12 timestamps),
 run the following command:
 
 ``` bash
@@ -278,7 +278,7 @@ two datasets (Paris and ILI),
 two missingness patterns (MCAR and SeqN),
 two missingness rates (0.1 and 0.8),
 all downstream metrics,
-and a future prediction horizon (24 timestamps),
+and a forecasting horizon (24 timestamps),
 run the following command:
 
 ``` bash
