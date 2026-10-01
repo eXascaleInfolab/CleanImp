@@ -50,30 +50,13 @@ framework/
 
 ------------------------------------------------------------------------
 
-[Techniques and Datasets](#3-list-of-techniques-and-datasets) | [Benchmark Parameterization](#4-benchmark-parameterization) | [Benchmark Execution](#5-benchmark-execution)
+[Techniques and Datasets](#2-list-of-techniques-and-datasets) | [Benchmark Parameterization](#3-benchmark-parameterization) | [Prerequisites](#4-prerequisites) | [Benchmark Execution](#5-benchmark-execution)
 
 ------------------------------------------------------------------------
 
 
-## 2. Prerequisites
 
-CleanImp is implemented in **Python** and relies on **ImputeGAP** for time series contamination and imputation. Please start by cloning the GitHub repository:
-
-``` bash
-git clone https://github.com/eXascaleInfolab/CleanImp
-cd CleanImp/
-```
-
-To set up your environment and prepare the development installation for C++, please run this script of installation:
-
-``` bash
-source cleanimp_install.sh
-cd framework/
-```
-
-------------------------------------------------------------------------
-
-## 3. List of Techniques and Datasets
+## 2. List of Techniques and Datasets
 
 The tables below provide a compact overview of the options available when configuring the benchmark.
 
@@ -144,7 +127,7 @@ The datasets can be found in the following directory: https://github.com/eXascal
 ------------------------------------------------------------------------
 
 
-## 4. Benchmark Parameterization
+## 3. Benchmark Parameterization
 
 The list of the runner’s parameters is the following:
 
@@ -166,6 +149,26 @@ The list of the runner’s parameters is the following:
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
+------------------------------------------------------------------------
+
+
+## 4. Prerequisites
+
+CleanImp is implemented in **Python** and relies on **ImputeGAP** for time series contamination and imputation. Please start by cloning the GitHub repository:
+
+``` bash
+git clone https://github.com/eXascaleInfolab/CleanImp
+cd CleanImp/
+```
+
+To set up your environment and prepare the development installation for C++, please run this script of installation:
+
+``` bash
+source cleanimp_install.sh
+cd framework/
+```
+
+------------------------------------------------------------------------
 
 <br>
 
