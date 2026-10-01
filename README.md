@@ -144,9 +144,9 @@ The list of the runner’s parameters is the following:
 | `--metrics`           | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
 | `--downstream_mod`    | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
 | `--horizon`           | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps.                                 |
-| `--caching`           | `{True, False}`                                                                 | Enables or disables caching of intermediate results to avoid repeated computations.              |
-| `--plots`             | `{True, False}`                                                                 | Enables or disables benchmark plot generation.                                                   |
-| `--verbose`           | `{True, False}`                                                                 | Enables or disables detailed execution output.                                                   |
+| `--caching`           | `--no-caching`                                                                  | Enables or disables caching of intermediate results to avoid repeated computations.              |
+| `--plots`             | `--no-plots`                                                                    | Enables or disables benchmark plot generation.                                                   |
+| `--verbose`           | `--no-verbose`                                                                  | Enables or disables detailed execution output.                                                   |
 
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
