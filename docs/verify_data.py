@@ -54,7 +54,23 @@ def first_sheet(path):
 
 def upstream(path):
  rows=first_sheet(path); h=rows[0]
- cols={str(h[c]).strip():c for c in sorted(h) if c>=5 and h[c] is not None}
+
+ # Upstream Classification and Forecasting do not have exactly the same
+ # layout. Detect metadata columns by header name instead of assuming that
+ # algorithms always start in column E.
+ metadata={"dataset","datasets","pattern","patterns","rate","rates","model","models"}
+ cols={
+  str(h[c]).strip():c
+  for c in sorted(h)
+  if h[c] is not None
+  and str(h[c]).strip()
+  and str(h[c]).strip().lower() not in metadata
+ }
+
+ # SPIRIT is intentionally excluded from the Classification dashboard.
+ if path.name=="cla_up.xlsx":
+  cols={alg:c for alg,c in cols.items() if alg!="SPIRIT"}
+
  out={}
  for r in rows[1:]:
   ds,pat,rate=r.get(1),r.get(2),norm(r.get(3))

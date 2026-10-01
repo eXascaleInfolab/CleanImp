@@ -1,6 +1,6 @@
 # CleanImp Benchmark
 
-## 1. Introduction
+## 1. Overview
 
 **CleanImp** is an end-to-end benchmark for evaluating the impact of time series imputation on downstream tasks. The technical details are
 described in the paper **CleanImp: Benchmarking the Impact of Time Series Imputation on Downstream Quality [Experiment, Analysis & Benchmark]** (under review for PVLDB 27).
@@ -14,6 +14,39 @@ Time Series → Contamination → Imputation → Downstream Model → Evaluation
 
 All results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
+### Output directory
+
+Each benchmark execution creates a unique experiment directory. The directory tree below describes each generated folder and file:
+
+``` text
+framework/
+│
+├── _caching/                                   # Cache used to avoid recomputing expensive pipelines
+│   └── ...                                     # Imputed matrices and downstream predictions
+│
+├── imputegap_assets/
+│   └── benchmark/
+│       └── <experiment>/                       # Unique directory created for the benchmark run
+│           │
+│           ├── <dataset>/                      # Results grouped by evaluated dataset
+│           │   └── <pattern>/                  # Results grouped by missingness pattern
+│           │       └── error/                  # Upstream/downstream metric results
+│           │       │   ├── _metrics_subplot.jpg
+│           │       │   │                       # Metric evolution across missingness rates
+│           │       │   └── report_<pattern>_<dataset>.txt
+│           │       │                            # Detailed results for this dataset/
+│           │       └── recovery/                # Individal imputation plot for each rate
+│           │
+│           ├── _heatmaps/                      # Aggregated results used for heatmap analyses
+│           │   └── _benchmarking_*.txt         # Benchmark results represented as heatmaps
+│           │
+│           |── _summary_cleanimp_*.xlsx        # ★ Complete summary of metrics and evaluated pipelines ★
+│           ├── experimentation_setup.txt       # Exact configuration of the benchmark run
+│           ├── report_cleanimp_benchmark_*.log #  Complete benchmark results in log format
+│           └── runtime.log                     # Runtime information for the experiment
+│
+└── *_log.txt                                   # General execution logs
+```
 
 ------------------------------------------------------------------------
 
@@ -106,39 +139,7 @@ The tables below provide a compact overview of the options available when config
 The datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/
 
 
-## Output directory
 
-Each benchmark execution creates a **unique experiment directory**. The directory tree below directly describes the purpose of each generated  folder and file:
-
-``` text
-cleanimp/
-│
-├── _caching/                                  # Cache used to avoid recomputing expensive pipelines
-│   └── ...                                    # Imputed matrices and downstream predictions
-│
-├── imputegap_assets/
-│   └── benchmark/
-│       └── <experiment>/                      # Unique directory created for the benchmark run
-│           │
-│           ├── <dataset>/                     # Results grouped by evaluated dataset
-│           │   └── <pattern>/                 # Results grouped by missingness pattern
-│           │       └── error/                 # Upstream/downstream metric results
-│           │       │   ├── _metrics_subplot.jpg
-│           │       │   │                      # Metric evolution across missingness rates
-│           │       │   └── report_<pattern>_<dataset>.txt
-│           │       │                           # Detailed results for this dataset/
-│           │       └── recovery/               # Individal imputation plot for each rate
-│           │
-│           ├── _heatmaps/                     # Aggregated results used for heatmap analyses
-│           │   └── _benchmarking_*.txt        # Benchmark results represented as heatmaps
-│           │
-│           ├── _summary_cleanimp_*.xlsx       # Complete summary of metrics and evaluated pipelines
-│           ├── experimentation_setup.txt      # Exact configuration of the benchmark run
-│           ├── report_cleanimp_benchmark_*.log# Complete benchmark results in log format
-│           └── runtime.log                    # Runtime information for the experiment
-│
-└── *_log.txt                                  # General execution logs
-```
 
 ------------------------------------------------------------------------
 
@@ -165,11 +166,13 @@ The list of the runner’s parameters is the following:
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
-- **NOTE**: The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
 
 <br>
 
 ## 5. Benchmark Execution 
+
+The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
+
 
 ### 5.1 Imputation Experiments
 

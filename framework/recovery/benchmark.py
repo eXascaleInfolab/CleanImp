@@ -2052,7 +2052,7 @@ class Benchmark:
             else x
             for x in patterns
         ]
-        print(f"{patterns=}")
+
         definition_of_exp = f"\nThe benchmark has been called (classification):\n\tclassifiers: {classifiers}\n\talgorithms: {algorithms}\n\tdatasets: {datasets}\n\tpatterns: {patterns}\n\tmissing_percentages: {x_axis}\n\tmetrics: {metrics}\n\tnormalizer: {normalizer}\n\tcontamination_by_class: {contamination_by_class}\n\timputation_by_class: {imputation_by_class}\n\tfixed_rate: {fixed_rate}\n\tto_cache: {to_cache}\n\tuse_cache: {use_cache}\n\tevaluate_upstream: {evaluate_upstream}\n\trun_downstream: {run_downstream}\n\treferential: {referential}\n\truns: {runs}\n\tnumber max series: {nbr_series}\n\tnumber max values: {nbr_vals}\n\n"
         print(definition_of_exp)
 
