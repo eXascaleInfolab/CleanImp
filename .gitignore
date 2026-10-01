@@ -8,11 +8,11 @@ build_script.txt
 *extractor_imp.py
 *extractor_pickle.py
 *extractor_pkl.py
-cleanimp/datasets/z_*.txt
-cleanimp/datasets/y_*.txt
-cleanimp/datasets/fmri-objectviewing.txt
-cleanimp/datasets/pollution.txt
-cleanimp/datasets/test-large.txt
+framework/datasets/z_*.txt
+framework/datasets/y_*.txt
+framework/datasets/fmri-objectviewing.txt
+framework/datasets/pollution.txt
+framework/datasets/test-large.txt
 *checkpoint.pth
 *script_181.py
 *script_patterns.py
@@ -26,27 +26,27 @@ cleanimp/datasets/test-large.txt
 *paper_dl.py
 *saits_run.txt
 *runner_cleaner.py
-cleanimp/wrapper/AlgoPython/NuwaTS/data_provider/dataset/ETT-small/ETTh1.csv
+framework/wrapper/AlgoPython/NuwaTS/data_provider/dataset/ETT-small/ETTh1.csv
 .coveragerc
 ./old_requirements.txt
-cleanimp/_optimization
-cleanimp/_caching
-cleanimp/datasets/_old/*
-cleanimp/_optimization/*
-cleanimp/_caching/*
-cleanimp/datasets/_old/*
+framework/_optimization
+framework/_caching
+framework/datasets/_old/*
+framework/_optimization/*
+framework/_caching/*
+framework/datasets/_old/*
 # Ignore all datasets
-cleanimp/datasets/*
+framework/datasets/*
 .idea
 .idea/*
 cleanimp.egg-info
 cleanimp.egg-info/*
-cleanimp/imputegap_assets
-cleanimp/imputegap_assets/
-cleanimp/imputegap_assets/*
-cleanimp/cleanimp_env/
-cleanimp/cleanimp_env
-cleanimp/cleanimp_env/*
+framework/imputegap_assets
+framework/imputegap_assets/
+framework/imputegap_assets/*
+framework/cleanimp_env/
+framework/cleanimp_env
+framework/cleanimp_env/*
 cleanimp_env/
 cleanimp_env/*
 cleanimp_env
@@ -56,207 +56,210 @@ docs/to_run.txt
 docs/cla_up.xlsx
 docs/verify_data.py
 docs/cla_down.xlsx
+docs/for_up.xlsx
+docs/verification_downstream.csv
+docs/verification_forecasting_upstream.csv
 
 
 # Except forecasting datasets
-!cleanimp/datasets/forecast/
-!cleanimp/datasets/forecast/**
+!framework/datasets/forecast/
+!framework/datasets/forecast/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 1
 # ============================================================
 # Ignore classification datasets
-cleanimp/datasets/classify/*
+framework/datasets/classify/*
 
 # Allow directory traversal
-!cleanimp/datasets/classify/
+!framework/datasets/classify/
 
 # Batch 1
-!cleanimp/datasets/classify/ACSF1/
-!cleanimp/datasets/classify/ACSF1/**
-!cleanimp/datasets/classify/Adiac/
-!cleanimp/datasets/classify/Adiac/**
-!cleanimp/datasets/classify/ArrowHead/
-!cleanimp/datasets/classify/ArrowHead/**
-!cleanimp/datasets/classify/Beef/
-!cleanimp/datasets/classify/Beef/**
-!cleanimp/datasets/classify/BirdChicken/
-!cleanimp/datasets/classify/BirdChicken/**
-!cleanimp/datasets/classify/Car/
-!cleanimp/datasets/classify/Car/**
-!cleanimp/datasets/classify/CBF/
-!cleanimp/datasets/classify/CBF/**
+!framework/datasets/classify/ACSF1/
+!framework/datasets/classify/ACSF1/**
+!framework/datasets/classify/Adiac/
+!framework/datasets/classify/Adiac/**
+!framework/datasets/classify/ArrowHead/
+!framework/datasets/classify/ArrowHead/**
+!framework/datasets/classify/Beef/
+!framework/datasets/classify/Beef/**
+!framework/datasets/classify/BirdChicken/
+!framework/datasets/classify/BirdChicken/**
+!framework/datasets/classify/Car/
+!framework/datasets/classify/Car/**
+!framework/datasets/classify/CBF/
+!framework/datasets/classify/CBF/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 2
 # ============================================================
-!cleanimp/datasets/classify/ChlorineConcentration/
-!cleanimp/datasets/classify/ChlorineConcentration/**
-!cleanimp/datasets/classify/CinCECGTorso/
-!cleanimp/datasets/classify/CinCECGTorso/**
-!cleanimp/datasets/classify/Colposcopy/
-!cleanimp/datasets/classify/Colposcopy/**
-!cleanimp/datasets/classify/Computers/
-!cleanimp/datasets/classify/Computers/**
-!cleanimp/datasets/classify/CricketX/
-!cleanimp/datasets/classify/CricketX/**
-!cleanimp/datasets/classify/DistalPhalanxOutlineAgeGroup/
-!cleanimp/datasets/classify/DistalPhalanxOutlineAgeGroup/**
-!cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/
-!cleanimp/datasets/classify/DistalPhalanxOutlineCorrect/**
+!framework/datasets/classify/ChlorineConcentration/
+!framework/datasets/classify/ChlorineConcentration/**
+!framework/datasets/classify/CinCECGTorso/
+!framework/datasets/classify/CinCECGTorso/**
+!framework/datasets/classify/Colposcopy/
+!framework/datasets/classify/Colposcopy/**
+!framework/datasets/classify/Computers/
+!framework/datasets/classify/Computers/**
+!framework/datasets/classify/CricketX/
+!framework/datasets/classify/CricketX/**
+!framework/datasets/classify/DistalPhalanxOutlineAgeGroup/
+!framework/datasets/classify/DistalPhalanxOutlineAgeGroup/**
+!framework/datasets/classify/DistalPhalanxOutlineCorrect/
+!framework/datasets/classify/DistalPhalanxOutlineCorrect/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 3
 # ============================================================
-!cleanimp/datasets/classify/DistalPhalanxTW/
-!cleanimp/datasets/classify/DistalPhalanxTW/**
-!cleanimp/datasets/classify/Earthquakes/
-!cleanimp/datasets/classify/Earthquakes/**
-!cleanimp/datasets/classify/ECGFiveDays/
-!cleanimp/datasets/classify/ECGFiveDays/**
-!cleanimp/datasets/classify/EOGHorizontalSignal/
-!cleanimp/datasets/classify/EOGHorizontalSignal/**
-!cleanimp/datasets/classify/EOGVerticalSignal/
-!cleanimp/datasets/classify/EOGVerticalSignal/**
-!cleanimp/datasets/classify/EthanolLevel/
-!cleanimp/datasets/classify/EthanolLevel/**
-!cleanimp/datasets/classify/FaceAll/
-!cleanimp/datasets/classify/FaceAll/**
+!framework/datasets/classify/DistalPhalanxTW/
+!framework/datasets/classify/DistalPhalanxTW/**
+!framework/datasets/classify/Earthquakes/
+!framework/datasets/classify/Earthquakes/**
+!framework/datasets/classify/ECGFiveDays/
+!framework/datasets/classify/ECGFiveDays/**
+!framework/datasets/classify/EOGHorizontalSignal/
+!framework/datasets/classify/EOGHorizontalSignal/**
+!framework/datasets/classify/EOGVerticalSignal/
+!framework/datasets/classify/EOGVerticalSignal/**
+!framework/datasets/classify/EthanolLevel/
+!framework/datasets/classify/EthanolLevel/**
+!framework/datasets/classify/FaceAll/
+!framework/datasets/classify/FaceAll/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 4
 # ============================================================
-!cleanimp/datasets/classify/FaceFour/
-!cleanimp/datasets/classify/FaceFour/**
-!cleanimp/datasets/classify/FacesUCR/
-!cleanimp/datasets/classify/FacesUCR/**
-!cleanimp/datasets/classify/Fish/
-!cleanimp/datasets/classify/Fish/**
-!cleanimp/datasets/classify/FreezerRegularTrain/
-!cleanimp/datasets/classify/FreezerRegularTrain/**
-!cleanimp/datasets/classify/FreezerSmallTrain/
-!cleanimp/datasets/classify/FreezerSmallTrain/**
-!cleanimp/datasets/classify/GunPoint/
-!cleanimp/datasets/classify/GunPoint/**
-!cleanimp/datasets/classify/GunPointAgeSpan/
-!cleanimp/datasets/classify/GunPointAgeSpan/**
+!framework/datasets/classify/FaceFour/
+!framework/datasets/classify/FaceFour/**
+!framework/datasets/classify/FacesUCR/
+!framework/datasets/classify/FacesUCR/**
+!framework/datasets/classify/Fish/
+!framework/datasets/classify/Fish/**
+!framework/datasets/classify/FreezerRegularTrain/
+!framework/datasets/classify/FreezerRegularTrain/**
+!framework/datasets/classify/FreezerSmallTrain/
+!framework/datasets/classify/FreezerSmallTrain/**
+!framework/datasets/classify/GunPoint/
+!framework/datasets/classify/GunPoint/**
+!framework/datasets/classify/GunPointAgeSpan/
+!framework/datasets/classify/GunPointAgeSpan/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 5
 # ============================================================
-!cleanimp/datasets/classify/GunPointMaleVersusFemale/
-!cleanimp/datasets/classify/GunPointMaleVersusFemale/**
-!cleanimp/datasets/classify/GunPointOldVersusYoung/
-!cleanimp/datasets/classify/GunPointOldVersusYoung/**
-!cleanimp/datasets/classify/Ham/
-!cleanimp/datasets/classify/Ham/**
-!cleanimp/datasets/classify/Haptics/
-!cleanimp/datasets/classify/Haptics/**
-!cleanimp/datasets/classify/Herring/
-!cleanimp/datasets/classify/Herring/**
-!cleanimp/datasets/classify/InlineSkate/
-!cleanimp/datasets/classify/InlineSkate/**
-!cleanimp/datasets/classify/InsectEPGRegularTrain/
-!cleanimp/datasets/classify/InsectEPGRegularTrain/**
+!framework/datasets/classify/GunPointMaleVersusFemale/
+!framework/datasets/classify/GunPointMaleVersusFemale/**
+!framework/datasets/classify/GunPointOldVersusYoung/
+!framework/datasets/classify/GunPointOldVersusYoung/**
+!framework/datasets/classify/Ham/
+!framework/datasets/classify/Ham/**
+!framework/datasets/classify/Haptics/
+!framework/datasets/classify/Haptics/**
+!framework/datasets/classify/Herring/
+!framework/datasets/classify/Herring/**
+!framework/datasets/classify/InlineSkate/
+!framework/datasets/classify/InlineSkate/**
+!framework/datasets/classify/InsectEPGRegularTrain/
+!framework/datasets/classify/InsectEPGRegularTrain/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 6
 # ============================================================
-!cleanimp/datasets/classify/InsectWingbeatSound/
-!cleanimp/datasets/classify/InsectWingbeatSound/**
-!cleanimp/datasets/classify/LargeKitchenAppliances/
-!cleanimp/datasets/classify/LargeKitchenAppliances/**
-!cleanimp/datasets/classify/Lightning2/
-!cleanimp/datasets/classify/Lightning2/**
-!cleanimp/datasets/classify/Lightning7/
-!cleanimp/datasets/classify/Lightning7/**
-!cleanimp/datasets/classify/Meat/
-!cleanimp/datasets/classify/Meat/**
-!cleanimp/datasets/classify/MedicalImages/
-!cleanimp/datasets/classify/MedicalImages/**
-!cleanimp/datasets/classify/MoteStrain/
-!cleanimp/datasets/classify/MoteStrain/**
+!framework/datasets/classify/InsectWingbeatSound/
+!framework/datasets/classify/InsectWingbeatSound/**
+!framework/datasets/classify/LargeKitchenAppliances/
+!framework/datasets/classify/LargeKitchenAppliances/**
+!framework/datasets/classify/Lightning2/
+!framework/datasets/classify/Lightning2/**
+!framework/datasets/classify/Lightning7/
+!framework/datasets/classify/Lightning7/**
+!framework/datasets/classify/Meat/
+!framework/datasets/classify/Meat/**
+!framework/datasets/classify/MedicalImages/
+!framework/datasets/classify/MedicalImages/**
+!framework/datasets/classify/MoteStrain/
+!framework/datasets/classify/MoteStrain/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 7
 # ============================================================
-!cleanimp/datasets/classify/OliveOil/
-!cleanimp/datasets/classify/OliveOil/**
-!cleanimp/datasets/classify/OSULeaf/
-!cleanimp/datasets/classify/OSULeaf/**
-!cleanimp/datasets/classify/PhalangesOutlinesCorrect/
-!cleanimp/datasets/classify/PhalangesOutlinesCorrect/**
-!cleanimp/datasets/classify/Plane/
-!cleanimp/datasets/classify/Plane/**
-!cleanimp/datasets/classify/PowerCons/
-!cleanimp/datasets/classify/PowerCons/**
-!cleanimp/datasets/classify/ProximalPhalanxOutlineAgeGroup/
-!cleanimp/datasets/classify/ProximalPhalanxOutlineAgeGroup/**
-!cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/
-!cleanimp/datasets/classify/ProximalPhalanxOutlineCorrect/**
+!framework/datasets/classify/OliveOil/
+!framework/datasets/classify/OliveOil/**
+!framework/datasets/classify/OSULeaf/
+!framework/datasets/classify/OSULeaf/**
+!framework/datasets/classify/PhalangesOutlinesCorrect/
+!framework/datasets/classify/PhalangesOutlinesCorrect/**
+!framework/datasets/classify/Plane/
+!framework/datasets/classify/Plane/**
+!framework/datasets/classify/PowerCons/
+!framework/datasets/classify/PowerCons/**
+!framework/datasets/classify/ProximalPhalanxOutlineAgeGroup/
+!framework/datasets/classify/ProximalPhalanxOutlineAgeGroup/**
+!framework/datasets/classify/ProximalPhalanxOutlineCorrect/
+!framework/datasets/classify/ProximalPhalanxOutlineCorrect/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 8
 # ============================================================
-!cleanimp/datasets/classify/RefrigerationDevices/
-!cleanimp/datasets/classify/RefrigerationDevices/**
-!cleanimp/datasets/classify/Rock/
-!cleanimp/datasets/classify/Rock/**
-!cleanimp/datasets/classify/ScreenType/
-!cleanimp/datasets/classify/ScreenType/**
-!cleanimp/datasets/classify/SemgHandGenderCh2/
-!cleanimp/datasets/classify/SemgHandGenderCh2/**
-!cleanimp/datasets/classify/SemgHandMovementCh2/
-!cleanimp/datasets/classify/SemgHandMovementCh2/**
-!cleanimp/datasets/classify/SemgHandSubjectCh2/
-!cleanimp/datasets/classify/SemgHandSubjectCh2/**
-!cleanimp/datasets/classify/ShapeletSim/
-!cleanimp/datasets/classify/ShapeletSim/**
+!framework/datasets/classify/RefrigerationDevices/
+!framework/datasets/classify/RefrigerationDevices/**
+!framework/datasets/classify/Rock/
+!framework/datasets/classify/Rock/**
+!framework/datasets/classify/ScreenType/
+!framework/datasets/classify/ScreenType/**
+!framework/datasets/classify/SemgHandGenderCh2/
+!framework/datasets/classify/SemgHandGenderCh2/**
+!framework/datasets/classify/SemgHandMovementCh2/
+!framework/datasets/classify/SemgHandMovementCh2/**
+!framework/datasets/classify/SemgHandSubjectCh2/
+!framework/datasets/classify/SemgHandSubjectCh2/**
+!framework/datasets/classify/ShapeletSim/
+!framework/datasets/classify/ShapeletSim/**
 
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 9
 # ============================================================
-!cleanimp/datasets/classify/SharePriceIncrease/
-!cleanimp/datasets/classify/SharePriceIncrease/**
-!cleanimp/datasets/classify/SmallKitchenAppliances/
-!cleanimp/datasets/classify/SmallKitchenAppliances/**
-!cleanimp/datasets/classify/SonyAIBORobotSurface1/
-!cleanimp/datasets/classify/SonyAIBORobotSurface1/**
-!cleanimp/datasets/classify/Strawberry/
-!cleanimp/datasets/classify/Strawberry/**
-!cleanimp/datasets/classify/SwedishLeaf/
-!cleanimp/datasets/classify/SwedishLeaf/**
-!cleanimp/datasets/classify/SyntheticControl/
-!cleanimp/datasets/classify/SyntheticControl/**
-!cleanimp/datasets/classify/ToeSegmentation1/
-!cleanimp/datasets/classify/ToeSegmentation1/**
+!framework/datasets/classify/SharePriceIncrease/
+!framework/datasets/classify/SharePriceIncrease/**
+!framework/datasets/classify/SmallKitchenAppliances/
+!framework/datasets/classify/SmallKitchenAppliances/**
+!framework/datasets/classify/SonyAIBORobotSurface1/
+!framework/datasets/classify/SonyAIBORobotSurface1/**
+!framework/datasets/classify/Strawberry/
+!framework/datasets/classify/Strawberry/**
+!framework/datasets/classify/SwedishLeaf/
+!framework/datasets/classify/SwedishLeaf/**
+!framework/datasets/classify/SyntheticControl/
+!framework/datasets/classify/SyntheticControl/**
+!framework/datasets/classify/ToeSegmentation1/
+!framework/datasets/classify/ToeSegmentation1/**
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 10
 # ============================================================
-!cleanimp/datasets/classify/ToeSegmentation2/
-!cleanimp/datasets/classify/ToeSegmentation2/**
-!cleanimp/datasets/classify/Trace/
-!cleanimp/datasets/classify/Trace/**
-!cleanimp/datasets/classify/TwoLeadECG/
-!cleanimp/datasets/classify/TwoLeadECG/**
-!cleanimp/datasets/classify/TwoPatterns/
-!cleanimp/datasets/classify/TwoPatterns/**
-!cleanimp/datasets/classify/UMD/
-!cleanimp/datasets/classify/UMD/**
-!cleanimp/datasets/classify/Wafer/
-!cleanimp/datasets/classify/Wafer/**
-!cleanimp/datasets/classify/Wine/
-!cleanimp/datasets/classify/Wine/**
+!framework/datasets/classify/ToeSegmentation2/
+!framework/datasets/classify/ToeSegmentation2/**
+!framework/datasets/classify/Trace/
+!framework/datasets/classify/Trace/**
+!framework/datasets/classify/TwoLeadECG/
+!framework/datasets/classify/TwoLeadECG/**
+!framework/datasets/classify/TwoPatterns/
+!framework/datasets/classify/TwoPatterns/**
+!framework/datasets/classify/UMD/
+!framework/datasets/classify/UMD/**
+!framework/datasets/classify/Wafer/
+!framework/datasets/classify/Wafer/**
+!framework/datasets/classify/Wine/
+!framework/datasets/classify/Wine/**
 
 
 # ============================================================
 # CLASSIFICATION DATASETS - BATCH 11
 # ============================================================
-!cleanimp/datasets/classify/Worms/
-!cleanimp/datasets/classify/Worms/**
-!cleanimp/datasets/classify/WormsTwoClass/
-!cleanimp/datasets/classify/WormsTwoClass/**
-!cleanimp/datasets/classify/Yoga/
-!cleanimp/datasets/classify/Yoga/**
+!framework/datasets/classify/Worms/
+!framework/datasets/classify/Worms/**
+!framework/datasets/classify/WormsTwoClass/
+!framework/datasets/classify/WormsTwoClass/**
+!framework/datasets/classify/Yoga/
+!framework/datasets/classify/Yoga/**

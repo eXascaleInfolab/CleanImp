@@ -11,11 +11,8 @@ The benchmark follows the complete experimental pipeline introduced in the Clean
 Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
-------------------------------------------------------------------------
 
-## Additional Material
-
-All experimental results are available at the following link: https://exascaleinfolab.github.io/CleanImp/
+All experimental results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
 
 ------------------------------------------------------------------------
@@ -26,18 +23,14 @@ CleanImp is implemented in **Python** and relies on **ImputeGAP** for time serie
 
 ``` bash
 git clone https://github.com/eXascaleInfolab/CleanImp
-```
-``` bash
-cd ./CleanImp/
+cd CleanImp/
 ```
 
 To set up your environment and prepare the development installation for C++, please run this script of installation:
 
 ``` bash
 source cleanimp_install.sh
-```
-``` bash
-cd cleanimp/
+cd framework/
 ```
 
 
@@ -99,13 +92,13 @@ The list of the runner’s parameters is the following:
 
 ### 🩹 Imputation
 
-| Parameter     | Task      | Default       | Description                                   |
-|:--------------|:----------|:--------------|:----------------------------------------------|
-| `--task`      | Upstream  | `forecasting` | load the configuration for the task datasets  |
-| `--datasets`  | Upstream  | `paris`       | list of datasets - `all` for all              |
-| `--imp_algs`  | Upstream  | `SAITS`       | list of imputation algorithms - `all` for all |
-| `--patterns`  | Upstream  | `mcar`        | list of patterns - `all` for all              |
-| `--miss_rate` | Upstream  | `20%`         | contamination rate - `all` for all            |
+| Parameter     | Task      | Default      | Description                                   |
+|:--------------|:----------|:-------------|:----------------------------------------------|
+| `--task`      | Upstream  | `imputation` | load the correct setup for the task  |
+| `--datasets`  | Upstream  | `paris`      | list of datasets - `all` for all              |
+| `--imp_algs`  | Upstream  | `SAITS`      | list of imputation algorithms - `all` for all |
+| `--patterns`  | Upstream  | `mcar`       | list of patterns - `all` for all              |
+| `--miss_rate` | Upstream  | `20%`        | contamination rate - `all` for all            |
 
 
 ### ⚙️ Optional
@@ -121,7 +114,7 @@ The list of the runner’s parameters is the following:
 
 ### Experiments Examples
 
-To produce the imputation results with 
+- To produce the imputation results with 
 one forecasting dataset (Paris),
 one imputation algorithm (SAITS),
 one missingness pattern (MCAR),
@@ -131,8 +124,8 @@ and a future prediction horizon (12 timestamps),
 run the following command:
 
 ``` bash
-python cleanimp_imputation_benchmark.py \
-    --task forecasting \
+python cleanimp_bench.py \
+    --task imputation \
     --datasets paris \
     --imp_algs SAITS \
     --patterns mcar \
@@ -143,7 +136,7 @@ python cleanimp_imputation_benchmark.py \
 ```
 <br />
 
-To produce the imputation results with
+- To produce the imputation results with
 two imputation algorithms (MICE and MeanImpute),
 two datasets (Paris and ILI),
 two missingness patterns (MCAR and SeqN),
@@ -152,8 +145,8 @@ and a future prediction horizon (24 timestamps),
 run the following command:
 
 ``` bash
-python cleanimp_imputation_benchmark.py \
-    --task forecasting \
+python cleanimp_bench.py \
+    --task imputation \
     --imp_algs MICE MeanImpute \
     --datasets paris ili \
     --patterns mcar seqn \
@@ -163,14 +156,14 @@ python cleanimp_imputation_benchmark.py \
 ```
 <br />
 
-To produce the imputation results with all possible configurations,
+- To produce the imputation results with all possible configurations,
 replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 
 ``` bash
-python cleanimp_imputation_benchmark.py \
-    --task forecasting \
+python cleanimp_bench.py \
+    --task imputation \
     --datasets all \
     --patterns all \
     --imp_algs all \
@@ -180,11 +173,11 @@ python cleanimp_imputation_benchmark.py \
 ```
 <br />
 
-To adapt the experiment for classification, change the task tag and replace the dataset list with classification datasets:
+- To adapt the experiment for classification, change the task tag and replace the dataset list with classification datasets:
 
 ``` bash
-python cleanimp_imputation_benchmark.py \
-    --task classification \
+python cleanimp_bench.py \
+    --task imputation \
     --datasets Computers \
     --imp_algs GRIN \
     --patterns mcar \
@@ -201,13 +194,14 @@ CleanImp supports **17 forecasting models** spanning Statistical, Machine Learni
 
 The list of the runner’s parameters is the following:
 
-| Parameter          | Task        | Default   | Description                   |
-|:-------------------|:------------|:----------|:------------------------------|
-| `--downstream_mod` | Forecasting | `chronos` | forecasting model             |
-| `--horizon`        | Forecasting | `12`      | horizon value for forecasting |
+| Parameter          | Task          | Default        | Description                   |
+|:-------------------|:--------------|:---------------|:------------------------------|
+| `--task`           | Forecasting   | `forecasting`  | load the correct setup for the task  |
+| `--downstream_mod` | Forecasting   | `chronos`      | forecasting model             |
+| `--horizon`        | Forecasting   | `12`           | horizon value for forecasting |
 
 
-To produce the impact of imputation on a forecasting model (chronos) with
+- To produce the impact of imputation on a forecasting model (chronos) with
 one forecasting dataset (Paris),
 one imputation algorithm (SAITS),
 one missingness pattern (MCAR),
@@ -217,7 +211,7 @@ and a future prediction horizon (12 timestamps),
 use the downstream script and run the following command:
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task forecasting \
     --downstream_mod chronos \
     --imp_algs SAITS \
@@ -229,7 +223,7 @@ python cleanimp_downstream_benchmark.py \
 ```
 <br />
 
-To produce the impact of imputation on a forecasting model (chronos) with
+- To produce the impact of imputation on a forecasting model (chronos) with
 two imputation algorithms (MICE and MeanImpute),
 two datasets (Paris and ILI),
 two missingness patterns (MCAR and SeqN),
@@ -239,7 +233,7 @@ and a future prediction horizon (24 timestamps),
 run the following command:
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task forecasting \
     --downstream_mod chronos \
     --imp_algs MICE MeanImpute \
@@ -251,12 +245,12 @@ python cleanimp_downstream_benchmark.py \
 ```
 <br />
 
-To produce the impact of imputation on a forecasting model with all possible configurations,
+- To produce the impact of imputation on a forecasting model with all possible configurations,
 replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task forecasting \
     --downstream_mod chronos \
     --imp_algs all \
@@ -277,12 +271,13 @@ CleanImp supports **16 classification models** spanning Statistical, Machine Lea
 
 The list of the runner’s parameters is the following:
 
-| Parameter          | Task           | Default   | Description          |
-|:-------------------|:---------------|:----------|:---------------------|
-| `--downstream_mod` | Classification | `arsenal` | classification model |
+| Parameter          | Task             | Default            | Description          |
+|:-------------------|:-----------------|:-------------------|:---------------------|
+| `--task`           | Classification   | `classification`   | load the correct setup for the task  |
+| `--downstream_mod` | Classification   | `arsenal`          | classification model |
 
 
-To produce the impact of imputation on a classification model (arsenal) with
+- To produce the impact of imputation on a classification model (arsenal) with
 one classification dataset (Computers),
 one imputation algorithm (GRIN),
 one missingness pattern (MCAR),
@@ -291,7 +286,7 @@ all downstream metrics,
 use the downstream script and run the following command:
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task classification \
     --downstream_mod arsenal \
     --datasets Computers \
@@ -302,7 +297,7 @@ python cleanimp_downstream_benchmark.py \
 ```
 <br />
 
-To produce the impact of imputation on a classification model (arsenal) with
+- To produce the impact of imputation on a classification model (arsenal) with
 two classification dataset (Computers and Car),
 two imputation algorithm (MeanImpute and MICE),
 two missingness pattern (MCAR and SeqN),
@@ -311,7 +306,7 @@ all downstream metrics,
 use the downstream script and run the following command:
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task classification \
     --downstream_mod arsenal \
     --datasets Computers Car \
@@ -322,12 +317,12 @@ python cleanimp_downstream_benchmark.py \
 ```
 <br />
 
-To produce the impact of imputation on a classification model with all possible configurations,
+- To produce the impact of imputation on a classification model with all possible configurations,
 replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
 
 ``` bash
-python cleanimp_downstream_benchmark.py \
+python cleanimp_bench.py \
     --task classification \
     --downstream_mod arsenal \
     --datasets all  \

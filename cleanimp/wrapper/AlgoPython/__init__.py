@@ -1,2 +1,0 @@
-def momentfm():
-    return None
