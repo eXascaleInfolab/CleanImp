@@ -214,7 +214,7 @@ python cleanimp_bench.py \
 <br />
 
 - To produce the imputation results with all possible configurations, replace the parameter values with `all`:
-<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 
 ``` bash
@@ -257,7 +257,7 @@ one missingness pattern (MCAR),
 one missing rate (20%),
 all downstream metrics,
 and a future prediction horizon (12 timestamps),
-use the downstream script and run the following command:
+run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -296,7 +296,7 @@ python cleanimp_bench.py \
 
 - To produce the impact of imputation on a forecasting model with all possible configurations,
 replace the parameter values with `all`:
-<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
@@ -322,8 +322,8 @@ one classification dataset (Computers),
 one imputation algorithm (GRIN),
 one missingness pattern (MCAR),
 one missing rate (20%),
-all downstream metrics,
-use the downstream script and run the following command:
+and all downstream metrics,
+run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -338,12 +338,12 @@ python cleanimp_bench.py \
 <br />
 
 - To produce the impact of imputation on a classification model (arsenal) with
-two classification dataset (Computers and Car),
-two imputation algorithm (MeanImpute and MICE),
-two missingness pattern (MCAR and SeqN),
-two missing rate (20% and 80%),
-all downstream metrics,
-use the downstream script and run the following command:
+two classification datasets (Computers and Car),
+two imputation algorithms (MeanImpute and MICE),
+two missingness patterns (MCAR and SeqN),
+two missing rates (20% and 80%),
+and all downstream metrics,
+run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -359,7 +359,7 @@ python cleanimp_bench.py \
 
 - To produce the impact of imputation on a classification model with all possible configurations,
 replace the parameter values with `all`:
-<br /><i>⚠️ Be aware that running the full benchmark may take several weeks to complete.</i>
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
