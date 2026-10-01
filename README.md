@@ -12,7 +12,7 @@ Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
 
-All experimental results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
+All results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
 
 ------------------------------------------------------------------------
