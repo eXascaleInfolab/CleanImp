@@ -43,63 +43,66 @@ cd framework/
 
 ## 3. Configurations
 
-This file provides a compact overview of the options available when configuring a CleanImp benchmark.
+The tables bellow provide a compact overview of the options available when configuring a CleanImp benchmark.
 
 ## Imputation Options
+| Imputation Algorithms |             |              |                |           |
+|-----------------------|-------------|--------------|----------------|-----------|
+| `BRITS`               | `BayOTIDE`  | `BitGraph`   | `CDRec`        | `CSDI`    |
+| `DeepMVI`             | `DynaMMo`   | `GAIN`       | `GPT4TS`       | `GRIN`    |
+| `GROUSE`              | `HKMFT`     | `IIM`        | `IterativeSVD` | `MICE`    |
+| `MPIN`                | `MRNN`      | `MeanImpute` | `MissForest`   | `MissNet` |
+| `Moment`              | `NuwaTS`    | `PRISTI`     | `ROSL`         | `SAITS`   |
+| `SPIRIT`              | `STMVL`     | `SVT`        | `SoftImpute`   | `TKCM`    |
+| `TRMF`                | `TimesNet`  | `XGBOOST`    |                |           |
 
-| Imputation Algorithms |               |            |            |                |
-|-----------------------|---------------|------------|------------|----------------|
-| `MOMENT`              | `NuwaTS`      | `GPT4TS`   | `MissNet`  | `MPIN`         |
-| `BayOTIDE`            | `BitGraph`    | `TimesNet` | `SAITS`    | `PriSTI`       |
-| `GRIN`                | `CSDI`        | `HKMFT`    | `DeepMVI`  | `MRNN`         |
-| `BRITS`               | `GAIN`        | `CDRec`    | `TRMF`     | `GROUSE`       |
-| `ROSL`                | `SoftImpute`  | `SVT`      | `SPIRIT`   | `IterativeSVD` |
-| `TKCM`                | `STMVL`       | `DynaMMo`  | `IIM`      | `XGBoost`      |
-| `MICE`                | `MissForest`  |            |            |                |
 
 ## Forecasting Options
 
-| Forecasting Models |                  |              |                |           |
-|--------------------|------------------|--------------|----------------|-----------|
-| `Chronos`          | `MOMENT`         | `PatchTST`   | `Transformer`  | `LTSF`    |
-| `LSTM`             | `DeepAR`         | `DLinear`    | `N-BEATS`      | `NLinear` |
-| `Holt-Winters`     | `Exp. Smoothing` | `AutoARIMA`  | `Croston`      | `XGBoost` |
-| `LightGBM`         | `Prophet`        |              |                |           |
+| Forecasting Models |            |            |            |           |
+|--------------------|------------|------------|------------|-----------|
+| `arima`            | `chronos`  | `croston`  | `deepar`   | `dlinear` |
+| `exp-smoothing`    | `hw-add`   | `lightgbm` | `lstm`     | `ltsf`    |
+| `moment`           | `nbeats`   | `nlinear`  | `patchtst` | `prophet` |
+| `transformer`      | `xgboost`  |            |            |           |
 
 
-| Forecasting Datasets |                   |            |              |                |
-|----------------------|-------------------|------------|--------------|----------------|
-| `czelan`             | `electricity`     | `etth1`    |  `etth2`     | `ili`          |
-| `nn5`                | `nyse`            | `wike2000` | `wind_speed` | `airq`         |
-| `atm`                | `beijing_traffic` | `climate`  | `economics`  | `human_access` |
-| `paris`              |                   |            |              |                |
+| Forecasting Datasets |               |                     |            |                |
+|----------------------|---------------|---------------------|------------|----------------|
+| `airq`               | `atm`         | `beijing_traffic`   | `climate`  | `czelan`       |
+| `economics`          | `electricity` | `etth1`             | `etth2`    | `human_access` |
+| `ili`                | `nn5`         | `nyse`              | `paris`    | `wike2000`     |
+| `wind_speed`         |               |                     |            |                |
+
 The complete list of available forecasting datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/forecast
 
 ## Classification Options
 
-| Classification Models |             |          |            |             |
-|-----------------------|-------------|----------|------------|-------------|
-| `KNN`                 | `Catch22`   | `CNN`    | `LSTM`     | `TSF`       |
-| `CBOSS`               | `STC`       | `WEASEL` | `ShapeDTW` | `TSFresh`   |
-| `ProxStump`           | `CIF`       | `ITDE`   | `Arsenal`  | `Signature` |
-| `SVC`                 |             |          |            |             |
+| Classification Models |            |           |             |            |
+|-----------------------|------------|-----------|-------------|------------|
+| `arsenal`             | `catch22`  | `cboss`   | `cif`       | `cnn`      |
+| `itde`                | `knn`      | `lstm`    | `proxstump` | `shapedtw` |
+| `signature`           | `stc`      | `svc`     | `tsf`       | `tsfresh`  |
+| `weasel`              |            |           |             |            |
 
-| Classification Datasets    |                                  |                                 |                                |                               |
-|----------------------------|----------------------------------|---------------------------------|--------------------------------|-------------------------------|
-| `Adiac`                    | `BirdChicken`                    | `Fish`                          | `InsectEPGRegularTrain`        | `Rock`                        |
-| `OSULeaf`                  | `SwedishLeaf`                    | `Worms`                         | `WormsTwoClass`                | `Herring`                     |
-| `Ham`                      | `EthanolLevel`                   | `Beef`                          | `Meat`                         | `OliveOil`                    |
-| `Strawberry`               | `Wine`                           | `Car`                           | `FaceFour`                     | `FacesUCR`                    |
-| `ArrowHead`                | `CinCECGTorso`                   | `Colposcopy`                    | `DistalPhalanxOutlineAgeGroup` | `DistalPhalanxOutlineCorrect` |
-| `DistalPhalanxTW`          | `ECGFiveDays`                    | `EOGHorizontalSignal`           | `EOGVerticalSignal`            | `MedicalImages`               |
-| `PhalangesOutlinesCorrect` | `ProximalPhalanxOutlineAgeGroup` | `ProximalPhalanxOutlineCorrect` | `SemgHandGenderCh2`            | `SemgHandMovementCh2`         |
-| `SemgHandSubjectCh2`       | `TwoLeadECG`                     | `MoteStrain`                    | `Lightning2`                   | `Lightning7`                  |
-| `Earthquakes`              | `Computers`                      | `LargeKitchenAppliances`        | `FreezerRegularTrain`          | `FreezerSmallTrain`           |
-| `PowerCons`                | `RefrigerationDevices`           | `ScreenType`                    | `SmallKitchenAppliances`       | `SonyAIBORobotSurface1`       |
-| `GunPoint`                 | `GunPointAgeSpan`                | `GunPointMaleVersusFemale`      | `GunPointOldVersusYoung`       | `CricketX`                    |
-| `Haptics`                  | `InlineSkate`                    | `ToeSegmentation1`              | `ToeSegmentation2`             | `Yoga`                        |
-| `SharePriceIncrease`       | `CBF`                            | `SyntheticControl`              | `Trace`                        | `ShapeletSim`                 |
-| `TwoPatterns`              | `UMD`                            | `Wafer`                         |                                |                               |
+
+| Classification Datasets        |                               |                                  |                                 |                        |
+|--------------------------------|-------------------------------|----------------------------------|---------------------------------|------------------------|
+| `Adiac`                        | `ArrowHead`                   | `Beef`                           | `BirdChicken`                   | `CBF`                  |
+| `Car`                          | `CinCECGTorso`                | `Colposcopy`                     | `Computers`                     | `CricketX`             |
+| `DistalPhalanxOutlineAgeGroup` | `DistalPhalanxOutlineCorrect` | `DistalPhalanxTW`                | `ECGFiveDays`                   | `EOGHorizontalSignal`  |
+| `EOGVerticalSignal`            | `Earthquakes`                 | `EthanolLevel`                   | `FaceFour`                      | `FacesUCR`             |
+| `Fish`                         | `FreezerRegularTrain`         | `FreezerSmallTrain`              | `GunPoint`                      | `GunPointAgeSpan`      |
+| `GunPointMaleVersusFemale`     | `GunPointOldVersusYoung`      | `Ham`                            | `Haptics`                       | `Herring`              |
+| `InlineSkate`                  | `InsectEPGRegularTrain`       | `LargeKitchenAppliances`         | `Lightning2`                    | `Lightning7`           |
+| `Meat`                         | `MedicalImages`               | `MoteStrain`                     | `OSULeaf`                       | `OliveOil`             |
+| `PhalangesOutlinesCorrect`     | `PowerCons`                   | `ProximalPhalanxOutlineAgeGroup` | `ProximalPhalanxOutlineCorrect` | `RefrigerationDevices` |
+| `Rock`                         | `ScreenType`                  | `SemgHandGenderCh2`              | `SemgHandMovementCh2`           | `SemgHandSubjectCh2`   |
+| `ShapeletSim`                  | `SharePriceIncrease`          | `SmallKitchenAppliances`         | `SonyAIBORobotSurface1`         | `Strawberry`           |
+| `SwedishLeaf`                  | `SyntheticControl`            | `ToeSegmentation1`               | `ToeSegmentation2`              | `Trace`                |
+| `TwoLeadECG`                   | `TwoPatterns`                 | `UMD`                            | `Wafer`                         | `Wine`                 |
+| `Worms`                        | `WormsTwoClass`               | `Yoga`                           |                                 |                        |
+
 The complete list of available classification datasets can be found in the following directory: https://github.com/eXascaleInfolab/CleanImp/tree/main/framework/datasets/classify
 
 
