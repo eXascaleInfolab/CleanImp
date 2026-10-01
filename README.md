@@ -18,7 +18,7 @@ All experimental results are available through this interactive benchmark explor
 
 ------------------------------------------------------------------------
 
-[Configurations](#3-configurations) | [Parameters](#4-parameters-and-options) | [Imputation Experiments](#5-imputation-experiments) | [Forecasting Experiments](#6-forecasting-experiments) | [Classification Experiments](#7-classification-experiments)
+[Configurations](#3-list-of-techniques-and-datasets) | [Parameters](#4-parameters-and-options) | [Imputation Experiments](#5-imputation-experiments) | [Forecasting Experiments](#6-forecasting-experiments) | [Classification Experiments](#7-classification-experiments)
 
 ------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ cd framework/
 
 ------------------------------------------------------------------------
 
-## 3. Configurations
+## 3. List of Techniques and Datasets
 
 The tables below provide a compact overview of the options available when configuring the benchmark.
 
@@ -168,7 +168,7 @@ The list of the runner’s parameters is the following:
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
 
-- **note**: The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
+- **NOTE**: The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
 
 
 ## 5. Imputation Experiments
