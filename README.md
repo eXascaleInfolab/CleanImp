@@ -18,7 +18,7 @@ All experimental results are available through this interactive benchmark explor
 
 ------------------------------------------------------------------------
 
-[Introduction](#1-introduction) · [Prerequisites](#2-prerequisites) · [Configurations](#3-configurations) · [Parameters and Options](#4-parameters-and-options) · [Imputation Experiments](#5-imputation-experiments) · [Forecasting Experiments](#6-forecasting-experiments) · [Classification Experiments](#7-classification-experiments)
+[Introduction](#1-introduction) | [Prerequisites](#2-prerequisites) | [Configurations](#3-configurations) | [Parameters](#4-parameters-and-options) | [Imputation Experiments](#5-imputation-experiments) | [Forecasting Experiments](#6-forecasting-experiments) | [Classification Experiments](#7-classification-experiments)
 
 ------------------------------------------------------------------------
 
@@ -376,6 +376,5 @@ python cleanimp_bench.py \
 ```
 <br />
 
-------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------------------------------------
 
