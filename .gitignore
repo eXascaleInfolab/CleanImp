@@ -61,6 +61,11 @@ docs/for_up.xlsx
 docs/verification_downstream.csv
 docs/verification_forecasting_upstream.csv
 docs/verification_forecasting_downstream.csv
+docs/cla_up_metrics.xlsx
+/docs/*.xlsx
+/docs/*.csv
+/docs/bck/*.json
+/docs/bck/*.js
 
 
 # Except forecasting datasets
