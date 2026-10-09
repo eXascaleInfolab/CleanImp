@@ -11,7 +11,7 @@ The benchmark follows the complete experimental pipeline introduced in the Clean
 Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
-
+### Benchmark Results Explorer
 All results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
 ### Output directory
@@ -133,20 +133,22 @@ The datasets can be found in the following directory: https://github.com/eXascal
 
 The list of the runner’s parameters is the following:
 
-| Parameters/Arguments  | Values                                                                          | Description                                                                                      |
-|:----------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
-| `--task`              | `{imputation, forecasting, classification}`                                     | Selects the benchmark task to execute.                                                           |
-| `--imp_algs`          | [List of Algorithms](#list-of-techniques)                                       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
-| `--datasets_type`     | `{forecasting, classification}`                                                 | Selects the dataset category used for the benchmark.                                             |
-| `--datasets_list`     | [List of Datasets](#list-of-datasets)                                           | Selects one or more datasets. Use `all` to include every available dataset.                      |
-| `--patterns`          | `{mcar, seqn, blks}`                                                            | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
-| `--miss_rate`         | `{0.1, 0.2, 0.4, 0.6, 0.8}`                                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
-| `--metrics`           | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
-| `--downstream_mod`    | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
-| `--horizon`           | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps.                                 |
-| `--caching`           | `--no-caching`                                                                  | Enables or disables caching of intermediate results to avoid repeated computations.              |
-| `--plots`             | `--no-plots`                                                                    | Enables or disables benchmark plot generation.                                                   |
-| `--verbose`           | `--no-verbose`                                                                  | Enables or disables detailed execution output.                                                   |
+| Parameters/Arguments | Values                                                                          | Description                                                                                      |
+|:---------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
+| `--task`             | `{imputation, forecasting, classification}`                                     | Selects the benchmark task to execute.                                                           |
+| `--imp_algs`         | [List of Algorithms](#list-of-techniques)                                       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
+| `--datasets_type`    | `{forecasting, classification}`                                                 | Selects the dataset category used for the benchmark.                                             |
+| `--datasets_list`    | [List of Datasets](#list-of-datasets)                                           | Selects one or more datasets. Use `all` to include every available dataset.                      |
+| `--patterns`         | `{mcar, seqn, blks}`                                                            | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
+| `--miss_rate`        | `{0.1, 0.2, 0.4, 0.6, 0.8}`                                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
+| `--metrics`          | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
+| `--downstream_mod`   | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
+| `--horizon`          | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps. (only forecasting)              |
+| `--con_by_class`     | `--no-con_by_class`                                                             | Sets if the contamination is performed separately for each class or not. (only classification)   |
+| `--imp_by_class`     | `--no-imp_by_class`                                                             | Sets if the imputation is performed separately for each class or not. (only classification)      |
+| `--caching`          | `--no-caching`                                                                  | Enables or disables caching of intermediate results to avoid repeated computations.              |
+| `--plots`            | `--no-plots`                                                                    | Enables or disables benchmark plot generation.                                                   |
+| `--verbose`          | `--no-verbose`                                                                  | Enables or disables detailed execution output.                                                   |
 
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
@@ -182,7 +184,9 @@ The computed results and the plots of the benchmark will be saved in: `./imputeg
 
 ### 5.1 Imputation Experiments
 
-- To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
+
+#### Basic Imputation Experiment
+To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -198,7 +202,8 @@ python cleanimp_bench.py \
 
 <br />
 
--To produce the imputation results with two imputation algorithms (MICE and MeanImpute), two datasets (Paris and ILI), two missingness patterns (MCAR and SeqN), two missingness rates (0.1 and 0.8), and a forecasting horizon (24 timestamps), run the following command:
+#### Multiple configurations
+To produce the imputation results with two imputation algorithms (MICE and MeanImpute), two datasets (Paris and ILI), two missingness patterns (MCAR and SeqN), two missingness rates (0.1 and 0.8), and a forecasting horizon (24 timestamps), run the following command:
 
 ``` bash
 python cleanimp_bench.py \
@@ -213,7 +218,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the imputation results with all possible configurations, replace the parameter values with `all`:
+#### Full Imputation Benchmark
+To produce the imputation results presented in Figure 6 of the paper using all available configurations, replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 
@@ -230,7 +236,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To adapt the experiment to classification datasets, change the task tag and replace the dataset list with classification datasets:
+#### Classification Dataset Example
+To adapt the experiment to classification datasets, change the task tag and replace the dataset list with classification datasets:
 
 ``` bash
 python cleanimp_bench.py \
@@ -249,8 +256,8 @@ python cleanimp_bench.py \
 
 ### 5.2 Forecasting Experiments
 
-
-- To produce the impact of imputation with a forecasting model (chronos) with
+#### Basic Forecasting Experiment
+To produce the impact of imputation with a forecasting model (chronos) with
 one forecasting dataset (Paris),
 one imputation algorithm (SAITS),
 one missingness pattern (MCAR),
@@ -272,7 +279,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation with a forecasting model (chronos) with
+#### Multiple Forecasting Configurations
+To produce the impact of imputation with a forecasting model (chronos) with
 two imputation algorithms (MICE and MeanImpute),
 two datasets (Paris and ILI),
 two missingness patterns (MCAR and SeqN),
@@ -294,8 +302,9 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation with a forecasting model with all possible configurations,
-replace the parameter values with `all`:
+#### Full Forecasting Benchmark
+To produce the impact of imputation with a forecasting model with all possible configurations, presented in Figures 7, 9 and 10 of the paper,
+replace the parameter values with `all` and adjust the forecasting model and horizon accordingly:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 ``` bash
@@ -316,8 +325,8 @@ python cleanimp_bench.py \
 
 ### 5.3 Classification Experiments
 
-
-- To produce the impact of imputation with a classification model (arsenal) with
+#### Basic Classification Experiment
+To produce the impact of imputation with a classification model (arsenal) with
 one classification dataset (Computers),
 one imputation algorithm (GRIN),
 one missingness pattern (MCAR),
@@ -337,6 +346,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
+#### Multiple Classification Configurations
 - To produce the impact of imputation with a classification model (arsenal) with
 two classification datasets (Computers and Car),
 two imputation algorithms (MeanImpute and MICE),
@@ -357,8 +367,9 @@ python cleanimp_bench.py \
 ```
 <br />
 
-- To produce the impact of imputation with a classification model with all possible configurations,
-replace the parameter values with `all`:
+#### Full Classification Benchmark
+To produce the impact of imputation with a classification model with all possible configurations, presented in Figures 11, 13 and 14 of the paper,
+replace the parameter values with `all` and adjust the classification model and setup accordingly:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 ``` bash
@@ -369,8 +380,19 @@ python cleanimp_bench.py \
     --imp_algs all \
     --patterns all \
     --miss_rate all \
-    --metrics all
+    --metrics all \
+    --cont_by_class \
+    --imp_by_class
 ```
 <br />
 
+------------------------------------------------------------------------
+
+### 5.4 Features Breakdown
+
+A script for selecting datasets based on their features is currently under development.
+
+<br />
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
+
