@@ -1,5 +1,5 @@
 # CleanImp Benchmark
-⭐ All results are available through this interactive website: [Benchmark Explorer](https://exascaleinfolab.github.io/CleanImp/)
+⭐ All the results are available through this interactive website: [Benchmark Explorer](https://exascaleinfolab.github.io/CleanImp/)
 
 ## 1. Overview
 
