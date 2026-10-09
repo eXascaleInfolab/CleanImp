@@ -1,0 +1,11 @@
+NATE's LOG::::: cardinality_imputation=1085.7832431793213 / [imputation_by_class=False - contamination_by_class=True] - [x=0.1] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=504.9161911010742 / [imputation_by_class=False - contamination_by_class=True] - [x=0.2] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=804.1257858276367 / [imputation_by_class=False - contamination_by_class=True] - [x=0.4] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=1986.816644668579 / [imputation_by_class=False - contamination_by_class=True] - [x=0.6] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=4518.279314041138 / [imputation_by_class=False - contamination_by_class=True] - [x=0.8] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=1054.6464920043945 / [imputation_by_class=True - contamination_by_class=False] - [x=0.1] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=893.1574821472168 / [imputation_by_class=True - contamination_by_class=False] - [x=0.2] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=1167.1152114868164 / [imputation_by_class=True - contamination_by_class=False] - [x=0.4] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=2852.123975753784 / [imputation_by_class=True - contamination_by_class=False] - [x=0.6] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=7911.40341758728 / [imputation_by_class=True - contamination_by_class=False] - [x=0.8] - (Car) for CDRec
+NATE's LOG::::: cardinality_imputation=215300.40550231934 / [imputation_by_class=True - contamination_by_class=True] - [x=0.2] - (Computers) for GRIN

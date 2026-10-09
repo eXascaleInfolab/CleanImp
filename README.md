@@ -1,4 +1,5 @@
 # CleanImp Benchmark
+All results are available through this interactive website: [⭐ Benchmark Results Explorer](https://exascaleinfolab.github.io/CleanImp/)
 
 ## 1. Overview
 
@@ -11,8 +12,6 @@ The benchmark follows the complete experimental pipeline introduced in the Clean
 Time Series → Contamination → Imputation → Downstream Model → Evaluation
 ```
 
-### Benchmark Results Explorer
-All results are available through this interactive benchmark explorer: https://exascaleinfolab.github.io/CleanImp/
 
 ### Output directory
 
@@ -182,10 +181,11 @@ cd framework/
 The computed results and the plots of the benchmark will be saved in: `./imputegap_assets/benchmark/*`
 
 
-### 5.1 Imputation Experiments
+### 5.1 Imputation Experiments (Figure 6)
 
+- We show how to produce the imputation results on the forecasting datasets
 
-#### Basic Imputation Experiment
+#### Single Imputation Configuration
 To produce the imputation results with one forecasting dataset (Paris), one imputation algorithm (SAITS), one missingness pattern (MCAR), a missing rate (20%), one metric (RMSE), and a forecasting horizon (12 timestamps), run the following command:
 
 ``` bash
@@ -202,7 +202,7 @@ python cleanimp_bench.py \
 
 <br />
 
-#### Multiple configurations
+#### Multiple Imputation Configurations
 To produce the imputation results with two imputation algorithms (MICE and MeanImpute), two datasets (Paris and ILI), two missingness patterns (MCAR and SeqN), two missingness rates (0.1 and 0.8), and a forecasting horizon (24 timestamps), run the following command:
 
 ``` bash
@@ -218,8 +218,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-#### Full Imputation Benchmark
-To produce the imputation results presented in Figure 6 of the paper using all available configurations, replace the parameter values with `all`:
+#### Full Imputation Results
+To produce the full imputation results (left-hand part of **Fig. 6** in the paper) using all available configurations, replace the parameter values with `all`:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 
@@ -236,17 +236,17 @@ python cleanimp_bench.py \
 ```
 <br />
 
-#### Classification Dataset Example
-To adapt the experiment to classification datasets, change the task tag and replace the dataset list with classification datasets:
+To produce the imputation results for the classification datasets (right-hand part of **Fig 6** in the paper), change the datasets_type tag to classification:
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
     --task imputation \
-    --imp_algs GRIN \
+    --imp_algs all \
     --datasets_type classification \
-    --datasets_list Computers \
-    --patterns mcar \
-    --miss_rate 0.2 \
+    --datasets_list all \
+    --patterns all \
+    --miss_rate all \
     --metrics all
 ```
 <br />
@@ -254,9 +254,10 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-### 5.2 Forecasting Experiments
+### 5.2 Forecasting Experiments (Figures 7, 9 and 10)
 
-#### Basic Forecasting Experiment
+#### Single Forecasting Configuration
+
 To produce the impact of imputation with a forecasting model (chronos) with
 one forecasting dataset (Paris),
 one imputation algorithm (SAITS),
@@ -302,8 +303,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-#### Full Forecasting Benchmark
-To produce the impact of imputation with a forecasting model with all possible configurations, presented in Figures 7, 9 and 10 of the paper,
+#### Full Forecasting Results
+To produce the impact of imputation with a forecasting model with all possible configurations (**Fig. 7, 9 and 10** in the paper),
 replace the parameter values with `all` and adjust the forecasting model and horizon accordingly:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
@@ -323,9 +324,9 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-### 5.3 Classification Experiments
+### 5.3 Classification Experiments (Figures 11, 13 and 14)
 
-#### Basic Classification Experiment
+#### Single Classification Configuration
 To produce the impact of imputation with a classification model (arsenal) with
 one classification dataset (Computers),
 one imputation algorithm (GRIN),
@@ -367,8 +368,8 @@ python cleanimp_bench.py \
 ```
 <br />
 
-#### Full Classification Benchmark
-To produce the impact of imputation with a classification model with all possible configurations, presented in Figures 11, 13 and 14 of the paper,
+#### Full Classification Results
+To produce the impact of imputation with a classification model with all possible configurations (**Fig. 11, 13 and 14** in the paper),
 replace the parameter values with `all` and adjust the classification model and setup accordingly:
 <br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
@@ -388,9 +389,9 @@ python cleanimp_bench.py \
 
 ------------------------------------------------------------------------
 
-### 5.4 Features Breakdown
+### 5.4 Features Analysis (Figures 8 and 12)
 
-A script for selecting datasets based on their features is currently under development.
+To produce a breakdown of the results by feature, run the following commands (scripts are underway).
 
 <br />
 
