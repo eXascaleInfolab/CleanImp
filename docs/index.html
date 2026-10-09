@@ -1,24 +1,62 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CleanImp Benchmark</title><link rel="stylesheet" href="style.css">
-<script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script></head><body>
-<header><div><h1>CleanImp Benchmark</h1><p>Interactive benchmark explorer</p></div></header>
-<main>
-<section class="filters">
-<label>Experiment<select id="experiment"></select></label>
-<label>Task<select id="task"></select></label>
-<label>Metric<select id="metric"></select></label>
-<label id="classifier-wrap" class="hidden">Classifier<select id="classifier"></select></label>
-<label id="forecaster-wrap" class="hidden">Forecaster<select id="forecaster"></select></label>
-<label>Pattern<select id="pattern"></select></label>
-<label>Dataset<select id="dataset"></select></label>
-<label id="family-wrap">Family<select id="family"></select></label>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CleanImp Benchmark</title>
+    <link rel="icon" type="image/png" href="https://exascale.info/assets/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>CleanImp Benchmark</h1>
+        <p>Interactive benchmark explorer - <a href="https://github.com/eXascaleInfolab/CleanImp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </header>
 
-<div class="algobox"><div class="algoh"><b>Algorithms</b><span><button id="all">Select all</button><button id="none">Clear</button></span></div><div id="algos"></div></div>
-</section>
-<div class="status"><strong id="title"></strong><span id="meta"></span></div>
-<section class="plotcard"><div id="plot"></div></section>
-<section class="tablecard"><div class="tabletitle"><h2>Actual values</h2><span id="tablemeta"></span></div>
-<div class="tablewrap"><table id="values-table"></table></div></section>
-</main><script src="app.js"></script></body></html>
+    <main>
+        <!-- Filters always use the original values from data.json. -->
+        <section class="filters" aria-label="Benchmark filters">
+            <label>Experiment<select id="experiment"></select></label>
+            <label><span id="task-label">Task</span><select id="task"></select></label>
+            <label id="classifier-wrap" class="hidden">Classifier<select id="classifier"></select></label>
+            <label id="forecaster-wrap" class="hidden">Forecaster<select id="forecaster"></select></label>
+            <label>Dataset<select id="dataset"></select></label>
+            <label>Pattern<select id="pattern"></select></label>
+            <label>Metric<select id="metric"></select></label>
+            <label id="family-wrap">Family<select id="family"></select></label>
+
+            <div class="algobox">
+                <b>Algorithms</b>
+                <div id="algos"></div>
+                <!-- Actions follow the final algorithm checkbox. -->
+                <div class="algo-actions">
+                    <button id="all" type="button">Select All</button>
+                    <button id="none" type="button">Clear</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline replaces the old chart title and metadata. -->
+        <div class="status">
+            <span class="pipeline-text" id="pipeline" aria-live="polite"></span>
+            <a class="full-results-link" href="#full-results">Full Results ↓</a>
+        </div>
+
+        <section class="plotcard" aria-label="Benchmark chart">
+            <div id="plot"></div>
+        </section>
+
+        <section class="tablecard" id="full-results">
+            <div class="tabletitle">
+                <h2>Full Results</h2>
+                <span id="tablemeta"></span>
+            </div>
+            <div class="tablewrap">
+                <table id="values-table"></table>
+            </div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -85,6 +85,20 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--cont_by_class",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable or disable plots"
+    )
+
+    parser.add_argument(
+        "--imp_by_class",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable or disable plots"
+    )
+
+    parser.add_argument(
         "--verbose",
         action=argparse.BooleanOptionalAction,
         default=False,
@@ -158,8 +172,8 @@ if __name__ == "__main__":
                                                  metrics=args.metrics,
                                                  normalizer="z-score",
                                                  report_title="cleanimp_benchmark_cl_up",
-                                                 contamination_by_class=True,
-                                                 imputation_by_class=True,
+                                                 contamination_by_class=args.cont_by_class,
+                                                 imputation_by_class=args.imp_by_class,
                                                  bypass_error=False,
                                                  evaluate_upstream=True,
                                                  to_cache=args.caching,
@@ -210,8 +224,8 @@ if __name__ == "__main__":
                                              metrics=args.metrics,
                                              normalizer="z-score",
                                              report_title="cleanimp_benchmark_cl_down",
-                                             contamination_by_class=True,
-                                             imputation_by_class=True,
+                                             contamination_by_class=args.cont_by_class,
+                                             imputation_by_class=args.imp_by_class,
                                              bypass_error=False,
                                              evaluate_upstream=False,
                                              to_cache=args.caching,

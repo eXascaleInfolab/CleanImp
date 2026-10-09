@@ -60,12 +60,21 @@ const forecasterActive = () =>
  *
  * If preserve=true, the current selection is kept whenever it still exists.
  */
+// Short labels for the UI only. Database keys never change.
+function displayLabel(value) {
+    return ({
+        Upstream: "Imputation",
+        aligned_series: "seqn",
+        aligned_timestamps: "blks"
+    })[value] || value;
+}
+
 function setOptions(id, values, preserve = true) {
     const element = $(id);
     const oldValue = element.value;
 
     element.innerHTML = values
-        .map((value) => `<option value="${value}">${value}</option>`)
+        .map((value) => `<option value="${value}">${displayLabel(value)}</option>`)
         .join("");
 
     element.value =
@@ -89,7 +98,7 @@ function setPreferred(id, values, preferred) {
     const oldValue = element.value;
 
     element.innerHTML = values
-        .map((value) => `<option value="${value}">${value}</option>`)
+        .map((value) => `<option value="${value}">${displayLabel(value)}</option>`)
         .join("");
 
     if (values.includes(oldValue)) {
@@ -113,6 +122,8 @@ function setPreferred(id, values, preferred) {
  * dropdown. This means users only see combinations that actually exist in
  * data.json.
  */
+let previousMetricContext = null;
+
 function rebuild() {
 
     // Experiment
@@ -127,6 +138,9 @@ function rebuild() {
     );
 
 
+    // "Setup" is only a display label for upstream Task.
+    $("task-label").textContent = isUpstream() ? "Setup" : "Task";
+
     // Task
     setOptions(
         "task",
@@ -139,118 +153,61 @@ function rebuild() {
     );
 
 
-    // Metric
-    //
-    // Default / first metric depends on the current experiment and task:
-    //   Upstream                  -> RMSE
-    //   Downstream Classification -> F1
-    //   Downstream Forecasting    -> SMAPE
-    //
-    // The preferred metric is explicitly moved to the first position so the
-    // dropdown order matches the default selection.
-    const preferredMetric =
-        $("experiment").value === "Upstream"
-            ? "RMSE"
-            : $("task").value === "Classification"
-                ? "F1"
-                : "SMAPE";
+    // Downstream model selectors come BEFORE metrics. This is important:
+    // Arsenal has Accuracy/Recall, while Chronos has MSE/MAE. Other models
+    // should not display metrics for which they have no data.
+    $("classifier-wrap").classList.toggle("hidden", !classifierActive());
+    $("forecaster-wrap").classList.toggle("hidden", !forecasterActive());
 
-    const availableMetrics = uniq(
-        rows.map((row) => row.metric)
-    );
-
-    const orderedMetrics = [
-        preferredMetric,
-        ...availableMetrics.filter(
-            (metric) => metric !== preferredMetric
-        )
-    ].filter(
-        (metric) => availableMetrics.includes(metric)
-    );
-
-    setPreferred(
-        "metric",
-        orderedMetrics,
-        preferredMetric
-    );
-
-    rows = rows.filter(
-        (row) => row.metric === $("metric").value
-    );
-
-
-    // Show the classifier selector only for Downstream / Classification.
-    $("classifier-wrap").classList.toggle(
-        "hidden",
-        !classifierActive()
-    );
-
-    // Show the forecaster selector only for Downstream / Forecasting.
-    $("forecaster-wrap").classList.toggle(
-        "hidden",
-        !forecasterActive()
-    );
-
-
-    // Classifier
     if (classifierActive()) {
-        setPreferred(
-            "classifier",
-            uniq(rows.map((row) => row.classifier)),
-            "arsenal"
-        );
-
-        rows = rows.filter(
-            (row) => row.classifier === $("classifier").value
-        );
+        setPreferred("classifier", uniq(rows.map(row => row.classifier)), "arsenal");
+        rows = rows.filter(row => row.classifier === $("classifier").value);
     } else {
         $("classifier").innerHTML = "";
     }
 
-
-    // Forecaster
-    //
-    // Because the available forecasters are derived AFTER filtering by metric,
-    // a metric that only contains Chronos results will automatically expose
-    // Chronos as the only possible forecaster.
     if (forecasterActive()) {
-        setPreferred(
-            "forecaster",
-            uniq(rows.map((row) => row.forecaster)),
-            "chronos"
-        );
-
-        rows = rows.filter(
-            (row) => row.forecaster === $("forecaster").value
-        );
+        setPreferred("forecaster", uniq(rows.map(row => row.forecaster)), "chronos");
+        rows = rows.filter(row => row.forecaster === $("forecaster").value);
     } else {
         $("forecaster").innerHTML = "";
     }
 
+    // Dataset and pattern are selected before the metric, matching the UI.
+    setOptions("dataset", uniq(rows.map(row => row.dataset)), true);
+    rows = rows.filter(row => row.dataset === $("dataset").value);
 
-    // Missingness pattern
-    setPreferred(
-        "pattern",
-        uniq(rows.map((row) => row.pattern)),
-        "mcar"
-    );
+    setPreferred("pattern", uniq(rows.map(row => row.pattern)), "mcar");
+    rows = rows.filter(row => row.pattern === $("pattern").value);
 
-    rows = rows.filter(
-        (row) => row.pattern === $("pattern").value
-    );
+    // Only show metrics available for the selected downstream model.
+    // Keep the established preferred metric first in the list.
+    const preferredMetric = isUpstream()
+        ? "RMSE"
+        : $("task").value === "Classification" ? "F1" : "SMAPE";
 
+    const availableMetrics = uniq(rows.map(row => row.metric));
+    const orderedMetrics = [
+        preferredMetric,
+        ...availableMetrics.filter(metric => metric !== preferredMetric)
+    ].filter(metric => availableMetrics.includes(metric));
 
-    // Dataset
-    setOptions(
-        "dataset",
-        uniq(rows.map((row) => row.dataset)),
-        true
-    );
+    setPreferred("metric", orderedMetrics, preferredMetric);
 
-    rows = rows.filter(
-        (row) => row.dataset === $("dataset").value
-    );
+    // Reset to the preferred metric when experiment/task/model changes,
+    // but preserve a manually selected metric during other filter changes.
+    const metricContext = [
+        $("experiment").value,
+        $("task").value,
+        classifierActive() ? $("classifier").value : "",
+        forecasterActive() ? $("forecaster").value : ""
+    ].join("|");
+    if (metricContext !== previousMetricContext && orderedMetrics.includes(preferredMetric)) {
+        $("metric").value = preferredMetric;
+    }
+    previousMetricContext = metricContext;
 
+    rows = rows.filter(row => row.metric === $("metric").value);
 
     // Upstream experiments use algorithm families.
     // Downstream experiments display the available imputers directly.
@@ -266,13 +223,13 @@ function rebuild() {
                 .filter((family) => family !== "Baseline")
         );
 
-        setOptions("family", families, true);
+        setOptions("family", [...families, "all"], true);
 
         // MeanImpute is always included as the baseline.
         buildAlgos(
             rows.filter(
                 (row) =>
-                    row.family === $("family").value ||
+                    ($("family").value === "all" || row.family === $("family").value) ||
                     row.algo === "MeanImpute"
             )
         );
@@ -366,7 +323,7 @@ function rowsForView() {
     if (isUpstream()) {
         rows = rows.filter(
             (row) =>
-                row.family === $("family").value ||
+                ($("family").value === "all" || row.family === $("family").value) ||
                 row.algo === "MeanImpute"
         );
     }
@@ -582,28 +539,18 @@ function render() {
     );
 
 
-    // Chart title.
-    $("title").textContent =
-        `${$("dataset").value} · ${$("pattern").value}`;
+    // Pipeline contains only the context through the missingness pattern.
+    // The metric replaces the former algorithm list, in lighter text.
+    const model = classifierActive()
+        ? $("classifier").value
+        : forecasterActive() ? $("forecaster").value : null;
 
+    const steps = [$("experiment").value, $("task").value];
+    if (model) steps.push(model);
+    steps.push($("dataset").value, displayLabel($("pattern").value));
 
-    // Additional information shown in the chart header.
-    const extra =
-        classifierActive()
-            ? ` · ${$("classifier").value}`
-            : forecasterActive()
-                ? ` · ${$("forecaster").value}`
-                : isUpstream()
-                    ? ` · ${$("family").value}`
-                    : "";
-
-
-    $("meta").textContent =
-        `${series.length} selected algorithm` +
-        `${series.length === 1 ? "" : "s"} · ` +
-        `${$("experiment").value} / ${$("task").value}` +
-        `${extra} · ${metric}`;
-
+    // Render as one text node to avoid CSS flex gaps around the separator.
+    $("pipeline").textContent = `Pipeline: ${steps.map(displayLabel).join(" > ")} > ${$("metric").value}`;
 
     renderTable(series);
 }

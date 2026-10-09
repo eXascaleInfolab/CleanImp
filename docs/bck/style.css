@@ -216,7 +216,7 @@ button {
 
 /* Plot height used by Plotly. */
 #plot {
-    height: 552.5px;
+    height: 650px;
 }
 
 
@@ -371,7 +371,7 @@ tbody tr:hover {
     }
 
     #plot {
-        height: 442px;
+        height: 520px;
     }
 }
 
@@ -385,79 +385,4 @@ tbody tr:hover {
     .filters {
         grid-template-columns: 1fr;
     }
-}
-
-
-/* ==========================================================================
-   12. Pipeline, result anchor and algorithm actions
-   ========================================================================== */
-
-/* Keep the pipeline prominent and allow long selections to wrap naturally. */
-.status {
-    align-items: center;
-}
-
-#pipeline {
-    min-width: 0;
-    overflow-wrap: anywhere;
-    line-height: 1.5;
-}
-
-.full-results-link {
-    flex-shrink: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #2563eb;
-    text-decoration: none;
-}
-
-.full-results-link:hover,
-.full-results-link:focus-visible {
-    text-decoration: underline;
-}
-
-/* Actions appear after the checkboxes, never above them. */
-.algo-actions {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-}
-
-#full-results {
-    scroll-margin-top: 20px;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Lighter metadata style for the pipeline and metric. */
-.status {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px 14px;
-}
-.status .pipeline-text,
-.status .pipeline-metric {
-    font-size: 15px;
-    font-weight: 600;
-    color: #64748b;
-    line-height: 1.5;
-}
-.status .pipeline-text { overflow-wrap: anywhere; }
-.status .full-results-link { margin-left: auto; }
-
-/* High-contrast GitHub link in the dark header. */
-header p a,
-header p a:visited {
-    color: #ffb454;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-header p a:hover,
-header p a:focus-visible {
-    color: #ffd28a;
 }
