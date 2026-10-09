@@ -347,7 +347,7 @@ python cleanimp_bench.py \
 <br />
 
 #### Multiple Classification Configurations
-- To produce the impact of imputation with a classification model (arsenal) with
+To produce the impact of imputation with a classification model (arsenal) with
 two classification datasets (Computers and Car),
 two imputation algorithms (MeanImpute and MICE),
 two missingness patterns (MCAR and SeqN),
