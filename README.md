@@ -1,5 +1,5 @@
 # CleanImp Benchmark
-All results are available through this interactive website: [⭐ Benchmark Results Explorer](https://exascaleinfolab.github.io/CleanImp/)
+All the results are available through this interactive website: [⭐ Benchmark Explorer](https://exascaleinfolab.github.io/CleanImp/)
 
 ## 1. Overview
 
@@ -123,6 +123,14 @@ The datasets can be found in the following directory: https://github.com/eXascal
 
 
 
+## List of Features
+| Forecasting Features |                |              |              |         |        |
+|----------------------|----------------|--------------|--------------|---------|--------|
+| `seasonality`        | `correlation`  | `shifting`   | `frequency`  | `trend` | `size` |
+
+| Classification Features |                 |             |              |           |
+|-------------------------|-----------------|-------------|--------------|-----------|
+| `size`                  | `class_bal`     | `corr_in`   | `corr_out`   | `n_class` |
 
 ------------------------------------------------------------------------
 
@@ -132,22 +140,23 @@ The datasets can be found in the following directory: https://github.com/eXascal
 
 The list of the runner’s parameters is the following:
 
-| Parameters/Arguments | Values                                                                          | Description                                                                                      |
-|:---------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
-| `--task`             | `{imputation, forecasting, classification}`                                     | Selects the benchmark task to execute.                                                           |
-| `--imp_algs`         | [List of Algorithms](#list-of-techniques)                                       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
-| `--datasets_type`    | `{forecasting, classification}`                                                 | Selects the dataset category used for the benchmark.                                             |
-| `--datasets_list`    | [List of Datasets](#list-of-datasets)                                           | Selects one or more datasets. Use `all` to include every available dataset.                      |
-| `--patterns`         | `{mcar, seqn, blks}`                                                            | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
-| `--miss_rate`        | `{0.1, 0.2, 0.4, 0.6, 0.8}`                                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
-| `--metrics`          | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
-| `--downstream_mod`   | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
-| `--horizon`          | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps. (only forecasting)              |
-| `--con_by_class`     | `--no-con_by_class`                                                             | Sets if the contamination is performed separately for each class or not. (only classification)   |
-| `--imp_by_class`     | `--no-imp_by_class`                                                             | Sets if the imputation is performed separately for each class or not. (only classification)      |
-| `--caching`          | `--no-caching`                                                                  | Enables or disables caching of intermediate results to avoid repeated computations.              |
-| `--plots`            | `--no-plots`                                                                    | Enables or disables benchmark plot generation.                                                   |
-| `--verbose`          | `--no-verbose`                                                                  | Enables or disables detailed execution output.                                                   |
+| Parameters/Arguments   | Values                                                                          | Description                                                                                      |
+|:-----------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
+| `--task`               | `{imputation, forecasting, classification}`                                     | Selects the benchmark task to execute.                                                           |
+| `--imp_algs`           | [List of Algorithms](#list-of-techniques)                                       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
+| `--datasets_type`      | `{forecasting, classification}`                                                 | Selects the dataset category used for the benchmark.                                             |
+| `--datasets_list`      | [List of Datasets](#list-of-datasets)                                           | Selects one or more datasets. Use `all` to include every available dataset.                      |
+| `--patterns`           | `{mcar, seqn, blks}`                                                            | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
+| `--miss_rate`          | `{0.1, 0.2, 0.4, 0.6, 0.8}`                                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
+| `--metrics`            | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
+| `--downstream_mod`     | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
+| `--based-on-features`  | [List of Features](#list-of-features)                                           | Replace the list of datasets by the feature-based selection of datasets.                         |
+| `--horizon`            | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps. (only forecasting)              |
+| `--con_by_class`       | `--no-con_by_class`                                                             | Sets if the contamination is performed separately for each class or not. (only classification)   |
+| `--imp_by_class`       | `--no-imp_by_class`                                                             | Sets if the imputation is performed separately for each class or not. (only classification)      |
+| `--caching`            | `--no-caching`                                                                  | Enables or disables caching of intermediate results to avoid repeated computations.              |
+| `--plots`              | `--no-plots`                                                                    | Enables or disables benchmark plot generation.                                                   |
+| `--verbose`            | `--no-verbose`                                                                  | Enables or disables detailed execution output.                                                   |
 
 
 <i>With the **“caching”** tag, you can store the imputed matrix and, for downstream tasks, the classification or prediction results. This allows you to rerun the benchmark without having to recompute pipelines that have already been executed.</i>
@@ -391,9 +400,37 @@ python cleanimp_bench.py \
 
 ### 5.4 Features Analysis (Figures 8 and 12)
 
-To produce a breakdown of the results by feature, run the following commands (scripts are underway).
+To produce the impact of imputation with a forecasting model across different dataset features **(Fig. 8 in the paper)**, replace the `datasets_list` parameter to `based-on-feature` and select the feature to analyze:
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
 
+``` bash
+python cleanimp_bench.py \
+    --task forecasting \
+    --downstream_mod chronos \
+    --based-on-feature seasonality \
+    --imp_algs all \    
+    --patterns all \
+    --miss_rate all \
+    --metrics all \
+    --horizon 12
+```
 <br />
 
+To produce the impact of imputation with a classification model across different dataset features **(Fig. 12 in the paper)**, replace the `datasets_list` parameter to `based-on-feature` and select the feature to analyze:
+<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+
+``` bash
+python cleanimp_bench.py \
+    --task classification \
+    --downstream_mod arsenal \
+    --based-on-feature corr_out \
+    --imp_algs all \
+    --patterns all \
+    --miss_rate all \
+    --metrics all \
+    --cont_by_class \
+    --imp_by_class
+```
+<br />
 ------------------------------------------------------------------------------------------------------------------------------------------------
 

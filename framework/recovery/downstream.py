@@ -816,7 +816,7 @@ class Downstream:
                     mse_list.append(mean_squared_error(y_test, y_pred))
                     smape_list.append(mean_absolute_percentage_error(y_test, y_pred, symmetric=True))  # Compute SMAPE
 
-                    print(f"{x} : smape:{mean_absolute_percentage_error(y_test, y_pred, symmetric=True)}")
+                    #print(f"{x} : smape:{mean_absolute_percentage_error(y_test, y_pred, symmetric=True)}")
 
                     to_store = y_pred
 

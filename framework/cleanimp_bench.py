@@ -105,6 +105,13 @@ def parse_args():
         help="Enable or disable verbose"
     )
 
+    parser.add_argument(
+        "--based-on-feature",
+        type=str,
+        default="none",
+        help="Load the correct sets of datasets based on its feature"
+    )
+
 
     return parser.parse_args()
 
@@ -123,6 +130,9 @@ if __name__ == "__main__":
     invalid = [dataset for dataset in args.datasets_list if dataset not in valid_datasets]
     if invalid:
         raise ValueError(f"Unknown dataset(s): {invalid}")
+
+    if args.based_on_feature != "none" and args.task != "imputation":
+        datasets_bin = utils.load_feature_ranges_cleanimp(feature=args.based_on_feature, task=args.task)
 
     if args.task == "imputation": #=UPSTREAM============================================================================
 
@@ -186,6 +196,21 @@ if __name__ == "__main__":
                                                  generate_plot=args.plots,
                                                  verbose=args.verbose)
 
+    elif args.based_on_feature != "none": # features ==================================================================
+        utils.eval_downstream_based_feature(task=args.task,
+                                            feature=args.based_on_feature,
+                                            models=args.downstream_mod,
+                                            imp_algs=args.imp_algs,
+                                            datasets_bin=datasets_bin,
+                                            patterns=args.patterns,
+                                            miss_rate=args.miss_rate,
+                                            metrics=args.metrics,
+                                            cache=args.caching,
+                                            verbose=args.verbose,
+                                            generate_plot=args.plots,
+                                            horizon=args.horizon,
+                                            cont_by_class=args.cont_by_class,
+                                            imp_by_class=args.imp_by_class)
 
     elif args.task == "forecasting":  #=DOWNSTREAM-FORECASTING==========================================================
         # launch the evaluation

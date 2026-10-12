@@ -5798,4 +5798,123 @@ def patch_classifiers_grin(incomp_data, seq_len, batch_size, verbose=True):
 
     return seq_len, batch_size
 
+def load_feature_ranges_cleanimp(feature, task):
+    """Return (small, medium, high) dataset-name lists for a feature and task.
 
+    Parameters
+    ----------
+    feature : str
+        Forecasting: seasonality, correlation, shifting, frequency, trend, size.
+        Classification: size, class_bal, corr_in, corr_out, n_class.
+        Aliases: shift*, season*, corr* (forecasting only).
+    task : str
+        Either "forecasting" or "classification".
+
+    Returns
+    -------
+    tuple[list[str], list[str], list[str]]
+        Dataset names grouped into small, medium, and high ranges.
+
+    Raises
+    ------
+    ValueError
+        If the task or feature is unknown.
+    """
+    feature = feature.strip().lower()
+    task = task.strip().lower()
+
+    if task == "forecasting":
+        if "shift" in feature:
+            feature = "shifting"
+        elif "season" in feature:
+            feature = "seasonality"
+        elif "corr" in feature:
+            feature = "correlation"
+
+        datasets = {
+            'seasonality': (
+                ['electricity', 'etth1', 'etth2', 'nn5', 'nyse', 'wike2000', 'wind_speed', 'atm', 'climate', 'economics', 'human_access'],
+                ['ili', 'beijing_traffic', 'paris'],
+                ['czelan', 'airq']
+            ),
+            'correlation': (
+                ['electricity', 'etth1', 'wike2000', 'wind_speed', 'beijing_traffic', 'climate', 'paris'],
+                ['czelan', 'etth2', 'ili', 'nn5', 'nyse', 'atm', 'economics', 'human_access'],
+                ['airq']
+            ),
+            'shifting': (
+                ['electricity', 'economics'],
+                ['czelan', 'etth1', 'etth2', 'wind_speed', 'airq', 'climate', 'human_access'],
+                ['ili', 'nn5', 'nyse', 'wike2000', 'atm', 'beijing_traffic', 'paris']
+            ),
+            'frequency': (
+                ['czelan', 'electricity', 'etth1', 'etth2', 'wind_speed', 'airq', 'beijing_traffic', 'human_access', 'paris'],
+                ['nn5', 'nyse', 'wike2000', 'atm', 'economics'],
+                ['ili', 'climate']
+            ),
+            'trend': (
+                ['airq', 'beijing_traffic'],
+                ['nn5', 'atm', 'economics'],
+                ['czelan', 'electricity', 'etth1', 'etth2', 'ili', 'nyse', 'wike2000', 'wind_speed', 'climate', 'human_access', 'paris']
+            ),
+            'size': (
+                ['ili', 'nyse', 'wike2000', 'paris'],
+                ['czelan', 'electricity', 'etth1', 'etth2', 'wind_speed', 'airq', 'beijing_traffic', 'climate', 'economics', 'human_access'],
+                ['nn5', 'atm']
+            ),
+        }
+    elif task == "classification":
+        datasets = {
+            'size': (
+                ['BirdChicken', 'Beef', 'Wine', 'FaceFour', 'ArrowHead', 'ECGFiveDays', 'TwoLeadECG', 'MoteStrain', 'FreezerSmallTrain', 'SonyAIBORobotSurface1', 'GunPoint', 'ToeSegmentation1', 'ToeSegmentation2', 'CBF', 'ShapeletSim', 'UMD'],
+                ['OliveOil', 'Colposcopy', 'Lightning7', 'GunPointAgeSpan', 'GunPointMaleVersusFemale', 'GunPointOldVersusYoung', 'SyntheticControl'],
+                ['Adiac', 'Fish', 'InsectEPGRegularTrain', 'Rock', 'OSULeaf', 'SwedishLeaf', 'Worms', 'WormsTwoClass', 'Herring', 'Ham', 'EthanolLevel', 'Meat', 'Strawberry', 'Car', 'FacesUCR', 'CinCECGTorso', 'DistalPhalanxOutlineAgeGroup', 'DistalPhalanxOutlineCorrect', 'DistalPhalanxTW', 'EOGHorizontalSignal', 'EOGVerticalSignal', 'MedicalImages', 'PhalangesOutlinesCorrect', 'ProximalPhalanxOutlineAgeGroup', 'ProximalPhalanxOutlineCorrect', 'SemgHandGenderCh2', 'SemgHandMovementCh2', 'SemgHandSubjectCh2', 'Lightning2', 'Earthquakes', 'Computers', 'LargeKitchenAppliances', 'FreezerRegularTrain', 'PowerCons', 'RefrigerationDevices', 'ScreenType', 'SmallKitchenAppliances', 'CricketX', 'Haptics', 'InlineSkate', 'Yoga', 'SharePriceIncrease', 'Trace', 'TwoPatterns', 'Wafer']
+            ),
+            'class_bal': (
+                ['Adiac', 'BirdChicken', 'Fish', 'InsectEPGRegularTrain', 'Rock', 'Beef', 'Meat', 'OliveOil', 'Car', 'FaceFour', 'FacesUCR', 'ArrowHead', 'CinCECGTorso', 'Colposcopy', 'ECGFiveDays', 'TwoLeadECG', 'MoteStrain', 'Lightning7', 'FreezerSmallTrain', 'SonyAIBORobotSurface1', 'GunPoint', 'InlineSkate', 'ToeSegmentation1', 'ToeSegmentation2', 'CBF', 'Trace', 'ShapeletSim', 'UMD'],
+                ['OSULeaf', 'SwedishLeaf', 'Worms', 'WormsTwoClass', 'Herring', 'Ham', 'EthanolLevel', 'Wine', 'DistalPhalanxOutlineAgeGroup', 'DistalPhalanxTW', 'EOGHorizontalSignal', 'EOGVerticalSignal', 'MedicalImages', 'ProximalPhalanxOutlineAgeGroup', 'SemgHandGenderCh2', 'SemgHandMovementCh2', 'SemgHandSubjectCh2', 'Lightning2', 'Computers', 'LargeKitchenAppliances', 'FreezerRegularTrain', 'PowerCons', 'RefrigerationDevices', 'ScreenType', 'SmallKitchenAppliances', 'GunPointAgeSpan', 'GunPointMaleVersusFemale', 'GunPointOldVersusYoung', 'CricketX', 'Haptics', 'Yoga', 'SyntheticControl'],
+                ['Strawberry', 'DistalPhalanxOutlineCorrect', 'PhalangesOutlinesCorrect', 'ProximalPhalanxOutlineCorrect', 'Earthquakes', 'SharePriceIncrease', 'TwoPatterns', 'Wafer']
+            ),
+            'corr_in': (
+                ['BirdChicken', 'OSULeaf', 'Worms', 'WormsTwoClass', 'FacesUCR', 'CinCECGTorso', 'Colposcopy', 'EOGVerticalSignal', 'SemgHandGenderCh2', 'SemgHandMovementCh2', 'SemgHandSubjectCh2', 'Lightning2', 'Earthquakes', 'Computers', 'LargeKitchenAppliances', 'PowerCons', 'RefrigerationDevices', 'ScreenType', 'SmallKitchenAppliances', 'CricketX', 'ToeSegmentation1', 'ToeSegmentation2', 'Yoga', 'SharePriceIncrease', 'ShapeletSim', 'TwoPatterns', 'UMD', 'Wafer'],
+                ['InsectEPGRegularTrain', 'FaceFour', 'ECGFiveDays', 'EOGHorizontalSignal', 'MedicalImages', 'MoteStrain', 'Lightning7', 'GunPointMaleVersusFemale', 'InlineSkate', 'CBF', 'SyntheticControl'],
+                ['Adiac', 'Fish', 'Rock', 'SwedishLeaf', 'Herring', 'Ham', 'EthanolLevel', 'Beef', 'Meat', 'OliveOil', 'Strawberry', 'Wine', 'Car', 'ArrowHead', 'DistalPhalanxOutlineAgeGroup', 'DistalPhalanxOutlineCorrect', 'DistalPhalanxTW', 'PhalangesOutlinesCorrect', 'ProximalPhalanxOutlineAgeGroup', 'ProximalPhalanxOutlineCorrect', 'TwoLeadECG', 'FreezerRegularTrain', 'FreezerSmallTrain', 'SonyAIBORobotSurface1', 'GunPoint', 'GunPointAgeSpan', 'GunPointOldVersusYoung', 'Haptics', 'Trace']
+            ),
+            'corr_out': (
+                ['BirdChicken', 'InsectEPGRegularTrain', 'OSULeaf', 'Worms', 'WormsTwoClass', 'FaceFour', 'FacesUCR', 'CinCECGTorso', 'Colposcopy', 'EOGHorizontalSignal', 'EOGVerticalSignal', 'SemgHandGenderCh2', 'SemgHandMovementCh2', 'SemgHandSubjectCh2', 'MoteStrain', 'Lightning2', 'Lightning7', 'Earthquakes', 'Computers', 'LargeKitchenAppliances', 'PowerCons', 'RefrigerationDevices', 'ScreenType', 'SmallKitchenAppliances', 'CricketX', 'ToeSegmentation1', 'ToeSegmentation2', 'Yoga', 'SharePriceIncrease', 'CBF', 'SyntheticControl', 'Trace', 'ShapeletSim', 'TwoPatterns', 'UMD', 'Wafer'],
+                ['Rock', 'ECGFiveDays', 'MedicalImages', 'GunPointAgeSpan', 'GunPointMaleVersusFemale', 'GunPointOldVersusYoung', 'InlineSkate'],
+                ['Adiac', 'Fish', 'SwedishLeaf', 'Herring', 'Ham', 'EthanolLevel', 'Beef', 'Meat', 'OliveOil', 'Strawberry', 'Wine', 'Car', 'ArrowHead', 'DistalPhalanxOutlineAgeGroup', 'DistalPhalanxOutlineCorrect', 'DistalPhalanxTW', 'PhalangesOutlinesCorrect', 'ProximalPhalanxOutlineAgeGroup', 'ProximalPhalanxOutlineCorrect', 'TwoLeadECG', 'FreezerRegularTrain', 'FreezerSmallTrain', 'SonyAIBORobotSurface1', 'GunPoint', 'Haptics']
+            ),
+            'n_class': (
+                ['BirdChicken', 'WormsTwoClass', 'Herring', 'Ham', 'Strawberry', 'Wine', 'DistalPhalanxOutlineCorrect', 'ECGFiveDays', 'PhalangesOutlinesCorrect', 'ProximalPhalanxOutlineCorrect', 'SemgHandGenderCh2', 'TwoLeadECG', 'MoteStrain', 'Lightning2', 'Earthquakes', 'Computers', 'FreezerRegularTrain', 'FreezerSmallTrain', 'PowerCons', 'SonyAIBORobotSurface1', 'GunPoint', 'GunPointAgeSpan', 'GunPointMaleVersusFemale', 'GunPointOldVersusYoung', 'ToeSegmentation1', 'ToeSegmentation2', 'Yoga', 'SharePriceIncrease', 'ShapeletSim', 'Wafer'],
+                ['Fish', 'InsectEPGRegularTrain', 'Rock', 'OSULeaf', 'Worms', 'EthanolLevel', 'Beef', 'Meat', 'OliveOil', 'Car', 'FaceFour', 'ArrowHead', 'CinCECGTorso', 'Colposcopy', 'DistalPhalanxOutlineAgeGroup', 'DistalPhalanxTW', 'ProximalPhalanxOutlineAgeGroup', 'SemgHandMovementCh2', 'SemgHandSubjectCh2', 'Lightning7', 'LargeKitchenAppliances', 'RefrigerationDevices', 'ScreenType', 'SmallKitchenAppliances', 'Haptics', 'InlineSkate', 'CBF', 'SyntheticControl', 'Trace', 'TwoPatterns', 'UMD'],
+                ['Adiac', 'SwedishLeaf', 'FacesUCR', 'EOGHorizontalSignal', 'EOGVerticalSignal', 'MedicalImages', 'CricketX']
+            ),
+        }
+    else:
+        raise ValueError(f"Unsupported task: {task}. Use forecasting or classification.")
+
+    if feature not in datasets:
+        raise ValueError(f"Unsupported feature: {feature}. Available: {list(datasets)}")
+    return datasets[feature]
+
+def eval_downstream_based_feature(task,feature,models,imp_algs,datasets_bin,patterns,miss_rate,metrics,cache,verbose,generate_plot,horizon,cont_by_class,imp_by_class):
+    from recovery.benchmark import Benchmark
+    bench = Benchmark()
+
+    low, medium, high = datasets_bin
+
+    if task=="forecasting":
+        print(f"\ngeneration of the feature low bin: {feature} | {task}\n")
+        bench.eval_downstream_forecasting(forecasters=models, horizon=horizon, algorithms=imp_algs, datasets=low, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_low", bypass_error=False, to_cache=cache, use_cache=cache, run_downstream=True, evaluate_upstream=False, fixed_rate=0.2, verbose=verbose, inner_plots=False, plots=False, generate_plot=generate_plot, referential=False, nbr_series=10000, nbr_vals=10000)
+        print(f"\ngeneration of the feature medium bin: {feature} | {task}\n")
+        bench.eval_downstream_forecasting(forecasters=models, horizon=horizon, algorithms=imp_algs, datasets=medium, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_medium", bypass_error=False, to_cache=cache, use_cache=cache, run_downstream=True, evaluate_upstream=False, fixed_rate=0.2, verbose=verbose, inner_plots=False, plots=False, generate_plot=generate_plot, referential=False, nbr_series=10000, nbr_vals=10000)
+        print(f"\ngeneration of the feature high bin: {feature} | {task}\n")
+        bench.eval_downstream_forecasting(forecasters=models, horizon=horizon, algorithms=imp_algs, datasets=high, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_high", bypass_error=False, to_cache=cache, use_cache=cache, run_downstream=True, evaluate_upstream=False, fixed_rate=0.2, verbose=verbose, inner_plots=False, plots=False, generate_plot=generate_plot, referential=False, nbr_series=10000, nbr_vals=10000)
+    else:
+        print(f"\ngeneration of the feature low bin: {feature} | {task}\n")
+        bench.eval_downstream_classification(classifiers=models, algorithms=imp_algs, datasets=low, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_low", contamination_by_class=cont_by_class, imputation_by_class=imp_by_class, bypass_error=False, evaluate_upstream=False, to_cache=cache, use_cache=cache, run_downstream=True, referential=False, fixed_rate=0.2, plots=False, generate_plot=generate_plot, verbose=verbose)
+        print(f"\ngeneration of the feature medium bin: {feature} | {task}\n")
+        bench.eval_downstream_classification(classifiers=models, algorithms=imp_algs, datasets=medium, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_medium", contamination_by_class=cont_by_class, imputation_by_class=imp_by_class, bypass_error=False, evaluate_upstream=False, to_cache=cache, use_cache=cache, run_downstream=True, referential=False, fixed_rate=0.2, plots=False, generate_plot=generate_plot, verbose=verbose)
+        print(f"\ngeneration of the feature high bin: {feature} | {task}\n")
+        bench.eval_downstream_classification(classifiers=models, algorithms=imp_algs, datasets=high, patterns=patterns, x_axis=miss_rate, metrics=metrics, normalizer="z-score", report_title=feature+"_high", contamination_by_class=cont_by_class, imputation_by_class=imp_by_class, bypass_error=False, evaluate_upstream=False, to_cache=cache, use_cache=cache, run_downstream=True, referential=False, fixed_rate=0.2, plots=False, generate_plot=generate_plot, verbose=verbose)
