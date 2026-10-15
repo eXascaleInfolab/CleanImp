@@ -106,7 +106,7 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--based-on-feature",
+        "--feature",
         type=str,
         default="none",
         help="Load the correct sets of datasets based on its feature"
@@ -131,8 +131,8 @@ if __name__ == "__main__":
     if invalid:
         raise ValueError(f"Unknown dataset(s): {invalid}")
 
-    if args.based_on_feature != "none" and args.task != "imputation":
-        datasets_bin = utils.load_feature_ranges_cleanimp(feature=args.based_on_feature, task=args.task)
+    if args.feature != "none" and args.task != "imputation":
+        datasets_bin = utils.load_feature_ranges_cleanimp(feature=args.feature, task=args.task)
 
     if args.task == "imputation": #=UPSTREAM============================================================================
 
@@ -196,9 +196,9 @@ if __name__ == "__main__":
                                                  generate_plot=args.plots,
                                                  verbose=args.verbose)
 
-    elif args.based_on_feature != "none": # features ==================================================================
+    elif args.feature != "none": # features ==================================================================
         utils.eval_downstream_based_feature(task=args.task,
-                                            feature=args.based_on_feature,
+                                            feature=args.feature,
                                             models=args.downstream_mod,
                                             imp_algs=args.imp_algs,
                                             datasets_bin=datasets_bin,
