@@ -589,6 +589,11 @@ async function start() {
         false
     );
 
+    // Default landing view: Imputation (stored as Upstream) / Classification.
+    // Only the initial selection changes; the user can still switch freely.
+    $("experiment").value = "Upstream";
+    rebuild();
+    $("task").value = "Classification";
     rebuild();
 
 
