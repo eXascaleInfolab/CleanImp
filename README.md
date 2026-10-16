@@ -230,7 +230,7 @@ python cleanimp_bench.py \
 <br />
 
 #### Full Imputation Results
-To produce the full imputation results (left-hand part of **Fig. 6** in the paper) using all available configurations, replace the parameter values with `all`:
+To produce the full imputation results (left-hand part of **Fig. 6** in the paper) using all available configurations, set the parameter values to `all`:
 <br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 
@@ -316,7 +316,7 @@ python cleanimp_bench.py \
 
 #### Full Forecasting Results
 To produce the impact of imputation with a forecasting model with all possible configurations (**Fig. 7, 9 and 10** in the paper),
-replace the parameter values with `all` and adjust the forecasting model and horizon accordingly:
+set the parameter values to `all` and adjust the forecasting model and horizon accordingly:
 <br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 ``` bash
