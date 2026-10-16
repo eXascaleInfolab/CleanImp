@@ -1,9 +1,11 @@
 # CleanImp Benchmark
 All the results are available through this interactive website: [⭐ Benchmark Explorer](https://exascaleinfolab.github.io/CleanImp/)
 
-## 1. Overview
+## 1. Description
 
-**CleanImp** is an end-to-end benchmark for evaluating the impact of time series imputation on downstream tasks. The technical details are
+### Overview
+
+CleanImp is an end-to-end benchmark for evaluating the impact of time series imputation on downstream tasks. The technical details are
 described in the paper **CleanImp: Benchmarking the Impact of Time Series Imputation on Downstream Quality [Experiment, Analysis & Benchmark]** (under review for PVLDB 27).
 
 The benchmark follows the complete experimental pipeline introduced in the CleanImp paper:
@@ -34,7 +36,7 @@ framework/
 │           │       │   │                       # Metric evolution across missingness rates
 │           │       │   └── report_<pattern>_<dataset>.txt
 │           │       │                            # Detailed results for this dataset/
-│           │       └── recovery/                # Individal imputation plot for each rate
+│           │       └── recovery/                # Individual imputation plot for each rate
 │           │
 │           ├── _heatmaps/                      # Aggregated results used for heatmap analyses
 │           │   └── _benchmarking_*.txt         # Benchmark results represented as heatmaps
@@ -60,7 +62,7 @@ framework/
 
 The tables below provide a compact overview of the options available when configuring the benchmark.
 
-## List of Techniques
+### 2.1. List of Techniques
 | Imputation Algorithms |             |              |                |           |
 |-----------------------|-------------|--------------|----------------|-----------|
 | `BRITS`               | `BayOTIDE`  | `BitGraph`   | `CDRec`        | `CSDI`    |
@@ -90,7 +92,7 @@ The tables below provide a compact overview of the options available when config
 | `weasel`              |            |           |             |            |
 
 
-## List of Datasets
+### 2.2. List of Datasets
 
 
 | Forecasting Datasets |               |                     |            |                |
@@ -123,7 +125,7 @@ The datasets can be found in the following directory: https://github.com/eXascal
 
 
 
-## List of Features
+### 2.3. List of Features
 | Forecasting Features |                |              |              |         |        |
 |----------------------|----------------|--------------|--------------|---------|--------|
 | `seasonality`        | `correlation`  | `shifting`   | `frequency`  | `trend` | `size` |
@@ -143,14 +145,14 @@ The list of the runner’s parameters is the following:
 | Parameters/Arguments  | Values                                                                          | Description                                                                                      |
 |:----------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
 | `--task`              | `{imputation, forecasting, classification}`                                     | Selects the benchmark task to execute.                                                           |
-| `--imp_algs`          | [List of Algorithms](#list-of-techniques)                                       | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
+| `--imp_algs`          | [List of Algorithms](#21-list-of-techniques)                                    | Selects one or more imputation algorithms. Use `all` to include every available algorithm.       |
 | `--datasets_type`     | `{forecasting, classification}`                                                 | Selects the dataset category used for the benchmark.                                             |
-| `--datasets_list`     | [List of Datasets](#list-of-datasets)                                           | Selects one or more datasets. Use `all` to include every available dataset.                      |
+| `--datasets_list`     | [List of Datasets](#22-list-of-datasets)                                        | Selects one or more datasets. Use `all` to include every available dataset.                      |
 | `--patterns`          | `{mcar, seqn, blks}`                                                            | Selects one or more missingness patterns. Use `all` to include every available pattern.          |
 | `--miss_rate`         | `{0.1, 0.2, 0.4, 0.6, 0.8}`                                                     | Sets one or more missing-value rates. Use `all` to evaluate the predefined rates.                |
 | `--metrics`           | `{RMSE, MAE, MI, CORRELATION}` / `{SMAPE, MSE, MAE}` / `{F1, ACCURACY, RECALL}` | Selects the evaluation metrics for the chosen task. Use `all` to include every available metric. |
-| `--downstream_mod`    | [List of Models](#list-of-techniques)                                           | Selects the downstream model used to measure the impact of imputation.                           |
-| `--feature`           | [List of Features](#list-of-features)                                           | Replace the list of datasets by the feature-based selection of datasets.                         |
+| `--downstream_mod`    | [List of Models](#21-list-of-techniques)                                        | Selects the downstream model used to measure the impact of imputation.                           |
+| `--feature`           | [List of Features](#23-list-of-features)                                        | Replace the list of datasets by the feature-based selection of datasets.                         |
 | `--horizon`           | `{12, 24, 48}`                                                                  | Sets the forecasting horizon as the number of future timestamps. (only forecasting)              |
 | `--con_by_class`      | `--no-con_by_class`                                                             | Sets if the contamination is performed separately for each class or not. (only classification)   |
 | `--imp_by_class`      | `--no-imp_by_class`                                                             | Sets if the imputation is performed separately for each class or not. (only classification)      |
@@ -229,7 +231,7 @@ python cleanimp_bench.py \
 
 #### Full Imputation Results
 To produce the full imputation results (left-hand part of **Fig. 6** in the paper) using all available configurations, replace the parameter values with `all`:
-<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+<br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 
 ``` bash
@@ -315,7 +317,7 @@ python cleanimp_bench.py \
 #### Full Forecasting Results
 To produce the impact of imputation with a forecasting model with all possible configurations (**Fig. 7, 9 and 10** in the paper),
 replace the parameter values with `all` and adjust the forecasting model and horizon accordingly:
-<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+<br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
@@ -380,7 +382,7 @@ python cleanimp_bench.py \
 #### Full Classification Results
 To produce the impact of imputation with a classification model with all possible configurations (**Fig. 11, 13 and 14** in the paper),
 replace the parameter values with `all` and adjust the classification model and setup accordingly:
-<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+<br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
@@ -400,7 +402,7 @@ python cleanimp_bench.py \
 
 ### 5.4 Features Analysis (Figures 8 and 12)
 
-To produce a breakdown analysis of the imputation impact on forecasting for each feature, **(Fig. 8 in the paper)**, use the parameter `feature`:<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+To produce a breakdown analysis of the imputation impact on forecasting for each feature (**Fig. 8** in the paper), set the argument `feature` to one of the forecasting parameters [above](#23-list-of-features).<br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
@@ -415,8 +417,7 @@ python cleanimp_bench.py \
 ```
 <br />
 
-To produce a breakdown analysis of the imputation impact on classification for each feature, **(Fig. 12 in the paper)**, use the parameter `feature`:
-<br /><i>⚠️ Be aware that running this command may take several weeks to complete.</i>
+To produce a breakdown analysis of the imputation impact on classification for each feature (**Fig. 12** in the paper), set the argument `feature` to one of the classification parameters [above](#23-list-of-features). <br /><i>⚠️ Running this command may take several weeks to complete.</i>
 
 ``` bash
 python cleanimp_bench.py \
